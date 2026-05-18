@@ -172,6 +172,28 @@
   margin-top: 0.35rem;
 }
 
+.productCartButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  margin-top: 0.9rem;
+  border-radius: 0.75rem;
+  background: #1f5e3b;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.productCartButton:hover,
+.productCartButton:focus-visible {
+  background: #17462c;
+  transform: translateY(-1px);
+}
+
 .productPromoGrid {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 0.75fr);

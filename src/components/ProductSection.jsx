@@ -98,6 +98,9 @@ export default function ProductSection() {
                   <div className={styles.productCurrentPrice}>{item.currentPrice}</div>
                   <div className={styles.productOriginalPrice}>{item.originalPrice}</div>
                 </div>
+                <a href="#pricing" className={styles.productCartButton}>
+                  Add to Cart
+                </a>
               </div>
             </motion.article>
           ))}

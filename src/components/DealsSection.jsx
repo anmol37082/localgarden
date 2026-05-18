@@ -120,6 +120,24 @@ export default function DealsSection() {
             <p className={styles.promoText}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </p>
+            <div className={styles.promoCountdown}>
+              <div>
+                <strong>04</strong>
+                <span>Days</span>
+              </div>
+              <div>
+                <strong>14</strong>
+                <span>Hours</span>
+              </div>
+              <div>
+                <strong>48</strong>
+                <span>Minutes</span>
+              </div>
+              <div>
+                <strong>18</strong>
+                <span>Seconds</span>
+              </div>
+            </div>
             <a href="#pricing" className={styles.promoButton}>
               Shop Now
             </a>
