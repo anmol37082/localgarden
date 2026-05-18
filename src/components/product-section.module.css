@@ -1,0 +1,397 @@
+.productSection {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  background: #ffffff;
+}
+
+.productHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.productHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.productKicker {
+  display: block;
+  font-size: 1rem;
+  color: #2b2b2b;
+  font-family: var(--body-font);
+  font-weight: 400;
+}
+
+.productTitle {
+  display: block;
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: clamp(1.8rem, 3.2vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #242424;
+  max-width: none;
+  text-align: left;
+  width: 100%;
+}
+
+.productTitle span {
+  display: block;
+}
+
+.productButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1.3rem;
+  border-radius: 999px;
+  background: #f4c31f;
+  color: #1f1f1f;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 10px 24px rgba(244, 195, 31, 0.25);
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.productCard {
+  position: relative;
+  border: 0;
+  border-radius: 1.25rem 1.25rem 0 0;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.productImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #f4f4f1;
+  overflow: hidden;
+  border-radius: 1.1rem;
+}
+
+.productImage {
+  object-fit: cover;
+}
+
+.productBadge {
+  position: absolute;
+  left: 0.85rem;
+  top: 0.85rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: #1f5e3b;
+  color: #ffffff;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
+  font-family: var(--body-font);
+  font-weight: 400;
+}
+
+.productBody {
+  padding: 0.75rem 0.1rem 0;
+}
+
+.productLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #8d8d8d;
+  margin-bottom: 0.35rem;
+  font-family: var(--body-font);
+  font-weight: 300;
+}
+
+.productMetaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.productCardTitle {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: #242424;
+  font-family: var(--body-font);
+  font-weight: 600;
+}
+
+.productRating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #232323;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.productCurrentPrice {
+  font-size: 1rem;
+  line-height: 1;
+  color: #242424;
+  font-family: var(--body-font);
+  font-weight: 700;
+}
+
+.productOriginalPrice {
+  font-size: 0.95rem;
+  line-height: 1;
+  color: #8e8e8e;
+  text-decoration: line-through;
+  font-family: var(--body-font);
+  font-weight: 300;
+}
+
+.productStar {
+  color: #f4c31f;
+  font-size: 0.95rem;
+}
+
+.productPriceRow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
+}
+
+.productPromoGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 0.75fr);
+  gap: 1.2rem;
+  margin-top: 5rem;
+  align-items: stretch;
+}
+
+.productOfferCard {
+  position: relative;
+  min-height: 19rem;
+  padding: 2rem 2rem 1.8rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 247, 247, 0.95)),
+    #f6f6f6;
+  border: 1px solid #efefef;
+}
+
+.productOfferLeafLeft,
+.productOfferLeafRight {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  background: radial-gradient(circle at 35% 35%, rgba(34, 93, 39, 0.18), transparent 64%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.productOfferLeafLeft {
+  left: -0.7rem;
+  top: 0.6rem;
+  transform: rotate(-12deg);
+}
+
+.productOfferLeafRight {
+  right: -0.35rem;
+  bottom: -0.6rem;
+  transform: rotate(20deg);
+}
+
+.productOfferKicker {
+  font-size: 1rem;
+  color: #2b2b2b;
+  font-family: var(--body-font);
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+.productOfferTitle {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: clamp(1.65rem, 2.8vw, 2.6rem);
+  line-height: 1.05;
+  font-weight: 700;
+  color: #2a2a2a;
+  text-align: center;
+}
+
+.productOfferTitle span:last-child {
+  color: #1f5e3b;
+}
+
+.productOfferText {
+  margin: 0.75rem 0 1.5rem;
+  text-align: center;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: #4f4f4f;
+}
+
+.productCountdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 24rem;
+  margin: 0 auto;
+}
+
+.productCountdown div {
+  text-align: center;
+}
+
+.productCountdown strong {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  color: #242424;
+  font-family: var(--body-font);
+  font-weight: 500;
+}
+
+.productCountdown span {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.72rem;
+  color: #7d7d7d;
+  letter-spacing: 0;
+}
+
+.productOfferButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.7rem;
+  padding: 0 1.35rem;
+  margin: 1.5rem auto 0;
+  border-radius: 999px;
+  background: #f4c31f;
+  color: #1f1f1f;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 10px 24px rgba(244, 195, 31, 0.24);
+}
+
+.productPromoStack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.productPromoImageCard {
+  position: relative;
+  min-height: 19rem;
+  border-radius: 1.05rem;
+  overflow: hidden;
+  background: #f4f4f1;
+}
+
+.productPromoImage {
+  object-fit: cover;
+}
+
+@media (max-width: 991.98px) {
+  .productHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .productButton {
+    align-self: flex-start;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .productPromoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productPromoStack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .productPromoImageCard {
+    min-height: 14rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .productSection {
+    padding-top: 1.35rem;
+    padding-bottom: 1.35rem;
+  }
+
+  .productHeader {
+    margin-bottom: 1.4rem;
+  }
+
+  .productGrid,
+  .productPromoStack {
+    grid-template-columns: 1fr;
+  }
+
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productCard {
+    max-width: 24rem;
+    margin: 0 auto;
+  }
+
+  .productBody {
+    padding: 1rem 0.9rem 1.1rem;
+  }
+
+  .productPriceRow {
+    flex-wrap: wrap;
+  }
+
+  .productPromoGrid {
+    margin-top: 3rem;
+  }
+
+  .productOfferCard {
+    padding: 1.4rem 1rem 1.25rem;
+    min-height: auto;
+  }
+
+  .productCountdown {
+    gap: 0.35rem;
+  }
+
+  .productCountdown strong {
+    font-size: 1.35rem;
+  }
+
+  .productPromoImageCard {
+    min-height: 12rem;
+  }
+
+  .productCurrentPrice {
+    font-size: 1.2rem;
+  }
+}

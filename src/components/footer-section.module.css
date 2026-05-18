@@ -1,0 +1,94 @@
+.footerSection {
+  position: relative;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.footerGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  min-height: clamp(22rem, 40vw, 34rem);
+}
+
+.footerColumn {
+  min-width: 0;
+}
+
+.footerLabel {
+  margin-bottom: 0.85rem;
+  font-size: var(--subhead-size);
+  letter-spacing: var(--subhead-tracking);
+  text-transform: uppercase;
+  color: #9a9a9a;
+  font-family: var(--body-font);
+  font-weight: 300;
+}
+
+.footerList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footerItem + .footerItem {
+  margin-top: 0.4rem;
+}
+
+.footerLink {
+  display: inline-block;
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  font-family: var(--body-font);
+  color: #2a2a2a;
+}
+
+.footerArtwork {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.footerArtworkImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: center bottom;
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.footerArtwork::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.64) 24%, rgba(255, 255, 255, 0.86) 52%, rgba(255, 255, 255, 0.14) 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 991.98px) {
+  .footerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: clamp(20rem, 48vw, 28rem);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    min-height: 18rem;
+  }
+
+  .footerLink {
+    font-size: 0.9rem;
+  }
+
+  .footerArtwork {
+    height: 100%;
+  }
+}

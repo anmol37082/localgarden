@@ -1,0 +1,150 @@
+.caseSection {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  background: #ffffff;
+}
+
+.sectionKicker {
+  font-size: var(--subhead-size);
+  letter-spacing: var(--subhead-tracking);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #7b847e;
+  font-family: var(--body-font);
+  font-weight: 300;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: var(--title-size);
+  font-weight: var(--title-weight);
+  letter-spacing: var(--title-tracking);
+  line-height: var(--title-line);
+  text-wrap: balance;
+  text-align: center;
+  color: #101010;
+}
+
+.sectionTitle span {
+  display: block;
+}
+
+.caseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.caseCard {
+  width: min(100%, 90%);
+  justify-self: center;
+  border-radius: 1.1rem;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.caseImageWrap {
+  position: relative;
+  width: 100%;
+  height: 23.5rem;
+  border: 1px solid #ebebeb;
+  border-radius: 1.1rem;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.caseImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.caseMeta {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.caseYear {
+  color: #1d7b49;
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  min-width: 2.2rem;
+  font-family: var(--body-font);
+}
+
+.caseName {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 300;
+  font-family: var(--body-font);
+  letter-spacing: 0;
+  color: #141414;
+}
+
+.caseDesc {
+  margin: 0.25rem 0 0;
+  color: #7b817e;
+  font-size: 0.8rem;
+  font-family: var(--body-font);
+  letter-spacing: 0;
+}
+
+.caseActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.caseButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.25rem;
+  min-height: 2.9rem;
+  padding: 0 1.4rem;
+  border: 1px solid #c3d7bf;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #6d8f68;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+}
+
+.caseButton:hover,
+.caseButton:focus-visible {
+  border-color: #97b593;
+  color: #4d7248;
+  background: #f8fbf7;
+}
+
+@media (max-width: 575.98px) {
+  .caseSection {
+    padding-top: 1.35rem;
+    padding-bottom: 1.35rem;
+  }
+
+  .caseMeta {
+    flex-direction: column;
+  }
+
+  .caseCard {
+    width: 100%;
+  }
+
+  .caseImageWrap {
+    height: 20.5rem;
+  }
+
+  .caseActions {
+    margin-top: 2rem;
+  }
+}

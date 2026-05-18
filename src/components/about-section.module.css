@@ -1,0 +1,131 @@
+.aboutSection {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  background: #ffffff;
+}
+
+.sectionKicker {
+  font-size: var(--subhead-size);
+  letter-spacing: var(--subhead-tracking);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #7b847e;
+  font-family: var(--body-font);
+  font-weight: 300;
+}
+
+.aboutTop {
+  display: grid;
+  grid-template-columns: 0.25fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.aboutLead {
+  margin: 0;
+  max-width: 44rem;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  line-height: 1.35;
+  color: #1d1d1d;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.aboutDivider {
+  height: 1px;
+  margin: 3rem 0 2rem;
+  background: #e8e8e8;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  max-width: 44rem;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.aboutCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: center;
+  text-align: center;
+}
+
+.aboutThumbWrap {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 0.7rem;
+  overflow: hidden;
+  background: #eff4ea;
+}
+
+.aboutThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aboutCardTitle {
+  margin: 0;
+  max-width: 16rem;
+  font-size: var(--subhead-size);
+  line-height: 1.25;
+  color: #1a5e39;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--body-font);
+  font-weight: 500;
+}
+
+@media (max-width: 991.98px) {
+  .aboutGrid {
+    max-width: none;
+  }
+
+  .aboutLead {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .aboutSection {
+    padding-top: 1.35rem;
+    padding-bottom: 1.35rem;
+  }
+
+  .aboutDivider {
+    margin: 2rem 0 1.5rem;
+  }
+
+  .aboutLead {
+    max-width: 26rem;
+    font-size: 1rem;
+    line-height: 1.38;
+  }
+
+  .aboutGrid {
+    max-width: 18rem;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 0.85rem;
+    justify-items: center;
+  }
+
+  .aboutCard {
+    width: 100%;
+    max-width: 8.75rem;
+    justify-self: center;
+  }
+
+  .aboutThumbWrap {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .aboutCardTitle {
+    max-width: 8.75rem;
+  }
+}
