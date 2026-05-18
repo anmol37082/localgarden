@@ -151,7 +151,7 @@ export default function ProductSection() {
             </div>
             <div className={styles.productPromoImageCard}>
               <Image
-                src="https://images.unsplash.com/photo-1524594227084-6faad0e1a2b5?auto=format&fit=crop&w=1200&q=80"
+                src="https://images.unsplash.com/photo-1778767061107-9d2cff5a132b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
                 fill
                 sizes="(max-width: 991px) 100vw, 18vw"

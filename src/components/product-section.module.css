@@ -94,7 +94,7 @@
   align-items: center;
   padding: 0.4rem 0.75rem;
   border-radius: 999px;
-  background: #1f5e3b;
+  background: #6ea566;
   color: #ffffff;
   font-size: 0.72rem;
   letter-spacing: 0.03em;
@@ -180,7 +180,7 @@
   padding: 0 1rem;
   margin-top: 0.9rem;
   border-radius: 0.75rem;
-  background: #1f5e3b;
+  background: #5f8f58;
   color: #ffffff;
   font-size: 0.85rem;
   font-weight: 600;
@@ -190,7 +190,7 @@
 
 .productCartButton:hover,
 .productCartButton:focus-visible {
-  background: #17462c;
+  background: #6aa362;
   transform: translateY(-1px);
 }
 

@@ -14,7 +14,7 @@ export default function BannerSection() {
         preload="metadata"
         >
         <source
-          src="https://stream.media.imgix.video/5A2sgD7VEZ02yaP2drZepFPhxwneHLdkh/high.mp4?"
+          src="https://www.pexels.com/download/video/37581671/"
           type="video/mp4"
         />
       </video>
