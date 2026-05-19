@@ -319,13 +319,15 @@
     max-width: 22rem;
     font-size: clamp(1.75rem, 7.1vw, 2.15rem);
     line-height: 0.98;
+    margin-bottom: 0.45rem;
   }
 
   .pricingLead {
     max-width: 22rem;
     font-size: 0.8rem;
     line-height: 1.38;
-    margin-top: 0.45rem;
+    margin-top: 0;
+    margin-bottom: 0.9rem;
   }
 
   .pricingFeatures {
@@ -364,6 +366,7 @@
   .pricingTrustText {
     font-size: 0.66rem;
     line-height: 1.08;
+    text-align: center;
   }
 
   .pricingCard {

@@ -80,8 +80,8 @@ export default function TestimonialsSection() {
         <div className={styles.testimonialsHeader}>
           <div className={styles.testimonialsKicker}>[TESTIMONIALS]</div>
           <h2 className={styles.testimonialsTitle}>
-            Trusted by Researchers
-            <span>and Environmental Teams</span>
+            <span className={styles.testimonialsTitleLine}>Trusted by</span>
+            <span>Researchers and Environmental Teams</span>
           </h2>
         </div>
 

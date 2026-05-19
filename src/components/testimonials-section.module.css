@@ -32,6 +32,10 @@
   display: block;
 }
 
+.testimonialsTitleLine {
+  white-space: nowrap;
+}
+
 .testimonialsTrack {
   display: grid;
   grid-auto-flow: column;
@@ -66,6 +70,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: inherit;
   opacity: 0;
   transition: opacity 220ms ease;
 }
@@ -79,6 +84,7 @@
   min-height: 29rem;
   padding: 1rem;
   background: #f7f7f6;
+  border-radius: inherit;
   transition: background 220ms ease, opacity 220ms ease;
 }
 
@@ -210,11 +216,24 @@
 
   .testimonialsHeader {
     max-width: 24rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .testimonialsTitle {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 24rem;
   }
 
   .testimonialCard,
   .testimonialCardOverlay {
     min-height: 22rem;
+  }
+
+  .testimonialCard {
+    border-radius: 1.65rem;
   }
 
   .testimonialVisualName {
