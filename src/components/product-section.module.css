@@ -377,15 +377,22 @@
 
   .productGrid {
     grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1rem;
   }
 
   .productCard {
-    max-width: 24rem;
+    width: 100%;
+    max-width: 30rem;
     margin: 0 auto;
   }
 
+  .productImageWrap {
+    aspect-ratio: 1 / 0.96;
+  }
+
   .productBody {
-    padding: 1rem 0.9rem 1.1rem;
+    padding: 1.05rem 1rem 1.15rem;
   }
 
   .productPriceRow {
@@ -415,5 +422,13 @@
 
   .productCurrentPrice {
     font-size: 1.2rem;
+  }
+
+  .productCardTitle {
+    font-size: 1.05rem;
+  }
+
+  .productRating {
+    font-size: 0.95rem;
   }
 }
