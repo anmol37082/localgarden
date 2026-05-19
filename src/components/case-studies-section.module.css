@@ -169,4 +169,9 @@
   .sectionTitleLead .sectionTitleLeadTail {
     display: block;
   }
+
+  .sectionTitle {
+    font-size: clamp(2rem, 7vw, 2.4rem);
+    line-height: 0.94;
+  }
 }
