@@ -53,3 +53,9 @@ button,
 .accordion-button {
   box-shadow: none !important;
 }
+
+@media (max-width: 575.98px) {
+  :root {
+    --body-size: 1.05rem;
+  }
+}

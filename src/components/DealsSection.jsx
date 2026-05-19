@@ -43,7 +43,7 @@ const deals = [
     discountPercent: "50% off",
     rating: "5.0",
     image:
-      "https://images.unsplash.com/photo-1458538977777-0549b8a4e4c6?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1773332611522-06b86b48cbf1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 

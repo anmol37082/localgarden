@@ -22,12 +22,15 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.08 }}
         >
-          <motion.img
-            src="/hero7.png"
-            alt="Plant Growth Enhancer hero banner"
-            className={styles.bannerImg}
-            style={{ y: smoothImageY }}
-          />
+          <picture className={styles.bannerMedia}>
+            <source media="(max-width: 575.98px)" srcSet="/hero7mobile.png" />
+            <motion.img
+              src="/hero7.png"
+              alt="Plant Growth Enhancer hero banner"
+              className={styles.bannerMediaImage}
+              style={{ y: smoothImageY }}
+            />
+          </picture>
 
           <div className={styles.bannerContent}>
             <motion.div
@@ -39,11 +42,7 @@ export default function Hero() {
               <h1 className={styles.headline}>
                 Understand
                 <span className={styles.headlineRow}>
-                  Plant Growth
-                  <span className={styles.inlinePhoto}>
-                    <img src="/heroimg.webp" alt="" />
-                  </span>
-                  Naturally
+                  Plant Growth Naturally
                 </span>
                 <span className={styles.headlineAccent}>For Healthier Green Care</span>
               </h1>

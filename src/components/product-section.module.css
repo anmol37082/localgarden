@@ -370,25 +370,40 @@
     margin-bottom: 1.4rem;
   }
 
-  .productGrid,
   .productPromoStack {
     grid-template-columns: 1fr;
   }
 
   .productGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.7rem;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.45rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .productGrid::-webkit-scrollbar {
+    display: none;
   }
 
   .productCard {
-    width: 100%;
-    max-width: none;
+    flex: 0 0 auto;
+    width: clamp(16rem, 82vw, 20rem);
     margin: 0;
-    border-radius: 1rem 1rem 0 0;
+    border-radius: 1rem;
+    scroll-snap-align: start;
   }
 
   .productImageWrap {
-    aspect-ratio: 1 / 1.02;
+    aspect-ratio: 1 / 1.03;
     border-radius: 0.85rem;
   }
 
