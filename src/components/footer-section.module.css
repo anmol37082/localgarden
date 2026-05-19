@@ -84,8 +84,13 @@
     min-height: 18rem;
   }
 
+  .footerLabel {
+    font-size: var(--body-size);
+  }
+
   .footerLink {
-    font-size: 0.9rem;
+    font-size: var(--body-size);
+    line-height: var(--body-line);
   }
 
   .footerArtwork {

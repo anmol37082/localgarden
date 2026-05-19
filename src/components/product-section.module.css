@@ -366,6 +366,10 @@
     padding-bottom: 1.35rem;
   }
 
+  .productKicker {
+    font-size: var(--body-size);
+  }
+
   .productHeader {
     margin-bottom: 1.4rem;
   }
@@ -402,6 +406,10 @@
     scroll-snap-align: start;
   }
 
+  .productBadge {
+    font-size: var(--body-size);
+  }
+
   .productImageWrap {
     aspect-ratio: 1 / 1.03;
     border-radius: 0.85rem;
@@ -418,7 +426,7 @@
   }
 
   .productLabel {
-    font-size: 0.62rem;
+    font-size: var(--body-size);
     margin-bottom: 0.25rem;
   }
 
@@ -428,11 +436,11 @@
   }
 
   .productCardTitle {
-    font-size: 0.84rem;
+    font-size: 1.08rem;
   }
 
   .productRating {
-    font-size: 0.72rem;
+    font-size: var(--body-size);
     gap: 0.15rem;
   }
 
@@ -441,14 +449,14 @@
   }
 
   .productOriginalPrice {
-    font-size: 0.68rem;
+    font-size: var(--body-size);
   }
 
   .productCartButton {
     min-height: 2.1rem;
     margin-top: 0.7rem;
     padding: 0 0.72rem;
-    font-size: 0.72rem;
+    font-size: var(--body-size);
     border-radius: 0.65rem;
   }
 
@@ -467,6 +475,19 @@
 
   .productCountdown strong {
     font-size: 1.35rem;
+  }
+
+  .productOfferKicker {
+    font-size: var(--body-size);
+  }
+
+  .productOfferText {
+    font-size: var(--body-size);
+    line-height: var(--body-line);
+  }
+
+  .productCountdown span {
+    font-size: var(--body-size);
   }
 
   .productPromoImageCard {

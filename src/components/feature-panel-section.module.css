@@ -173,6 +173,10 @@
     gap: 1.25rem;
   }
 
+  .sectionKickerDark {
+    font-size: var(--body-size);
+  }
+
   .featureCopy {
     order: 1;
   }
@@ -193,7 +197,21 @@
     padding: 0.8rem 0.9rem;
   }
 
+  .featureName {
+    font-size: 1.08rem;
+  }
+
   .featureImage {
     border-radius: inherit;
+  }
+
+  .featureCaptionTitle {
+    font-size: var(--body-size);
+    line-height: var(--body-line);
+  }
+
+  .featureCaptionText {
+    font-size: var(--body-size);
+    line-height: var(--body-line);
   }
 }

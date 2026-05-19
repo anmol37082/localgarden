@@ -206,6 +206,10 @@
     padding-bottom: 1.35rem;
   }
 
+  .testimonialsKicker {
+    font-size: var(--body-size);
+  }
+
   .testimonialsGrid {
     gap: 1rem;
   }
@@ -232,12 +236,19 @@
     min-height: 22rem;
   }
 
-  .testimonialCard {
-    border-radius: 1.65rem;
+  .testimonialRole,
+  .testimonialHoverRole {
+    font-size: var(--body-size);
   }
 
-  .testimonialVisualName {
-    font-size: 1.35rem;
+  .testimonialName,
+  .testimonialVisualName,
+  .testimonialHoverName {
+    font-size: 1.08rem;
+  }
+
+  .testimonialCard {
+    border-radius: 1.65rem;
   }
 
   .testimonialsTrack {

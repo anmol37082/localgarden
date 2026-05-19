@@ -250,8 +250,8 @@
   .promoTextDark {
     max-width: 15rem;
     margin: 0.85rem 0 0;
-    font-size: 0.94rem;
-    line-height: 1.45;
+    font-size: var(--body-size);
+    line-height: var(--body-line);
   }
 
 .promoText {
@@ -397,6 +397,10 @@
     padding-bottom: 1.35rem;
   }
 
+  .dealsKicker {
+    font-size: var(--body-size);
+  }
+
   .dealsTrack {
     overflow-x: auto;
     overflow-y: hidden;
@@ -418,10 +422,32 @@
     width: clamp(16rem, 82vw, 22rem);
   }
 
+  .dealName {
+    font-size: 1.08rem;
+  }
+
+  .dealBadge {
+    font-size: var(--body-size);
+  }
+
+  .dealMeta {
+    font-size: var(--body-size);
+  }
+
+  .dealText {
+    font-size: var(--body-size);
+    line-height: var(--body-line);
+  }
+
   .promoCardLight,
   .promoCardYellow {
     min-height: 16rem;
     padding: 1.2rem 1rem 1rem;
+  }
+
+  .promoTag,
+  .promoTagDark {
+    font-size: var(--body-size);
   }
 
   .promoCountdown {
@@ -441,11 +467,17 @@
   }
 
   .promoCountdownLabel {
-    font-size: 0.62rem;
+    font-size: var(--body-size);
   }
 
   .promoTitle,
   .promoTitleDark {
     font-size: 1.55rem;
+  }
+
+  .promoText,
+  .promoTextDark {
+    font-size: var(--body-size);
+    line-height: var(--body-line);
   }
 }

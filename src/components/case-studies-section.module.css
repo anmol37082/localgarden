@@ -92,7 +92,7 @@
   .caseDesc {
     margin: 0.25rem 0 0;
     color: #7b817e;
-    font-size: 0.86rem;
+    font-size: var(--body-size);
     font-family: var(--body-font);
     letter-spacing: 0;
   }
@@ -138,6 +138,14 @@
 
   .caseCard {
     width: 100%;
+  }
+
+  .caseName {
+    font-size: 1.08rem;
+  }
+
+  .sectionKicker {
+    font-size: var(--body-size);
   }
 
   .caseImageWrap {
