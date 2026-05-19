@@ -121,21 +121,21 @@ export default function DealsSection() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </p>
             <div className={styles.promoCountdown}>
-              <div>
-                <strong>04</strong>
-                <span>Days</span>
+              <div className={styles.promoCountdownItem}>
+                <strong className={styles.promoCountdownValue}>04</strong>
+                <span className={styles.promoCountdownLabel}>Days</span>
               </div>
-              <div>
-                <strong>14</strong>
-                <span>Hours</span>
+              <div className={styles.promoCountdownItem}>
+                <strong className={styles.promoCountdownValue}>14</strong>
+                <span className={styles.promoCountdownLabel}>Hours</span>
               </div>
-              <div>
-                <strong>48</strong>
-                <span>Minutes</span>
+              <div className={styles.promoCountdownItem}>
+                <strong className={styles.promoCountdownValue}>48</strong>
+                <span className={styles.promoCountdownLabel}>Minutes</span>
               </div>
-              <div>
-                <strong>18</strong>
-                <span>Seconds</span>
+              <div className={styles.promoCountdownItem}>
+                <strong className={styles.promoCountdownValue}>18</strong>
+                <span className={styles.promoCountdownLabel}>Seconds</span>
               </div>
             </div>
             <a href="#pricing" className={styles.promoButton}>
