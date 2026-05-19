@@ -397,6 +397,23 @@
     padding-bottom: 1.35rem;
   }
 
+  .dealsTrack {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.45rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .dealsGrid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.35rem;
+    width: max-content;
+    min-width: 100%;
+  }
+
   .dealCard {
     width: clamp(16rem, 82vw, 22rem);
   }

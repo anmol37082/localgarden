@@ -376,27 +376,65 @@
   }
 
   .productGrid {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
   }
 
   .productCard {
     width: 100%;
-    max-width: 30rem;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
+    border-radius: 1rem 1rem 0 0;
   }
 
   .productImageWrap {
-    aspect-ratio: 1 / 0.96;
+    aspect-ratio: 1 / 1.02;
+    border-radius: 0.85rem;
   }
 
   .productBody {
-    padding: 1.05rem 1rem 1.15rem;
+    padding: 0.8rem 0.05rem 0.95rem;
   }
 
   .productPriceRow {
     flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.25rem;
+  }
+
+  .productLabel {
+    font-size: 0.62rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .productMetaRow {
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+
+  .productCardTitle {
+    font-size: 0.84rem;
+  }
+
+  .productRating {
+    font-size: 0.72rem;
+    gap: 0.15rem;
+  }
+
+  .productCurrentPrice {
+    font-size: 0.9rem;
+  }
+
+  .productOriginalPrice {
+    font-size: 0.68rem;
+  }
+
+  .productCartButton {
+    min-height: 2.1rem;
+    margin-top: 0.7rem;
+    padding: 0 0.72rem;
+    font-size: 0.72rem;
+    border-radius: 0.65rem;
   }
 
   .productPromoGrid {
@@ -420,15 +458,4 @@
     min-height: 12rem;
   }
 
-  .productCurrentPrice {
-    font-size: 1.2rem;
-  }
-
-  .productCardTitle {
-    font-size: 1.05rem;
-  }
-
-  .productRating {
-    font-size: 0.95rem;
-  }
 }
