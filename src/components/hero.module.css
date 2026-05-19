@@ -278,7 +278,7 @@
     order: 0;
     max-width: 8.75rem;
     margin: 0;
-    font-size: var(--body-size);
+    font-size: 1rem;
     line-height: 1.2;
     text-align: right;
   }
