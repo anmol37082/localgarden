@@ -213,7 +213,7 @@
   }
 
   .headline {
-    font-size: clamp(1.35rem, 8vw, 2.1rem);
+    font-size: clamp(1.05rem, 5.8vw, 1.65rem);
     max-width: 18rem;
   }
 

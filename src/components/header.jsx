@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./header.module.css";
 
@@ -13,6 +14,32 @@ const navItems = [
 ];
 
 export default function Header() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const closeDrawer = () => setDrawerOpen(false);
+
+  useEffect(() => {
+    if (!drawerOpen) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeDrawer();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [drawerOpen]);
+
   return (
     <header className={styles.header}>
       <div className="container-fluid">
@@ -35,8 +62,47 @@ export default function Header() {
               Start Analyze
             </Link>
           </div>
+
+          <button
+            type="button"
+            className={styles.menuButton}
+            aria-label={drawerOpen ? "Close menu" : "Open menu"}
+            aria-expanded={drawerOpen}
+            aria-controls="mobile-drawer"
+            onClick={() => setDrawerOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
       </div>
+
+      <div
+        className={`${styles.drawerBackdrop} ${drawerOpen ? styles.drawerBackdropOpen : ""}`}
+        onClick={closeDrawer}
+      />
+
+      <aside
+        id="mobile-drawer"
+        className={`${styles.drawer} ${drawerOpen ? styles.drawerOpen : ""}`}
+        aria-hidden={!drawerOpen}
+      >
+        <nav className={styles.drawerNav} aria-label="Mobile primary">
+          {navItems.map((item) => (
+            <Link key={item.label} href={item.href} className={styles.drawerLink} onClick={closeDrawer}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className={styles.drawerActions}>
+          <span className={styles.drawerLang}>ENG</span>
+          <Link href="#contact" className={styles.drawerCta} onClick={closeDrawer}>
+            Start Analyze
+          </Link>
+        </div>
+      </aside>
     </header>
   );
 }
