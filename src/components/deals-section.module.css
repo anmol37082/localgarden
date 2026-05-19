@@ -246,13 +246,13 @@
   display: block;
 }
 
-.promoText,
-.promoTextDark {
-  max-width: 15rem;
-  margin: 0.85rem 0 0;
-  font-size: 0.88rem;
-  line-height: 1.45;
-}
+  .promoText,
+  .promoTextDark {
+    max-width: 15rem;
+    margin: 0.85rem 0 0;
+    font-size: 0.94rem;
+    line-height: 1.45;
+  }
 
 .promoText {
   color: #6d6d6d;

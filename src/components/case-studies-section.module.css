@@ -89,13 +89,13 @@
   color: #141414;
 }
 
-.caseDesc {
-  margin: 0.25rem 0 0;
-  color: #7b817e;
-  font-size: 0.8rem;
-  font-family: var(--body-font);
-  letter-spacing: 0;
-}
+  .caseDesc {
+    margin: 0.25rem 0 0;
+    color: #7b817e;
+    font-size: 0.86rem;
+    font-family: var(--body-font);
+    letter-spacing: 0;
+  }
 
 .caseActions {
   display: flex;

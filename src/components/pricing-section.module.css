@@ -324,7 +324,7 @@
 
   .pricingLead {
     max-width: 22rem;
-    font-size: 0.8rem;
+    font-size: 0.88rem;
     line-height: 1.38;
     margin-top: 0;
     margin-bottom: 0.9rem;
@@ -335,16 +335,16 @@
   }
 
   .pricingIncluded {
-    font-size: 0.82rem;
+    font-size: 0.86rem;
   }
 
   .pricingFeature {
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     line-height: 1.35;
   }
 
   .pricingFeatureIcon {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
   }
 
   .pricingActions {
