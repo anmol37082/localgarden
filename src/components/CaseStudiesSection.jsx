@@ -41,7 +41,10 @@ export default function CaseStudiesSection() {
       <div className="container">
         <div className={styles.sectionKicker}>[CASE STUDIES]</div>
         <h2 className={styles.sectionTitle}>
-          Where Moss Analysis
+          <span className={styles.sectionTitleLead}>
+            <span className={styles.sectionTitleLeadWord}>Where</span>
+            <span className={styles.sectionTitleLeadTail}> Moss Analysis</span>
+          </span>
           <span> Makes an Impact</span>
         </h2>
 

@@ -29,6 +29,15 @@
   display: block;
 }
 
+.sectionTitleLead {
+  display: block;
+}
+
+.sectionTitleLead .sectionTitleLeadWord,
+.sectionTitleLead .sectionTitleLeadTail {
+  display: inline;
+}
+
 .caseGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -155,5 +164,9 @@
 
   .caseActions {
     margin-top: 2rem;
+  }
+
+  .sectionTitleLead .sectionTitleLeadTail {
+    display: block;
   }
 }
