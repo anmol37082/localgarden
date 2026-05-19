@@ -209,12 +209,15 @@
 
 @media (max-width: 575.98px) {
   .heroIntro {
-    padding-right: 0.75rem;
+    max-width: calc(100% - 9.5rem);
+    padding-right: 0;
   }
 
   .headline {
+    width: 100%;
     font-size: clamp(1.05rem, 5.8vw, 1.65rem);
-    max-width: 18rem;
+    max-width: 13rem;
+    line-height: 1.03;
   }
 
   .wordmark {
