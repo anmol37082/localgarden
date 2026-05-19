@@ -245,6 +245,7 @@
   .testimonialVisualName,
   .testimonialHoverName {
     font-size: 1.08rem;
+    font-weight: 500;
   }
 
   .testimonialCard {
