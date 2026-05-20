@@ -68,6 +68,7 @@
 .wordmark {
   padding: 0;
   margin-top: clamp(2rem, 6vw, 4.5rem);
+  width: 100%;
   padding-inline: clamp(0.25rem, 1vw, 0.75rem);
   color: #0f0f0f;
   font-size: clamp(4rem, 14vw, 13rem);
@@ -79,7 +80,6 @@
   overflow: visible;
   position: relative;
   z-index: 0;
-  width: 100%;
   font-family: var(--title-font);
 }
 
@@ -212,7 +212,6 @@
   .wordmark {
     order: 2;
     margin-top: clamp(1rem, 3vw, 2rem);
-    white-space: normal;
   }
 }
 
@@ -235,8 +234,6 @@
     padding-inline: 0.35rem;
     font-size: clamp(2.4rem, 14vw, 4.8rem);
     margin-top: 2.75rem;
-    white-space: normal;
-    overflow: visible;
   }
 
   .bannerStats {

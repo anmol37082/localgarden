@@ -1,5 +1,6 @@
 'use client';
-/* eslint-disable @next/next/no-img-element */
+
+//* eslint-disable @next/next/no-img-element */
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import styles from "./hero.module.css";
@@ -14,7 +15,7 @@ export default function Hero() {
   });
 
   return (
-    <section className={styles.heroSection}>
+    <section className={styles.heroSection} id="home">
       <div className="container">
         <motion.div
           className={styles.banner}

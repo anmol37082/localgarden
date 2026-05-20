@@ -17,7 +17,7 @@ const aboutCards = [
 
 export default function AboutSection() {
   return (
-    <section className={styles.aboutSection}>
+    <section className={styles.aboutSection} id="about">
       <div className="container">
         <div className={styles.aboutTop}>
           <div className={styles.sectionKicker}>[ABOUT US]</div>

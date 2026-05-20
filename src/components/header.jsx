@@ -2,15 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./header.module.css";
 
 const navItems = [
-  { href: "#", label: "Home" },
-  { href: "#benefits", label: "Services" },
-  { href: "#pricing", label: "Case Studies" },
+  { href: "#home", label: "Home" },
+  { href: "#products", label: "Products" },
   { href: "#about", label: "About" },
-  { href: "#insight", label: "Insight" },
-  { href: "#contact", label: "Contact" },
 ];
 
 export default function Header() {
@@ -45,7 +43,14 @@ export default function Header() {
       <div className="container-fluid">
         <div className={styles.headerInner}>
           <Link href="#" className={styles.brand} aria-label="PlantBoost home">
-            <span className={styles.brandMark}>P</span>
+            <Image
+              src="/locaralgardentextimg.png"
+              alt="Local Garden"
+              width={220}
+              height={64}
+              className={styles.brandImage}
+              priority
+            />
           </Link>
 
           <nav className={styles.nav} aria-label="Primary">

@@ -49,7 +49,7 @@ const products = [
 
 export default function ProductSection() {
   return (
-    <section className={styles.productSection}>
+    <section className={styles.productSection} id="products">
       <div className="container">
         <div className={styles.productHeader}>
           <div className={styles.productHeading}>

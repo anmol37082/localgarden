@@ -8,6 +8,7 @@
 }
 
 .headerInner {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -15,25 +16,20 @@
 }
 
 .brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
 }
 
-.brandMark {
-  width: 2rem;
-  height: 2rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: #165f3e;
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  font-family: var(--title-font);
+.brandImage {
+  display: block;
+  width: clamp(8.5rem, 16vw, 14.5rem);
+  height: auto;
+  object-fit: contain;
 }
 
 .nav {
@@ -42,6 +38,7 @@
   justify-content: flex-start;
   gap: 1.9rem;
   flex: 0 1 auto;
+  margin-left: 1.25rem;
 }
 
 .navLink {
@@ -195,6 +192,7 @@
 
   .nav {
     gap: 1.1rem;
+    margin-left: 0.75rem;
   }
 }
 
@@ -230,10 +228,8 @@
     gap: 0.75rem;
   }
 
-  .brandMark {
-    width: 1.75rem;
-    height: 1.75rem;
-    font-size: 0.85rem;
+  .brandImage {
+    width: clamp(7rem, 34vw, 10rem);
   }
 
   .drawer {
