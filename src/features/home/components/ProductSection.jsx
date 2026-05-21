@@ -1,12 +1,14 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import styles from "./product-section.module.css";
 
 const products = [
   {
-    title: "Monstera deliciosa",
+    href: "/products/plant-growth-enhancer",
+    title: "Plant Growth Enhancer",
     label: "Indoor Plant",
     rating: "4.9",
     currentPrice: "$12.50",
@@ -16,7 +18,8 @@ const products = [
       "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Watermelon Peperomia",
+    href: "/products/flower-fruit-booster",
+    title: "Flower & Fruit Booster",
     label: "Indoor Plant",
     rating: "4.9",
     currentPrice: "$20.00",
@@ -26,7 +29,8 @@ const products = [
       "https://images.unsplash.com/photo-1511576661531-b34d7da5d0bb?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Pepper Face Plant",
+    href: "/products/bio-npk-granules",
+    title: "Bio NPK Granules",
     label: "Indoor Plant",
     rating: "4.9",
     currentPrice: "$12.00",
@@ -34,16 +38,6 @@ const products = [
     discountPercent: "20% off",
     image:
       "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Bird's Nest Fern",
-    label: "Indoor Plant",
-    rating: "4.9",
-    currentPrice: "$20.00",
-    originalPrice: "$25.00",
-    discountPercent: "20% off",
-    image:
-      "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -54,9 +48,7 @@ export default function ProductSection() {
         <div className={styles.productHeader}>
           <div className={styles.productHeading}>
             <div className={styles.productKicker}>Our Products</div>
-            <h2 className={styles.productTitle}>
-              Our Top Seller Products
-            </h2>
+            <h2 className={styles.productTitle}>Our Top Seller Products</h2>
           </div>
 
           <a href="#pricing" className={styles.productButton}>
@@ -74,16 +66,18 @@ export default function ProductSection() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, delay: index * 0.08 }}
             >
-              <div className={styles.productBadge}>{item.discountPercent}</div>
-              <div className={styles.productImageWrap}>
-                <Image
-                  src={item.image}
-                  alt=""
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 991px) 50vw, 33vw"
-                  className={styles.productImage}
-                />
-              </div>
+              <Link href={item.href} className={styles.productImageLink} aria-label={`Open ${item.title}`}>
+                <div className={styles.productBadge}>{item.discountPercent}</div>
+                <div className={styles.productImageWrap}>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 991px) 50vw, 33vw"
+                    className={styles.productImage}
+                  />
+                </div>
+              </Link>
 
               <div className={styles.productBody}>
                 <div className={styles.productLabel}>{item.label}</div>
@@ -98,9 +92,7 @@ export default function ProductSection() {
                   <div className={styles.productCurrentPrice}>{item.currentPrice}</div>
                   <div className={styles.productOriginalPrice}>{item.originalPrice}</div>
                 </div>
-                <a href="#pricing" className={styles.productCartButton}>
-                  Add to Cart
-                </a>
+                <div className={styles.productCartButton}>Add to Cart</div>
               </div>
             </motion.article>
           ))}

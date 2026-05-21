@@ -100,7 +100,7 @@ export default function TestimonialsSection() {
                 <div className={styles.testimonialCardOverlay}>
                   <img className={styles.testimonialAvatar} src={item.avatar} alt="" />
                   <div className={styles.testimonialCardText}>
-                    <p className={styles.testimonialQuote}>"{item.quote}"</p>
+                    <p className={styles.testimonialQuote}>&quot;{item.quote}&quot;</p>
                     <div className={styles.testimonialMeta}>
                       <div className={styles.testimonialName}>{item.name}</div>
                       <div className={styles.testimonialRole}>{item.role}</div>

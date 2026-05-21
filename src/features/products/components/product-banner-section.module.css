@@ -1,0 +1,72 @@
+.section {
+  padding: 0 0 4rem;
+  background: #ffffff;
+}
+
+.banner {
+  position: relative;
+  min-height: clamp(24rem, 48vw, 44rem);
+  border-radius: 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.bannerImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.card {
+  position: absolute;
+  left: clamp(1rem, 4vw, 3rem);
+  top: clamp(1rem, 4vw, 3rem);
+  max-width: min(36rem, 72vw);
+  padding: clamp(1.2rem, 3vw, 2.2rem);
+  background: #ffffff;
+  box-shadow: none;
+  border: 1px solid rgba(31, 41, 51, 0.08);
+}
+
+.title {
+  margin: 0;
+  color: #20303d;
+  font-family: var(--title-font);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+
+.text {
+  margin: 1rem 0 0;
+  color: #47525d;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  max-width: 31rem;
+}
+
+@media (max-width: 767.98px) {
+  .banner {
+    min-height: 26rem;
+  }
+
+  .card {
+    max-width: calc(100% - 2rem);
+    left: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section {
+    padding-bottom: 2.5rem;
+  }
+
+  .banner {
+    min-height: 22rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}

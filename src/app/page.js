@@ -1,13 +1,13 @@
-import Hero from "../components/hero";
-import AboutSection from "../components/AboutSection";
-import BannerSection from "../components/BannerSection";
-import CaseStudiesSection from "../components/CaseStudiesSection";
-import FeaturePanelSection from "../components/FeaturePanelSection";
-import FooterSection from "../components/FooterSection";
-import DealsSection from "../components/DealsSection";
-import ProductSection from "../components/ProductSection";
-import PricingSection from "../components/PricingSection";
-import TestimonialsSection from "../components/TestimonialsSection";
+import Hero from "../features/home/components/hero";
+import AboutSection from "../features/home/components/AboutSection";
+import BannerSection from "../features/home/components/BannerSection";
+import CaseStudiesSection from "../features/home/components/CaseStudiesSection";
+import FeaturePanelSection from "../features/home/components/FeaturePanelSection";
+import FooterSection from "../features/home/components/FooterSection";
+import DealsSection from "../features/home/components/DealsSection";
+import ProductSection from "../features/home/components/ProductSection";
+import PricingSection from "../features/home/components/PricingSection";
+import TestimonialsSection from "../features/home/components/TestimonialsSection";
 
 export default function Home() {
   return (

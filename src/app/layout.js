@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import localFont from "next/font/local";
-import Header from "../components/header";
+import Header from "../features/home/components/header";
 import "./globals.css";
 
 const interTitle = localFont({
@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${interTitle.variable} ${interBody.variable}`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>
