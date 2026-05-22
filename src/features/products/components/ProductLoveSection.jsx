@@ -6,13 +6,14 @@ import styles from "./product-love-section.module.css";
 export default function ProductLoveSection({ product }) {
   const points = product.lovePoints ?? product.highlights ?? [];
   const [largeImage, smallImage] = product.loveImages ?? product.images ?? [];
+  const title = product.loveTitle ?? "Why you'll love it";
 
   return (
     <section className={styles.section}>
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.copy}>
-            <h2 className={styles.title}>Why you&apos;ll love it</h2>
+            <h2 className={styles.title}>{title}</h2>
             <div className={styles.points}>
               {points.map((point) => (
                 <div key={point} className={styles.point}>

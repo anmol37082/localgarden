@@ -1,7 +1,5 @@
 'use client';
 
-//* eslint-disable @next/next/no-img-element */
-
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import styles from "./hero.module.css";
 
@@ -23,15 +21,18 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.08 }}
         >
-          <picture className={styles.bannerMedia}>
-            <source media="(max-width: 575.98px)" srcSet="/hero7mobile.png" />
-            <motion.img
-              src="/hero7.png"
-              alt="Plant Growth Enhancer hero banner"
-              className={styles.bannerMediaImage}
-              style={{ y: smoothImageY }}
-            />
-          </picture>
+          <motion.video
+            className={styles.bannerMediaVideo}
+            style={{ y: smoothImageY }}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src="/herovideo1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </motion.video>
 
           <div className={styles.bannerContent}>
             <motion.div

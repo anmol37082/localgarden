@@ -31,6 +31,7 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  padding-top: 4rem;
   color: var(--foreground);
   background: #ffffff;
   font-family: var(--body-font);
@@ -55,6 +56,10 @@ button,
 }
 
 @media (max-width: 575.98px) {
+  body {
+    padding-top: 3.8rem;
+  }
+
   :root {
     --subhead-size: 0.84rem;
     --body-size: 1.08rem;

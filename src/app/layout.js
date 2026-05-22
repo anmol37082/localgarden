@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import localFont from "next/font/local";
 import Header from "../features/home/components/header";
+import FooterSection from "../features/home/components/FooterSection";
 import "./globals.css";
 
 const interTitle = localFont({
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning>
         <Header />
         {children}
+        <FooterSection />
       </body>
     </html>
   );

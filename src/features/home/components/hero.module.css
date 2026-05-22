@@ -109,23 +109,14 @@
   pointer-events: none;
 }
 
-.bannerMedia {
+.bannerMediaVideo {
   display: block;
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 0;
   background: #ffffff;
-}
-
-.bannerMediaImage {
-  display: block;
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  position: relative;
-  z-index: 0;
-  background: #ffffff;
 }
 
 .bannerStats {

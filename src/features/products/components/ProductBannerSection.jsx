@@ -7,14 +7,16 @@ export default function ProductBannerSection({ product }) {
   return (
     <section className={styles.section}>
       <div className={styles.banner}>
-        <Image
-          src={product.bannerImage ?? product.images?.[0]?.src}
-          alt={product.bannerTitle ?? product.title}
-          fill
-          priority={false}
-          sizes="100vw"
-          className={styles.bannerImage}
-        />
+        <div className={styles.bannerMedia}>
+          <Image
+            src={product.bannerImage ?? product.images?.[0]?.src}
+            alt={product.bannerTitle ?? product.title}
+            fill
+            priority={false}
+            sizes="100vw"
+            className={styles.bannerImage}
+          />
+        </div>
 
         <div className={styles.card}>
           <h2 className={styles.title}>{product.bannerTitle ?? product.title}</h2>

@@ -73,7 +73,7 @@
 
 .largeImageWrap {
   width: min(100%, 34rem);
-  height: clamp(20rem, 38vw, 28rem);
+  height: clamp(26rem, 48vw, 36rem);
   margin-top: 1rem;
   margin-left: 0;
   border-radius: 0.35rem;
@@ -102,7 +102,7 @@
 
   .largeImageWrap {
     width: min(100%, 30rem);
-    height: clamp(19rem, 46vw, 24rem);
+    height: clamp(22rem, 52vw, 30rem);
     margin-top: 0.75rem;
     margin-left: 0;
   }
@@ -113,9 +113,8 @@
     justify-content: stretch;
   }
 
-  .smallImageWrap,
   .largeImageWrap {
-    height: 10rem;
+    height: 14rem;
   }
 }
 

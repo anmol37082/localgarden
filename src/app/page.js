@@ -3,7 +3,6 @@ import AboutSection from "../features/home/components/AboutSection";
 import BannerSection from "../features/home/components/BannerSection";
 import CaseStudiesSection from "../features/home/components/CaseStudiesSection";
 import FeaturePanelSection from "../features/home/components/FeaturePanelSection";
-import FooterSection from "../features/home/components/FooterSection";
 import DealsSection from "../features/home/components/DealsSection";
 import ProductSection from "../features/home/components/ProductSection";
 import PricingSection from "../features/home/components/PricingSection";
@@ -21,7 +20,6 @@ export default function Home() {
       <PricingSection />
       <BannerSection />
       <TestimonialsSection />
-      <FooterSection />
     </>
   );
 }

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { addCartItem, dispatchCartUpdated } from "../../cart/cart-storage";
 import ProductBannerSection from "./ProductBannerSection";
 import ProductLoveSection from "./ProductLoveSection";
 import ProductRelatedSection from "./ProductRelatedSection";
@@ -23,23 +24,23 @@ function StarRating({ rating, reviews }) {
   );
 }
 
-export default function ProductDetailPage({ product }) {
+export default function ProductDetailPage({ product, productSlug }) {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [activeColorIndex, setActiveColorIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [openPanel, setOpenPanel] = useState("details");
 
   const activeImage = product.images[activeImageIndex] ?? product.images[0];
-  const activeColor = product.colors[activeColorIndex] ?? product.colors[0];
 
+  const confidenceTitle = product.confidenceTitle ?? "Buy with confidence";
   const confidenceItems = useMemo(
-    () => [
-      "Best price guaranteed",
-      "60-day returns",
-      "3-year warranty",
-      "Fully assembled design",
-    ],
-    [],
+    () =>
+      product.confidenceItems ?? [
+        "2X Faster Growth",
+        "Liquid Bio-Fertiliser",
+        "Disease Resistance",
+        "Soil Improvement",
+      ],
+    [product.confidenceItems],
   );
 
   const moveImage = (direction) => {
@@ -49,6 +50,22 @@ export default function ProductDetailPage({ product }) {
       if (next >= product.images.length) return 0;
       return next;
     });
+  };
+
+  const handleAddToCart = () => {
+    addCartItem(
+      {
+        ...product,
+        slug: productSlug,
+      },
+      {
+        quantity,
+        color: product.colors?.[0],
+        image: activeImage,
+      },
+    );
+
+    dispatchCartUpdated({ openCart: true });
   };
 
   const panels = [
@@ -150,29 +167,6 @@ export default function ProductDetailPage({ product }) {
               <div className={styles.discount}>{product.discount}</div>
             </div>
 
-            <div className={styles.sectionLabel}>Choose a Fabric Color</div>
-            <div className={styles.colorRow}>
-              {product.colors.map((color, index) => (
-                <button
-                  key={color.name}
-                  type="button"
-                  className={`${styles.colorSwatch} ${
-                    index === activeColorIndex ? styles.colorSwatchActive : ""
-                  }`}
-                  style={{ backgroundColor: color.hex }}
-                  aria-label={color.name}
-                  title={color.name}
-                  onClick={() => setActiveColorIndex(index)}
-                />
-              ))}
-            </div>
-            <div className={styles.activeColorText}>Selected: {activeColor.name}</div>
-
-            <div className={styles.shippingBlock}>
-              <div className={styles.sectionLabel}>Free Standard Shipping</div>
-              <div className={styles.shippingNote}>{product.shippingNote}</div>
-            </div>
-
             <div className={styles.purchaseRow}>
               <div className={styles.quantityControl} aria-label="Quantity selector">
                 <button type="button" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>
@@ -184,15 +178,13 @@ export default function ProductDetailPage({ product }) {
                 </button>
               </div>
 
-              <button type="button" className={styles.addToCartButton}>
+              <button type="button" className={styles.addToCartButton} onClick={handleAddToCart}>
                 Add to cart
               </button>
             </div>
 
-            <div className={styles.interestText}>{product.financeText}</div>
-
             <div className={styles.confidenceCard}>
-              <div className={styles.confidenceTitle}>Buy with confidence</div>
+              <div className={styles.confidenceTitle}>{confidenceTitle}</div>
               <div className={styles.confidenceGrid}>
                 {confidenceItems.map((item) => (
                   <div key={item} className={styles.confidenceItem}>

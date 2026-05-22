@@ -74,6 +74,9 @@
 }
 
 .reviewLink {
+  appearance: none;
+  border: 0;
+  background: transparent;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -212,14 +215,262 @@
 
 .reviewThumb {
   position: relative;
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 5rem;
+  height: 5rem;
   overflow: hidden;
   background: #ece8df;
 }
 
 .reviewThumbImage {
   object-fit: cover;
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(16, 24, 32, 0.55);
+}
+
+.modal {
+  position: relative;
+  width: min(100%, 36rem);
+  max-height: min(90vh, 44rem);
+  min-height: 32rem;
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modalSuccess {
+  width: min(100%, 22rem);
+  min-height: 18rem;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.modalClose {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgba(31, 41, 51, 0.12);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1f2933;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.modalBody {
+  padding: 1.35rem;
+}
+
+.modalHeader {
+  padding-right: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modalKicker {
+  color: #388e3c;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.modalTitle {
+  margin: 0;
+  color: #1f2933;
+  font-family: var(--title-font);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.modalText {
+  margin: 0.7rem 0 0;
+  color: #5b6770;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 0.9rem;
+  color: #1f2933;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid rgba(31, 41, 51, 0.14);
+  border-radius: 0.9rem;
+  padding: 0.85rem 0.95rem;
+  background: #ffffff;
+  color: #1f2933;
+  font: inherit;
+  outline: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: rgba(56, 142, 60, 0.55);
+  box-shadow: 0 0 0 3px rgba(56, 142, 60, 0.12);
+}
+
+.starPicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.starPickButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(31, 41, 51, 0.12);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #d0d3d7;
+  font-size: 1.1rem;
+}
+
+.starPickButtonActive {
+  border-color: rgba(56, 142, 60, 0.4);
+  background: rgba(56, 142, 60, 0.08);
+  color: #388e3c;
+}
+
+.submitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: #388e3c;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.thankYou {
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 0.75rem 0.7rem;
+  text-align: center;
+  min-height: 16rem;
+  align-content: center;
+}
+
+.thankYouCelebration {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0;
+}
+
+.thankYouCelebration::before,
+.thankYouCelebration::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(56, 142, 60, 0.18) 0 26%, transparent 27%);
+}
+
+.thankYouCelebration::after {
+  transform: scale(0.72);
+}
+
+.thankYouCheck {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 999px;
+  background: #388e3c;
+  color: #ffffff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  box-shadow: 0 0 0 0.28rem rgba(56, 142, 60, 0.08);
+  animation: none;
+}
+
+.thankYouBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 1.7rem;
+  padding: 0 0.55rem;
+  border-radius: 999px;
+  background: rgba(56, 142, 60, 0.1);
+  color: #388e3c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.thankYouTitle {
+  margin: 0;
+  color: #1f2933;
+  font-family: var(--title-font);
+  font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  max-width: 16ch;
+}
+
+.thankYouText {
+  margin: 0;
+  color: #5b6770;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  max-width: 18rem;
+}
+
+.thankYou .submitButton {
+  min-width: 7rem;
+  padding-inline: 0.8rem;
+  margin-top: 0;
+  min-height: 2.1rem;
+  font-size: 0.82rem;
 }
 
 @media (max-width: 991.98px) {
@@ -256,6 +507,10 @@
     grid-column: auto;
     justify-content: flex-start;
   }
+
+  .modal {
+    width: min(100%, 34rem);
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -271,5 +526,41 @@
   .breakdownCard {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .modalBackdrop {
+    padding: 0.6rem;
+  }
+
+  .modalBody {
+    padding: 1rem;
+  }
+
+  .modalHeader {
+    padding-right: 1.8rem;
+  }
+
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .field input,
+  .field textarea {
+    border-radius: 0.8rem;
+    padding: 0.8rem 0.85rem;
+  }
+
+  .starPickButton {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .thankYou {
+    padding: 1.25rem 1rem;
+  }
+
+  .modal,
+  .thankYou {
+    min-height: 0;
   }
 }

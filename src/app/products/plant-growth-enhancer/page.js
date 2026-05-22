@@ -2,5 +2,5 @@ import ProductDetailPage from "../../../features/products/components/ProductDeta
 import { getProductPageData } from "../../../features/products/data";
 
 export default function PlantGrowthEnhancerPage() {
-  return <ProductDetailPage product={getProductPageData("plant-growth-enhancer")} />;
+  return <ProductDetailPage product={getProductPageData("plant-growth-enhancer")} productSlug="plant-growth-enhancer" />;
 }

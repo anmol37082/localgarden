@@ -1,6 +1,8 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import styles from "./deals-section.module.css";
 
@@ -47,7 +49,54 @@ const deals = [
   },
 ];
 
+const promos = [
+  {
+    title: "Freshly Green Plants",
+    label: "Indoor Plants",
+    currentPrice: "$19.00",
+    originalPrice: "$24.00",
+    discountPercent: "Flat 20% Discount",
+    rating: "4.9",
+    image:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "Graceful Flower Plant",
+    label: "Flower Plants",
+    currentPrice: "$21.00",
+    originalPrice: "$28.00",
+    discountPercent: "Flat 25% Discount",
+    rating: "5.0",
+    image:
+      "https://images.unsplash.com/photo-1773332611522-06b86b48cbf1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
 export default function DealsSection() {
+  const [selectedDeal, setSelectedDeal] = useState(null);
+
+  useEffect(() => {
+    if (!selectedDeal) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setSelectedDeal(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedDeal]);
+
   return (
     <section className={styles.dealsSection}>
       <div className="container">
@@ -96,9 +145,13 @@ export default function DealsSection() {
                   <p className={styles.dealText}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit
                   </p>
-                  <a href="#pricing" className={styles.dealLink}>
+                  <button
+                    type="button"
+                    className={styles.dealLink}
+                    onClick={() => setSelectedDeal(item)}
+                  >
                     Shop Now
-                  </a>
+                  </button>
                 </div>
               </motion.article>
             ))}
@@ -138,9 +191,13 @@ export default function DealsSection() {
                 <span className={styles.promoCountdownLabel}>Seconds</span>
               </div>
             </div>
-            <a href="#pricing" className={styles.promoButton}>
+            <button
+              type="button"
+              className={styles.promoButton}
+              onClick={() => setSelectedDeal(promos[0])}
+            >
               Shop Now
-            </a>
+            </button>
             <div className={styles.promoLeafLeft} aria-hidden="true" />
             <div className={styles.promoModelLeft} aria-hidden="true" />
           </motion.article>
@@ -159,13 +216,78 @@ export default function DealsSection() {
             <p className={styles.promoTextDark}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </p>
-            <a href="#pricing" className={styles.promoButtonDark}>
+            <button
+              type="button"
+              className={styles.promoButtonDark}
+              onClick={() => setSelectedDeal(promos[1])}
+            >
               Shop Now
-            </a>
+            </button>
             <div className={styles.promoModelRight} aria-hidden="true" />
           </motion.article>
         </div>
       </div>
+
+      {selectedDeal ? (
+        <div className={styles.modalBackdrop} role="presentation" onClick={() => setSelectedDeal(null)}>
+          <div
+            className={styles.modal}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="deal-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className={styles.modalClose}
+              aria-label="Close deal popup"
+              onClick={() => setSelectedDeal(null)}
+            >
+              ×
+            </button>
+
+            <div className={styles.modalDetails}>
+              <div className={styles.modalVisual}>
+                <div className={styles.modalImageWrap}>
+                  <Image
+                    src={selectedDeal.image}
+                    alt={selectedDeal.title}
+                    fill
+                    sizes="(max-width: 767px) 100vw, 24rem"
+                    className={styles.modalImage}
+                  />
+                </div>
+
+                <Link href="/checkout" className={styles.buyNowButton}>
+                  Buy Now
+                </Link>
+              </div>
+
+              <div className={styles.modalInfo}>
+                <div className={styles.modalInfoRow}>
+                  <span>Name</span>
+                  <strong>{selectedDeal.title}</strong>
+                </div>
+                <div className={styles.modalInfoRow}>
+                  <span>Mobile</span>
+                  <input type="tel" placeholder="Enter mobile number" className={styles.modalInput} />
+                </div>
+                <div className={styles.modalInfoRow}>
+                  <span>Email</span>
+                  <input type="email" placeholder="Enter email address" className={styles.modalInput} />
+                </div>
+                <div className={styles.modalInfoRow}>
+                  <span>Card details</span>
+                  <strong>
+                    {selectedDeal.label} · {selectedDeal.currentPrice} · {selectedDeal.discountPercent}
+                  </strong>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./product-reviews-section.module.css";
 
@@ -17,13 +18,33 @@ const avatarPool = [
   "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80",
 ];
 
+function Stars({ rating, className }) {
+  return (
+    <span className={className} aria-hidden="true">
+      {Array.from({ length: 5 }, (_, index) => (
+        <span key={`${rating}-${index}`} className={index < rating ? styles.starActive : styles.starInactive}>
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function ProductReviewsSection({ product }) {
+  const [reviewOpen, setReviewOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    rating: "5",
+    review: "",
+  });
+
   const averageRating = Number(product.rating) || 4.9;
   const totalReviews = product.reviews || 0;
   const productName = product.title.toLowerCase();
   const reviewThumbs = product.images?.slice(0, 2) ?? [];
-
-  const reviews = [
+  const productReviews = product.reviewItems ?? [
     {
       name: "Micheal Jonson",
       location: "Costa Mesa, California",
@@ -53,12 +74,52 @@ export default function ProductReviewsSection({ product }) {
     },
   ];
 
-  const renderStars = (rating) =>
-    Array.from({ length: 5 }, (_, index) => (
-      <span key={`${rating}-${index}`} className={index < rating ? styles.starActive : styles.starInactive}>
-        ★
-      </span>
-    ));
+  useEffect(() => {
+    if (!reviewOpen) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setReviewOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [reviewOpen]);
+
+  const openReviewForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      rating: "5",
+      review: "",
+    });
+    setSubmitted(false);
+    setReviewOpen(true);
+  };
+
+  const closeReviewForm = () => {
+    setReviewOpen(false);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
 
   return (
     <section className={styles.section}>
@@ -76,14 +137,12 @@ export default function ProductReviewsSection({ product }) {
             <div className={styles.summaryLabel}>Average Ratings</div>
             <div className={styles.summaryRatingRow}>
               <div className={styles.summaryValue}>{averageRating.toFixed(1)}</div>
-              <div className={styles.summaryStars} aria-hidden="true">
-                {renderStars(Math.round(averageRating))}
-              </div>
+              <Stars rating={Math.round(averageRating)} className={styles.summaryStars} />
             </div>
             <div className={styles.summaryNote}>Average rating on this year</div>
-            <a href="#review-form" className={styles.reviewLink}>
+            <button type="button" className={styles.reviewLink} onClick={openReviewForm}>
               Write a review <span>→</span>
-            </a>
+            </button>
           </div>
 
           <div className={styles.breakdownCard}>
@@ -103,7 +162,7 @@ export default function ProductReviewsSection({ product }) {
         </div>
 
         <div className={styles.reviewList}>
-          {reviews.map((review) => (
+          {productReviews.map((review) => (
             <article key={review.name} className={styles.reviewItem}>
               <div className={styles.reviewAvatarWrap}>
                 <Image
@@ -122,9 +181,7 @@ export default function ProductReviewsSection({ product }) {
                     <div className={styles.reviewLocation}>{review.location}</div>
                   </div>
                   <div className={styles.reviewRatingBlock}>
-                    <div className={styles.reviewStars} aria-hidden="true">
-                      {renderStars(review.rating)}
-                    </div>
+                    <Stars rating={review.rating} className={styles.reviewStars} />
                     <div className={styles.reviewDate}>{review.date}</div>
                   </div>
                 </div>
@@ -132,7 +189,7 @@ export default function ProductReviewsSection({ product }) {
                 <p className={styles.reviewText}>{review.text}</p>
               </div>
 
-              {review.images.length ? (
+              {review.images?.length ? (
                 <div className={styles.reviewThumbs}>
                   {review.images.map((image) => (
                     <div key={image.src} className={styles.reviewThumb}>
@@ -151,6 +208,121 @@ export default function ProductReviewsSection({ product }) {
           ))}
         </div>
       </div>
+
+      {reviewOpen ? (
+        <div className={styles.modalBackdrop} role="presentation" onClick={closeReviewForm}>
+          <div
+            className={`${styles.modal} ${submitted ? styles.modalSuccess : ""}`}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="review-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className={styles.modalClose}
+              aria-label="Close review form"
+              onClick={closeReviewForm}
+            >
+              ×
+            </button>
+
+            {!submitted ? (
+              <form className={styles.modalBody} onSubmit={handleSubmit}>
+                <div className={styles.modalHeader}>
+                  <div className={styles.modalKicker}>Write a review</div>
+                  <h3 id="review-modal-title" className={styles.modalTitle}>
+                    Share your experience
+                  </h3>
+                  <p className={styles.modalText}>
+                    Tell us what you liked, how it worked, and anything helpful for other shoppers.
+                  </p>
+                </div>
+
+                <div className={styles.fieldGrid}>
+                  <label className={styles.field}>
+                    <span>Name</span>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Your name"
+                      required
+                    />
+                  </label>
+
+                  <label className={styles.field}>
+                    <span>Email</span>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Your email"
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className={styles.field}>
+                  <span>Rating</span>
+                  <div className={styles.starPicker} role="radiogroup" aria-label="Rating">
+                    {Array.from({ length: 5 }, (_, index) => {
+                      const value = String(index + 1);
+                      const isActive = index + 1 <= Number(formData.rating);
+
+                      return (
+                        <button
+                          key={value}
+                          type="button"
+                          className={`${styles.starPickButton} ${isActive ? styles.starPickButtonActive : ""}`}
+                          onClick={() => setFormData((current) => ({ ...current, rating: value }))}
+                          aria-pressed={isActive}
+                          aria-label={`${value} star${value === "1" ? "" : "s"}`}
+                        >
+                          ★
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <label className={styles.field}>
+                  <span>Review</span>
+                  <textarea
+                    name="review"
+                    value={formData.review}
+                    onChange={handleInputChange}
+                    placeholder="Write your review here"
+                    rows={5}
+                    required
+                  />
+                </label>
+
+                <button type="submit" className={styles.submitButton}>
+                  Submit review
+                </button>
+              </form>
+            ) : (
+              <div className={styles.thankYou}>
+                <div className={styles.thankYouCelebration} aria-hidden="true">
+                  <span className={styles.thankYouCheck}>✓</span>
+                </div>
+                <div className={styles.thankYouBadge}>Thanks</div>
+                <h3 className={styles.thankYouTitle}>Thank you for your review.</h3>
+                <p className={styles.thankYouText}>
+                  Your review has been submitted successfully. It helps other shoppers make a confident choice, and
+                  we truly appreciate the time you took to share it.
+                </p>
+                <button type="button" className={styles.submitButton} onClick={closeReviewForm}>
+                  Done
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

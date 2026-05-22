@@ -3,10 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { addCartItem, dispatchCartUpdated } from "../../cart/cart-storage";
 import styles from "./product-section.module.css";
 
 const products = [
   {
+    slug: "plant-growth-enhancer",
     href: "/products/plant-growth-enhancer",
     title: "Plant Growth Enhancer",
     label: "Indoor Plant",
@@ -18,6 +20,7 @@ const products = [
       "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    slug: "flower-fruit-booster",
     href: "/products/flower-fruit-booster",
     title: "Flower & Fruit Booster",
     label: "Indoor Plant",
@@ -29,6 +32,7 @@ const products = [
       "https://images.unsplash.com/photo-1511576661531-b34d7da5d0bb?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    slug: "bio-npk-granules",
     href: "/products/bio-npk-granules",
     title: "Bio NPK Granules",
     label: "Indoor Plant",
@@ -42,6 +46,23 @@ const products = [
 ];
 
 export default function ProductSection() {
+  const handleAddToCart = (item) => {
+    addCartItem(
+      {
+        slug: item.slug,
+        title: item.title,
+        price: item.currentPrice,
+        compareAt: item.originalPrice,
+        images: [{ src: item.image, alt: item.title }],
+      },
+      {
+        quantity: 1,
+      },
+    );
+
+    dispatchCartUpdated({ openCart: true });
+  };
+
   return (
     <section className={styles.productSection} id="products">
       <div className="container">
@@ -92,7 +113,14 @@ export default function ProductSection() {
                   <div className={styles.productCurrentPrice}>{item.currentPrice}</div>
                   <div className={styles.productOriginalPrice}>{item.originalPrice}</div>
                 </div>
-                <div className={styles.productCartButton}>Add to Cart</div>
+                <button
+                  type="button"
+                  className={styles.productCartButton}
+                  onClick={() => handleAddToCart(item)}
+                  aria-label={`Add ${item.title} to cart`}
+                >
+                  Add to Cart
+                </button>
               </div>
             </motion.article>
           ))}
