@@ -28,7 +28,7 @@ export const productPages = {
       },
     ],
     details:
-      "This formula is made to support steady and healthy plant growth with balanced nourishment for everyday plant care. It helps strengthen roots, improve leaf health, and maintain overall plant freshness. Suitable for both indoor and outdoor plants, it works well for home gardens, balconies, terraces, and decorative plants. It's easy-to-use liquid formula blends smoothly with water and can be used regularly to support greener, healthier, and more active plant growth.",
+      "This formula is made to support healthy plant growth with balanced nourishment for everyday plant care. It helps strengthen roots, improve leaf health, and maintain overall plant freshness, making it grow healthier. Suitable for both indoor and outdoor plants, it works well for home gardens, balconies, terraces, and decorative plants. It's an easy-to-use liquid formula that blends smoothly with water. Just add 5ml of Plant growth enhancer to 1 litre of water. It supports greener, healthier, and more active plant growth.",
     dimensions:
       "Weight: 1.2 kg. Bottle height: 22 cm. Packed width: 8.5 cm. Shelf-friendly size for home use and easy storage.",
     shipping:
@@ -42,11 +42,11 @@ export const productPages = {
       "Soil Improvement",
     ],
     lovePoints: [
-      "Made to support healthy plant growth naturally",
+      "Made to support healthy plant growth naturally.",
       "Suitable for both indoor and outdoor plants",
-      "Easy-to-use liquid formula for regular care",
+      "Easy-to-use liquid formula.",
       "Helps promote greener leaves and stronger roots",
-      "Works well for home gardens, balconies, and terraces",
+      "Works well for all kinds of plants.",
     ],
     loveImages: [
       {
@@ -60,11 +60,11 @@ export const productPages = {
     ],
     reviewItems: [
       {
-        name: "Navjot",
+        name: "Saloni",
         location: "Zirakpur, Punjab",
         date: "Verified buyer",
         rating: 5,
-        text: "Highly recommended, this product works as magic",
+        text: "Mere ghr p ek aloe vera ka plant tha, kuch time se uski pattiya red hone layi thi or purani pattoya bhi sukhne lagi thi. I was so worried about it. Par fer ek din mere ek dost ne mujhe ye plant growth enhancer suggest kiya, and I used it for 2 months, 10-12 din k gap me. It works like magic.",
         avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&q=80",
         images: [
           {
@@ -82,7 +82,7 @@ export const productPages = {
         location: "Raipur, Punjab",
         date: "Verified buyer",
         rating: 5,
-        text: "I really love this Product, Bahut easy to use hai aur results bhi ache mile. Meri balcony k plants pehle kafi dull lagte the, par ab kaafi green aur active dikhte hain.",
+        text: "I really love this Product. I have been using this for 3 months now, and the results are just amazing. As a plant lover, it’s the best thing I have ever purchased for my plants. Thank you, Local Garden Plant Growth Enhancer",
         avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80",
         images: [
           {
@@ -100,7 +100,7 @@ export const productPages = {
         location: "Chandigarh",
         date: "Verified buyer",
         rating: 5,
-        text: "I am a plant lover, or mujhe aise hi kisi product ki talash thi, jo bina kisi chemical ke plant care ko simple aur effective bana de.",
+        text: "Mere ghare ek nimbu da butta si, jo panj saal da ho geya si par fer vi ode te faal ni aaye jis karke mai onu patan di salah banayi oss to pahla mai Reel scroll kar reya si te mere samne local garden Plant growth enhancer di Ad aayi jo m naal de naal order kar dita oss to baad aha product bohot jaldi mainu mil gaya isnu istmal karan to baad mainu bohiot vadiya result mile",
         avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80",
         images: [
           {
@@ -166,7 +166,7 @@ export const productPages = {
       },
     ],
     details:
-      "Flower and Fruit Booster is specifically designed to support healthy flowering and improved fruit development in plants. Its liquid formula helps plants absorb nutrients more effectively for improved growth and active blooming. Suitable for vegetables, flowers, and fruit plants, it works well for both indoor and outdoor gardening. Regular use helps plants stay healthier, greener, and more productive throughout the growing season.",
+      "Flower and Fruit Booster is specifically designed to support healthy flowering and improved fruit development in plants. Its liquid formula helps plants absorb nutrients more effectively for improved growth and active blooming. Suitable for vegetables, flowers, and fruit plants, it works well for both indoor and outdoor plants.",
     dimensions:
       "Weight: 900 g. Bottle height: 20 cm. Packed width: 8 cm. Designed for standard shelf or utility cabinet storage.",
     shipping:
@@ -208,7 +208,7 @@ export const productPages = {
         location: "Zirakpur, Punjab",
         date: "Verified buyer",
         rating: 5,
-        text: "I have used this for my plants, and it worked really well. The flowers started blooming beautifully, and the overall plant health also improved noticeably.",
+        text: "I am a very busy person, to make homemade natural khad or uski smell mujhe aur meri family dono ko hi bardasht nhi hogi. Par plants ko khad to jaruri hai na mujhe ek aisa product chahiye tha jo naturally khad ka kaam bhi kare or jisme se baki fertiliser jaisi gandi smell bhi na aaye. Or kahte hai na jab ham kuch dhundhte hai to mil hi jata hai. I found this local garden flower and fruit booster",
         avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80",
         images: [
           {
@@ -226,7 +226,7 @@ export const productPages = {
         location: "Chandigarh",
         date: "Verified buyer",
         rating: 5,
-        text: "I love this product so much, maine isko apne plants par use kiya aur result kaafi acha mila, plants pehle se zyada healthy aur fresh lagne lage aur flowers bhi achhe se aane lage.",
+        text: "I don’t know how to explain this, but sach batau to ye product mere plants ka best friend ban chuka hai. I have waited for 2 whole years for my favourite flower plant to bloom, jiski cutting m apni nani k ghr se layi thi plant growth achi thi sab sahi tha par no flowers, and then I have used this product. It’s life-saving",
         avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&q=80",
         images: [
           {
@@ -244,7 +244,7 @@ export const productPages = {
         location: "Dhakoli, Punjab",
         date: "Verified buyer",
         rating: 5,
-        text: "Highly recommended for anyone who truly loves their plants and wants to see them grow healthier, greener, and full of life.",
+        text: "Hamare ghr me ek amrud ka pead tha, uspe pahli bar kafi jyada fool aaye or fer vo dheere dheere girne lage, or unme se bohot kaam aise the jo fruit bane baki sab kharab ho gaye, M bohot jyada pareshan tha tabhi mujhe mila Local garden ka flower and fruit booster. I really love this product.",
         avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80",
         images: [
           {
@@ -345,7 +345,7 @@ export const productPages = {
         location: "Chandigarh",
         date: "Verified buyer",
         rating: 5,
-        text: "I really liked that these granules are dust-free and easy to use. There's no bad smell, and my indoor plants started looking much healthier after use.",
+        text: "Fertiliser naam sunte hi mere ghr k log naak pakad lete the ki smell ayegi plants k pass jana bhi muskil ho jayega. But I found a better alternative for that Local garden BIO NPK Granules. Easy to use or smell ka problem bhi nahi hai. I love this product.",
         avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&q=80",
         images: [
           {
@@ -363,7 +363,7 @@ export const productPages = {
         location: "Baltana, Punjab",
         date: "Verified buyer",
         rating: 5,
-        text: "Ab tak ka best product jo mujhe mere plants k liye sabse jyada acha laga",
+        text: "Maine ek bohot mahnga plant khareeda tha jo mujhe or meri family dono ko hi bohot pasand tha par mangane k kuch din baad vo sukhne laga dried leaves or uski care or itne efforts pur karne k baad bhi jab vo grow nhi kar raha tha to mujhe bohot dukh hua reason pata chala low soil quality. Iske liye maine local garden k BIO NPK granuals mangaye or results, just WOW…",
         avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80",
         images: [
           {
@@ -381,7 +381,7 @@ export const productPages = {
         location: "Panchkula, Haryana",
         date: "Verified buyer",
         rating: 5,
-        text: "The slow-release formula works really well. My plants stayed fresh and green for longer, and the soil condition also seemed much better.",
+        text: "Being a Haryanvi, Ham nature k bohot close hai. As a farmer ham apni fasal ka dhyan to rakhte hi hai or ghr m jo plants laga rakhe hai uska bhi dhyan rakhte hai. Or ye sab ho paya hai Local Garden  BIO NPK granuals ki vajah se kyuki ye organic hai kyuki ye pead podho ki immunity badhata hai or unki jado ko majbut karta hai.",
         avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80",
         images: [
           {

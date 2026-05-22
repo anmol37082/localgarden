@@ -103,7 +103,7 @@ export default function DealsSection() {
         <div className={styles.dealsHeader}>
           <div className={styles.dealsKicker}>Today Deals</div>
           <h2 className={styles.dealsTitle}>
-            <span>Deals</span> of the Day
+            <span>The Green</span>  Deal Corner
           </h2>
         </div>
 

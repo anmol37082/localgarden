@@ -6,24 +6,29 @@ import styles from "./feature-panel-section.module.css";
 
 const features = [
   {
-    title: "Pollution Detection",
+    title: "Nature-Powered Nutrition",
     image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
-    description: "Spot contamination patterns from the surrounding environment.",
+    description: "Organic nourishment that supports healthy plant growth naturally.",
   },
   {
-    title: "Species Identification",
+    title: "Faster & Healthier Growth",
     image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=80",
-    description: "Compare moss traits and identify regional bio-signals.",
+    description: "Helps plants grow stronger, greener, and more active over time.",
   },
   {
-    title: "Environmental Trend Mapping",
+    title: "More Flowers, More Fruits",
     image: "https://images.unsplash.com/photo-1598758448707-20609c80cca9?auto=format&fit=crop&w=1200&q=80",
-    description: "Track seasonal shifts and ecosystem change over time.",
+    description: "Supports better blooming and fruiting for productive plants.",
   },
   {
-    title: "Real-Time Ecosystem Alerts",
+    title: "Soil Care & Plant Protection",
     image: "https://images.unsplash.com/photo-1592748886453-1d88d13198cc?auto=format&fit=crop&w=1200&q=80",
-    description: "Surface active changes as they happen in the field.",
+    description: "Improves soil health while helping protect plant strength.",
+  },
+  {
+    title: "Simple Gardening Made Easy",
+    image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
+    description: "Easy-to-use care for everyday gardening without hassle.",
   },
 ];
 
@@ -38,8 +43,8 @@ export default function FeaturePanelSection() {
           <div className={styles.featureCopy}>
             <div className={styles.sectionKickerDark}>[FEATURES]</div>
             <h2 className={styles.featureTitle}>
-              Built for Researchers,
-              <span> Powered by AI</span>
+             Give Your Plants The
+              <span> Love They Grow</span>
             </h2>
 
             <div className={styles.featureList}>

@@ -30,7 +30,12 @@ export default function Hero() {
             playsInline
             preload="metadata"
           >
-            <source src="/herovideo1.mp4" type="video/mp4" />
+            <source
+              src="/herovideomobile.mp4"
+              type="video/mp4"
+              media="(max-width: 575.98px)"
+            />
+            <source src="/herovideo3.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </motion.video>
 
@@ -42,11 +47,11 @@ export default function Hero() {
               transition={{ duration: 0.6 }}
             >
               <h1 className={styles.headline}>
-                Understand
+                Helping 
                 <span className={styles.headlineRow}>
-                  Plant Growth Naturally
+                   Every Plant 
                 </span>
-                <span className={styles.headlineAccent}>For Healthier Green Care</span>
+                <span className={styles.headlineAccent}>Grow Happier</span>
               </h1>
             </motion.div>
 
@@ -65,8 +70,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05 }}
             >
-              A clean, premium plant enhancer for routine care. Designed to look modern,
-              trustworthy, and simple to use.
+             Advanced plant care formulas that nourish roots, improve soil, and support beautiful natural growth for every plant type. 
             </motion.p>
           </div>
 
@@ -77,9 +81,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.18 }}
             >
-              <span className={styles.statLabel}>Diverse samples from global climates</span>
-              <span className={styles.statValue}>120k+</span>
-              <span className={styles.statNote}>Moss Samples Analyzed</span>
+              <span className={styles.statLabel}>Pure Organic Care</span>
+              <span className={styles.statValue}>100%</span>
+              <span className={styles.statNote}>Natural & Plant-Friendly Formula </span>
             </motion.div>
 
             <motion.div
@@ -88,9 +92,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.24 }}
             >
-              <span className={styles.statLabel}>High-confidence recognition</span>
-              <span className={styles.statValue}>98.7%</span>
-              <span className={styles.statNote}>Identification Accuracy</span>
+              <span className={styles.statLabel}>Trusted By Plant Lovers</span>
+              <span className={styles.statValue}>50K+</span>
+              <span className={styles.statNote}>Happy Gardening Customers </span>
             </motion.div>
           </div>
         </motion.div>

@@ -7,29 +7,29 @@ import styles from "./case-studies-section.module.css";
 const caseStudies = [
   {
     year: "2025",
-    title: "Air Pollution Studies",
-    description: "Detect heavy metals and urban toxins",
+    title: "For Stronger Roots",
+    description: "Nutrition That Starts From The Soil",
     image:
       "https://images.unsplash.com/photo-1564874997645-eba9f36e5bf2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     year: "2025",
-    title: "Forest Health Monitoring",
-    description: "Measure climate stress indicators",
+    title: "2X Plant Growth",
+    description: "Fueling Faster, Healthier & Greener Growth",
     image:
       "https://images.unsplash.com/photo-1592748886453-1d88d13198cc?auto=format&fit=crop&fm=jpg&q=80&w=1600",
   },
   {
     year: "2025",
-    title: "Soil Signal Mapping",
-    description: "Track soil health variations across regions",
+    title: "Disease Protection",
+    description: "Healthy Plants Begin With Strong Immunity",
     image:
       "https://images.unsplash.com/photo-1646688830264-f31526a471c4?auto=format&fit=crop&fm=jpg&q=80&w=1600",
   },
   {
     year: "2025",
-    title: "Climate Resilience Review",
-    description: "Measure resilience across changing conditions",
+    title: "Made For Every Plant",
+    description: "From Indoor Pots To Rooftop Gardens",
     image:
       "https://images.unsplash.com/photo-1697698793522-e702c845416c?auto=format&fit=crop&fm=jpg&q=80&w=1600",
   },
@@ -42,10 +42,10 @@ export default function CaseStudiesSection() {
         <div className={styles.sectionKicker}>[CASE STUDIES]</div>
         <h2 className={styles.sectionTitle}>
           <span className={styles.sectionTitleLead}>
-            <span className={styles.sectionTitleLeadWord}>Where</span>
-            <span className={styles.sectionTitleLeadTail}> Moss Analysis</span>
+            <span className={styles.sectionTitleLeadWord}>Nature </span>
+            <span className={styles.sectionTitleLeadTail}>  Friendly Solutions For Healthier Plants & </span>
           </span>
-          <span> Makes an Impact</span>
+          <span> Happier Planet</span>
         </h2>
 
         <div className={styles.caseGrid}>

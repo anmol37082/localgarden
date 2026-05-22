@@ -69,7 +69,7 @@ export default function ProductSection() {
         <div className={styles.productHeader}>
           <div className={styles.productHeading}>
             <div className={styles.productKicker}>Our Products</div>
-            <h2 className={styles.productTitle}>Our Top Seller Products</h2>
+            <h2 className={styles.productTitle}>Most Loved By Plant Parents</h2>
           </div>
 
           <a href="#pricing" className={styles.productButton}>

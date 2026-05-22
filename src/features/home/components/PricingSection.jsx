@@ -9,70 +9,88 @@ const planData = {
   Starter: {
     title: "Starter",
     badge: "For Individuals",
-    description: "A lightweight plan for solo researchers and early-stage field work.",
+    description:
+      "Perfect for beginners and everyday plant lovers who want easy and effective gardening solutions. Simple-to-use products that help plants grow healthier with minimal effort.",
     price: "$9",
     period: "/month",
     artwork:
       "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1200&q=80",
     features: [
-      "Basic species recognition",
-      "60 analyses per month",
-      "Simple moisture indicators",
-      "Email support",
+      "Beginner-friendly formulas",
+      "Easy application process",
+      "Fast visible results",
+      "Promotes healthy blooming",
+      "Prevents yellow leaves",
+      "Supports indoor & outdoor plants",
+      "Organic-based nutrition",
+      "Everyday plant care made simple",
     ],
+    sectionLabel: "Highlights",
     cta: "Start Free Trial",
   },
   Researcher: {
     title: "Researcher",
     badge: "Most Popular",
-    description: "Built for field researchers and academic projects needing reliable, high-volume moss analysis.",
-    price: "$29",
-    period: "/month",
+    description:
+      "Backed by plant research and organic innovation, Local Garden creates advanced plant care solutions for healthier growth and greener spaces. Designed to improve plant health, soil quality, and overall garden performance naturally.",
+    price: "",
+    period: "",
     artwork:
       "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=80",
     features: [
-      "Advanced species recognition",
-      "300 analyses per month",
-      "Pollution & moisture indicators",
-      "Growth trend insights",
-      "Map-based ecosystem visualization",
-      "Priority processing",
-      "Team workspace (up to 3 members)",
+      "Organic & plant-safe formulas",
+      "Supports faster plant growth",
+      "Improves soil fertility naturally",
+      "Boosts flowering & fruiting",
+      "Enhances nutrient absorption",
+      "Strengthens plant immunity",
+      "Eco & climate-friendly solutions",
+      "Suitable for all plant types",
     ],
-    cta: "Choose This Plan",
+    cta: "",
   },
   "Laboratory Pro": {
     title: "Laboratory Pro",
     badge: "For Labs",
-    description: "A higher-volume plan for teams that need deeper analysis and reporting.",
+    description:
+      "Scientifically crafted plant nutrition solutions designed for professional-level plant care and growth support. Advanced organic formulations that deliver stronger roots, healthier leaves, and better yield.",
     price: "$59",
     period: "/month",
     artwork:
       "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
     features: [
-      "Lab-grade analysis workflows",
-      "900 analyses per month",
-      "Advanced export reports",
-      "Priority queue processing",
-      "Multiple project spaces",
+      "Plant Growth Enhancer",
+      "Flower & Fruit Promoter",
+      "BIO-NPK Granules",
+      "Essential micronutrients",
+      "Root strengthening support",
+      "Soil conditioning formula",
+      "Disease & pest resistance support",
+      "Complete plant nutrition care",
     ],
+    sectionLabel: "What's Included",
     cta: "Upgrade to Pro",
   },
   Government: {
-    title: "Government",
+    title: "Government Approved",
     badge: "Enterprise",
-    description: "Custom workflows for agencies, climate programs, and large-scale monitoring.",
+    description:
+      "Manufactured with quality-focused processes and plant-safe organic ingredients for reliable gardening solutions. Trusted formulations designed to support healthy plants, healthy soil, and sustainable gardening.",
     price: "Custom",
     period: "",
     artwork:
       "https://images.unsplash.com/photo-1503435980610-a51f3ddfee50?auto=format&fit=crop&w=1200&q=80",
     features: [
-      "Multi-region monitoring",
-      "Custom dashboards",
-      "Enterprise security",
-      "Dedicated support",
-      "Custom integrations",
+      "Organic-based plant care",
+      "Safe for regular plant use",
+      "Suitable for all plant varieties",
+      "Balanced nutrient formulations",
+      "Supports eco-friendly gardening",
+      "Gentle on roots & leaves",
+      "Promotes sustainable growth",
+      "Trusted gardening solutions since 2017",
     ],
+    sectionLabel: "Highlights",
     cta: "Contact Sales",
   },
 };
@@ -95,13 +113,11 @@ export default function PricingSection() {
           <div className={styles.pricingCopy}>
             <div className={styles.pricingKicker}>[PRICING]</div>
             <h2 className={styles.pricingTitle}>
-              Choose the Right Plan
-              <span>for Your Research</span>
+            Nature’s 
+              <span>Daily  Dose For Your Plants</span>
             </h2>
             <p className={styles.pricingLead}>
-              Flexible plans for individual researchers, academic teams, and
-              environmental organizations. Every tier includes core AI-powered moss
-              identification and environmental analysis tools.
+              Easy-to-use organic nutrition for healthier leaves, better immunity, and faster growth. Giving plants the right care they need to bloom beautifully. 
             </p>
             <div className={styles.pricingSocial}>
               <div className={styles.pricingAvatars} aria-hidden="true">
@@ -154,10 +170,6 @@ export default function PricingSection() {
                     <span className={styles.pricingBadge}>{activePlan.badge}</span>
                   </div>
                   <p className={styles.pricingCardDesc}>{activePlan.description}</p>
-                  <div className={styles.pricingAmount}>
-                    {activePlan.price}
-                    {activePlan.period ? <span>{activePlan.period}</span> : null}
-                  </div>
                 </div>
 
                 <div className={styles.pricingArtwork} aria-hidden="true">
@@ -170,7 +182,9 @@ export default function PricingSection() {
               </div>
 
               <div className={styles.pricingDivider} />
-              <div className={styles.pricingIncluded}>What&apos;s Included :</div>
+              <div className={styles.pricingIncluded}>
+                {activePlan.sectionLabel ?? "Advantages"} :
+              </div>
 
               <div className={styles.pricingFeatures}>
                 {activePlan.features.map((feature) => (
@@ -179,12 +193,6 @@ export default function PricingSection() {
                     <span>{feature}</span>
                   </div>
                 ))}
-              </div>
-
-              <div className={styles.pricingActions}>
-                <a href="#contact" className={styles.pricingButton}>
-                  {activePlan.cta}
-                </a>
               </div>
             </motion.article>
           </div>

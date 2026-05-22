@@ -1,17 +1,16 @@
 'use client';
-/* eslint-disable @next/next/no-img-element */
 
 import { motion } from "framer-motion";
 import styles from "./about-section.module.css";
 
 const aboutCards = [
   {
-    title: "AI powered environmental intelligence",
-    image: "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=500&q=80",
+    title: "Mission",
+    text: "To provide simple, effective, and organic plant care solutions that help every plant grow better, and every space feel greener.",
   },
   {
-    title: "Transforming moss into a climate intelligence signal",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=500&q=80",
+    title: "Vision",
+    text: "To create greener homes, healthier plants, and a better environment by making gardening simple for everyone.",
   },
 ];
 
@@ -22,10 +21,8 @@ export default function AboutSection() {
         <div className={styles.aboutTop}>
           <div className={styles.sectionKicker}>[ABOUT US]</div>
           <p className={styles.aboutLead}>
-            Moss acts as a natural bioindicator, absorbing pollutants, reacting to climate
-            shifts, and revealing unseen changes in air and soil health. Our AI engine
-            automates moss analysis to help researchers measure environmental conditions
-            faster, deeper, and more accurately than traditional methods.
+          Local Garden by Akshay Organics was started in 2017 with one goal, to make plant care easy and bring more greenery into everyday life. From beautiful landscaping, vertical gardens, and rooftop gardens to organic plant care products, we help plants grow healthier, stronger, and happier naturally.
+Because every plant deserves the right care to bloom beautifully.
           </p>
         </div>
 
@@ -41,10 +38,8 @@ export default function AboutSection() {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.45 }}
             >
-              <div className={styles.aboutThumbWrap}>
-                <img src={item.image} alt="" className={styles.aboutThumb} />
-              </div>
               <h3 className={styles.aboutCardTitle}>{item.title}</h3>
+              <p className={styles.aboutCardText}>{item.text}</p>
             </motion.article>
           ))}
         </div>
