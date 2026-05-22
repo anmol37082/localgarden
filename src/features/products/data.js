@@ -11,19 +11,19 @@ export const productPages = {
     discount: "50% off",
     images: [
       {
-        src: "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1600&q=80",
+        src: "/growth%20enhancer/Artboard%201.png",
         alt: "Plant Growth Enhancer product styling image one",
       },
       {
-        src: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1600&q=80",
+        src: "/growth%20enhancer/Artboard%202.png",
         alt: "Plant Growth Enhancer product styling image two",
       },
       {
-        src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1600&q=80",
+        src: "/growth%20enhancer/Artboard%203.png",
         alt: "Plant Growth Enhancer product styling image three",
       },
       {
-        src: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=1600&q=80",
+        src: "/growth%20enhancer/Artboard%204.png",
         alt: "Plant Growth Enhancer product styling image four",
       },
     ],
@@ -50,11 +50,11 @@ export const productPages = {
     ],
     loveImages: [
       {
-        src: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80",
+        src: "/growth%20enhancer/Artboard%202.png",
         alt: "Healthy indoor plant in soft light",
       },
       {
-        src: "https://images.unsplash.com/photo-1483794344563-d27a8d18014e?auto=format&fit=crop&w=1600&q=80",
+        src: "/growth%20enhancer/Artboard%203.png",
         alt: "Green plant leaves close up",
       },
     ],
@@ -65,14 +65,14 @@ export const productPages = {
         date: "Verified buyer",
         rating: 5,
         text: "Mere ghr p ek aloe vera ka plant tha, kuch time se uski pattiya red hone layi thi or purani pattoya bhi sukhne lagi thi. I was so worried about it. Par fer ek din mere ek dost ne mujhe ye plant growth enhancer suggest kiya, and I used it for 2 months, 10-12 din k gap me. It works like magic.",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&q=80",
+        avatar: "/testimonilas/profiles/riyasharma.webp",
         images: [
           {
-            src: "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=800&q=80",
+            src: "/growth%20enhancer/Artboard%201.png",
             alt: "Plant growth enhancer result image one",
           },
           {
-            src: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=80",
+            src: "/growth%20enhancer/Artboard%202.png",
             alt: "Plant growth enhancer result image two",
           },
         ],
@@ -83,14 +83,14 @@ export const productPages = {
         date: "Verified buyer",
         rating: 5,
         text: "I really love this Product. I have been using this for 3 months now, and the results are just amazing. As a plant lover, it’s the best thing I have ever purchased for my plants. Thank you, Local Garden Plant Growth Enhancer",
-        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80",
+        avatar: "/testimonilas/profiles/amanverma.webp",
         images: [
           {
-            src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80",
+            src: "/growth%20enhancer/Artboard%203.png",
             alt: "Plant growth enhancer result image three",
           },
           {
-            src: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=800&q=80",
+            src: "/growth%20enhancer/Artboard%204.png",
             alt: "Plant growth enhancer result image four",
           },
         ],
@@ -101,14 +101,14 @@ export const productPages = {
         date: "Verified buyer",
         rating: 5,
         text: "Mere ghare ek nimbu da butta si, jo panj saal da ho geya si par fer vi ode te faal ni aaye jis karke mai onu patan di salah banayi oss to pahla mai Reel scroll kar reya si te mere samne local garden Plant growth enhancer di Ad aayi jo m naal de naal order kar dita oss to baad aha product bohot jaldi mainu mil gaya isnu istmal karan to baad mainu bohiot vadiya result mile",
-        avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80",
+        avatar: "/testimonilas/profiles/sakshigupta.webp",
         images: [
           {
-            src: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
+            src: "/growth%20enhancer/Artboard%201.png",
             alt: "Plant growth enhancer result image five",
           },
           {
-            src: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80",
+            src: "/growth%20enhancer/Artboard%202.png",
             alt: "Plant growth enhancer result image six",
           },
         ],
@@ -124,15 +124,13 @@ export const productPages = {
         href: "/products/flower-fruit-booster",
         title: "Flower & Fruit Booster",
         price: "$20.00",
-        image:
-          "https://images.unsplash.com/photo-1511576661531-b34d7da5d0bb?auto=format&fit=crop&w=1200&q=80",
+        image: "/fruit%20and%20flower%20booster/Artboard%201.png",
       },
       {
         href: "/products/bio-npk-granules",
         title: "Bio NPK Granules",
         price: "$12.00",
-        image:
-          "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+        image: "/BIo%20npk/Artboard%201.png",
       },
     ],
     boxContents: ["1 Growth Enhancer bottle", "Measuring cap", "Usage guide card", "Safety leaflet"],
@@ -149,19 +147,19 @@ export const productPages = {
     discount: "50% off",
     images: [
       {
-        src: "https://images.unsplash.com/photo-1511576661531-b34d7da5d0bb?auto=format&fit=crop&w=1600&q=80",
+        src: "/fruit%20and%20flower%20booster/Artboard%201.png",
         alt: "Flower and fruit booster product image one",
       },
       {
-        src: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80",
+        src: "/fruit%20and%20flower%20booster/Artboard%202.png",
         alt: "Flower and fruit booster product image two",
       },
       {
-        src: "https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1600&q=80",
+        src: "/fruit%20and%20flower%20booster/Artboard%203.png",
         alt: "Flower and fruit booster product image three",
       },
       {
-        src: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80",
+        src: "/fruit%20and%20flower%20booster/Artboard%204.png",
         alt: "Flower and fruit booster product image four",
       },
     ],
@@ -189,11 +187,11 @@ export const productPages = {
     ],
     loveImages: [
       {
-        src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1600&q=80",
+        src: "/fruit%20and%20flower%20booster/Artboard%202.png",
         alt: "Flowering plant interior scene",
       },
       {
-        src: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80",
+        src: "/fruit%20and%20flower%20booster/Artboard%203.png",
         alt: "Plant on a shelf with warm light",
       },
     ],
@@ -209,14 +207,14 @@ export const productPages = {
         date: "Verified buyer",
         rating: 5,
         text: "I am a very busy person, to make homemade natural khad or uski smell mujhe aur meri family dono ko hi bardasht nhi hogi. Par plants ko khad to jaruri hai na mujhe ek aisa product chahiye tha jo naturally khad ka kaam bhi kare or jisme se baki fertiliser jaisi gandi smell bhi na aaye. Or kahte hai na jab ham kuch dhundhte hai to mil hi jata hai. I found this local garden flower and fruit booster",
-        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80",
+        avatar: "/testimonilas/profiles/poojaarora.webp",
         images: [
           {
-            src: "https://images.unsplash.com/photo-1511576661531-b34d7da5d0bb?auto=format&fit=crop&w=800&q=80",
+            src: "/fruit%20and%20flower%20booster/Artboard%201.png",
             alt: "Flower and fruit booster result image one",
           },
           {
-            src: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80",
+            src: "/fruit%20and%20flower%20booster/Artboard%202.png",
             alt: "Flower and fruit booster result image two",
           },
         ],
@@ -227,14 +225,14 @@ export const productPages = {
         date: "Verified buyer",
         rating: 5,
         text: "I don’t know how to explain this, but sach batau to ye product mere plants ka best friend ban chuka hai. I have waited for 2 whole years for my favourite flower plant to bloom, jiski cutting m apni nani k ghr se layi thi plant growth achi thi sab sahi tha par no flowers, and then I have used this product. It’s life-saving",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&q=80",
+        avatar: "/testimonilas/profiles/mehakjain.webp",
         images: [
           {
-            src: "https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=800&q=80",
+            src: "/fruit%20and%20flower%20booster/Artboard%203.png",
             alt: "Flower and fruit booster result image three",
           },
           {
-            src: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+            src: "/fruit%20and%20flower%20booster/Artboard%204.png",
             alt: "Flower and fruit booster result image four",
           },
         ],
@@ -245,14 +243,14 @@ export const productPages = {
         date: "Verified buyer",
         rating: 5,
         text: "Hamare ghr me ek amrud ka pead tha, uspe pahli bar kafi jyada fool aaye or fer vo dheere dheere girne lage, or unme se bohot kaam aise the jo fruit bane baki sab kharab ho gaye, M bohot jyada pareshan tha tabhi mujhe mila Local garden ka flower and fruit booster. I really love this product.",
-        avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80",
+        avatar: "/testimonilas/profiles/simrankour.webp",
         images: [
           {
-            src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80",
+            src: "/fruit%20and%20flower%20booster/Artboard%201.png",
             alt: "Flower and fruit booster result image five",
           },
           {
-            src: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
+            src: "/fruit%20and%20flower%20booster/Artboard%202.png",
             alt: "Flower and fruit booster result image six",
           },
         ],
@@ -263,15 +261,13 @@ export const productPages = {
         href: "/products/plant-growth-enhancer",
         title: "Plant Growth Enhancer",
         price: "$12.50",
-        image:
-          "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1200&q=80",
+        image: "/growth%20enhancer/Artboard%201.png",
       },
       {
         href: "/products/bio-npk-granules",
         title: "Bio NPK Granules",
         price: "$12.00",
-        image:
-          "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+        image: "/BIo%20npk/Artboard%201.png",
       },
     ],
     boxContents: ["1 Booster bottle", "Dosage cap", "Feed schedule insert", "Storage safety note"],
@@ -288,19 +284,19 @@ export const productPages = {
     discount: "50% off",
     images: [
       {
-        src: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80",
+        src: "/BIo%20npk/Artboard%201.png",
         alt: "Bio NPK granules product image one",
       },
       {
-        src: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1600&q=80",
+        src: "/BIo%20npk/Artboard%202.png",
         alt: "Bio NPK granules product image two",
       },
       {
-        src: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1600&q=80",
+        src: "/BIo%20npk/Artboard%203.png",
         alt: "Bio NPK granules product image three",
       },
       {
-        src: "https://images.unsplash.com/photo-1524594154908-edd6654c9f9c?auto=format&fit=crop&w=1600&q=80",
+        src: "/BIo%20npk/Artboard%204.png",
         alt: "Bio NPK granules product image four",
       },
     ],
@@ -326,11 +322,11 @@ export const productPages = {
     ],
     loveImages: [
       {
-        src: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80",
+        src: "/BIo%20npk/Artboard%202.png",
         alt: "Granules product styled on surface",
       },
       {
-        src: "https://images.unsplash.com/photo-1524594154908-edd6654c9f9c?auto=format&fit=crop&w=1600&q=80",
+        src: "/BIo%20npk/Artboard%203.png",
         alt: "Plant care product image",
       },
     ],
@@ -346,14 +342,14 @@ export const productPages = {
         date: "Verified buyer",
         rating: 5,
         text: "Fertiliser naam sunte hi mere ghr k log naak pakad lete the ki smell ayegi plants k pass jana bhi muskil ho jayega. But I found a better alternative for that Local garden BIO NPK Granules. Easy to use or smell ka problem bhi nahi hai. I love this product.",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&q=80",
+        avatar: "/testimonilas/profiles/nehakapoor.webp",
         images: [
           {
-            src: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80",
+            src: "/BIo%20npk/Artboard%201.png",
             alt: "Bio NPK granules result image one",
           },
           {
-            src: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
+            src: "/BIo%20npk/Artboard%202.png",
             alt: "Bio NPK granules result image two",
           },
         ],
@@ -364,14 +360,14 @@ export const productPages = {
         date: "Verified buyer",
         rating: 5,
         text: "Maine ek bohot mahnga plant khareeda tha jo mujhe or meri family dono ko hi bohot pasand tha par mangane k kuch din baad vo sukhne laga dried leaves or uski care or itne efforts pur karne k baad bhi jab vo grow nhi kar raha tha to mujhe bohot dukh hua reason pata chala low soil quality. Iske liye maine local garden k BIO NPK granuals mangaye or results, just WOW…",
-        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80",
+        avatar: "/testimonilas/profiles/karanmehta.webp",
         images: [
           {
-            src: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=800&q=80",
+            src: "/BIo%20npk/Artboard%203.png",
             alt: "Bio NPK granules result image three",
           },
           {
-            src: "https://images.unsplash.com/photo-1524594154908-edd6654c9f9c?auto=format&fit=crop&w=800&q=80",
+            src: "/BIo%20npk/Artboard%204.png",
             alt: "Bio NPK granules result image four",
           },
         ],
@@ -382,14 +378,14 @@ export const productPages = {
         date: "Verified buyer",
         rating: 5,
         text: "Being a Haryanvi, Ham nature k bohot close hai. As a farmer ham apni fasal ka dhyan to rakhte hi hai or ghr m jo plants laga rakhe hai uska bhi dhyan rakhte hai. Or ye sab ho paya hai Local Garden  BIO NPK granuals ki vajah se kyuki ye organic hai kyuki ye pead podho ki immunity badhata hai or unki jado ko majbut karta hai.",
-        avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80",
+        avatar: "/testimonilas/profiles/arjunsingh.webp",
         images: [
           {
-            src: "https://images.unsplash.com/photo-1483794344563-d27a8d18014e?auto=format&fit=crop&w=800&q=80",
+            src: "/BIo%20npk/Artboard%201.png",
             alt: "Bio NPK granules result image five",
           },
           {
-            src: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
+            src: "/BIo%20npk/Artboard%202.png",
             alt: "Bio NPK granules result image six",
           },
         ],
@@ -400,15 +396,13 @@ export const productPages = {
         href: "/products/plant-growth-enhancer",
         title: "Plant Growth Enhancer",
         price: "$12.50",
-        image:
-          "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1200&q=80",
+        image: "/growth%20enhancer/Artboard%201.png",
       },
       {
         href: "/products/flower-fruit-booster",
         title: "Flower & Fruit Booster",
         price: "$20.00",
-        image:
-          "https://images.unsplash.com/photo-1511576661531-b34d7da5d0bb?auto=format&fit=crop&w=1200&q=80",
+        image: "/fruit%20and%20flower%20booster/Artboard%201.png",
       },
     ],
     boxContents: ["1 Bio NPK pouch", "Measuring scoop", "Application guide", "Storage safety leaflet"],

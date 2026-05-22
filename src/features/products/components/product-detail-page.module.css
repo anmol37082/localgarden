@@ -78,7 +78,8 @@
 
 .mainImageWrap {
   position: relative;
-  min-height: 41rem;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 1.35rem;
   overflow: hidden;
   background: #f7f7f7;
@@ -365,7 +366,7 @@
   }
 
   .mainImageWrap {
-    min-height: 34rem;
+    aspect-ratio: 1 / 1;
   }
 
 }
@@ -387,7 +388,7 @@
 
   .mainImageWrap {
     grid-area: main;
-    min-height: 28rem;
+    aspect-ratio: 1 / 1;
   }
 
   .purchaseRow {
@@ -409,8 +410,8 @@
   }
 
   .mainImageWrap {
-    min-height: 24rem;
     border-radius: 1rem;
+    aspect-ratio: 1 / 1;
   }
 
   .thumbnailButton {

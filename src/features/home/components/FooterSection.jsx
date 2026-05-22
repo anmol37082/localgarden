@@ -5,28 +5,24 @@ import styles from "./footer-section.module.css";
 
 const footerColumns = [
   {
-    label: "Platform",
-    links: ["Dashboard", "Species Recognition", "Pollution Detection", "Ecosystem Maps", "API Access"],
+    label: "Products",
+    links: ["Plant Growth Enhancer", "Flower & Fruit Booster", "BIO NPK Granules", "All Products"],
   },
   {
-    label: "Resources",
-    links: ["Documentation", "Research Library", "Case Studies", "Tutorials", "Support Center"],
+    label: "About",
+    links: ["About Us", "Mission", "Vision", "Plant Care Benefits"],
   },
   {
-    label: "Company",
-    links: ["About Us", "Careers", "Partners", "Press", "Contact"],
+    label: "Help",
+    links: ["How to Use", "Shipping & Returns", "FAQ", "Support Center"],
   },
   {
-    label: "Legal",
-    links: ["Privacy Policy", "Terms & Conditions", "Data Security", "Cookie Settings"],
-  },
-  {
-    label: "Social",
-    links: ["Twitter", "LinkedIn", "GitHub", "Research Blog"],
-  },
-  {
-    label: "Find Us",
-    links: ["+1 (415) 987-2041", "hello@greenarbor.ai", "128 Green Arbor Way", "Portland, OR 97203 US"],
+    label: "Contact",
+    links: [
+      "+91 98765 43210",
+      "hello@localgarden.in",
+      "Visit Us: DSS. 237, Sector 25, Panchkula Extension, Jhiwri Wala, Panchkula, Haryana 134116",
+    ],
   },
 ];
 

@@ -16,8 +16,7 @@ const products = [
     currentPrice: "$12.50",
     originalPrice: "$25.00",
     discountPercent: "50% off",
-    image:
-      "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1200&q=80",
+    image: "/growth%20enhancer/Artboard%201.png",
   },
   {
     slug: "flower-fruit-booster",
@@ -28,8 +27,7 @@ const products = [
     currentPrice: "$20.00",
     originalPrice: "$25.00",
     discountPercent: "20% off",
-    image:
-      "https://images.unsplash.com/photo-1511576661531-b34d7da5d0bb?auto=format&fit=crop&w=1200&q=80",
+    image: "/fruit%20and%20flower%20booster/Artboard%201.png",
   },
   {
     slug: "bio-npk-granules",
@@ -40,8 +38,7 @@ const products = [
     currentPrice: "$12.00",
     originalPrice: "$15.00",
     discountPercent: "20% off",
-    image:
-      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+    image: "/BIo%20npk/Artboard%201.png",
   },
 ];
 

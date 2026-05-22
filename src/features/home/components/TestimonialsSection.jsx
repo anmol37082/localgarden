@@ -7,69 +7,93 @@ import styles from "./testimonials-section.module.css";
 const testimonials = [
   {
     type: "quote",
-    image:
-      "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80",
+    image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/riyasharma.webp",
     quote:
-      "The platform cut our analysis time dramatically. We moved from slow manual review to fast, consistent results across every sample.",
-    name: "Ethan Rao",
-    role: "Climate Research Institute",
+      "I started using the Fruit & Flower Booster for my rose and hibiscus plants, and within a few weeks, I could clearly see more buds and flowers. Earlier, my plants used to bloom very less, but now the flowering has increased so much, and the plants look healthier and fresher than before. Really happy with the results.",
+    name: "Riya Sharma",
+    role: "Verified buyer",
   },
   {
     type: "quote",
-    image:
-      "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&q=80",
-    name: "Lina Duarte",
-    role: "Environmental Biologist",
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/amanverma.webp",
+    name: "Aman Verma",
+    role: "Verified buyer",
     quote:
-      "What impressed me most was the clarity of the insights. It made field decisions faster and gave our team more confidence in the data.",
+      "The Plant Growth Enhancer worked amazingly for my indoor plants. I use it every 10–12 days, and the growth difference is clearly visible. The leaves became greener, the roots looked stronger, and even my small plants started growing faster naturally.",
   },
   {
     type: "quote",
-    image:
-      "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=240&q=80",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/nehakapoor.webp",
     quote:
-      "Our restoration team depends on this system to catch early signs of ecosystem stress. The alerts helped us act before small issues became major damage.",
-    name: "Maria Solberg",
-    role: "Conservation Project Lead",
+      "My money plant and peace lily were turning yellow and looking dull. After using BIO-NPK Granules, the soil quality improved, and the leaves started becoming healthy again. I also noticed less leaf curling and overall better plant health. Very easy product for daily plant care.",
+    name: "Neha Kapoor",
+    role: "Verified buyer",
   },
   {
     type: "quote",
-    image:
-      "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80",
-    avatar:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80",
+    image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/rajeevmalhotra.webp",
     quote:
-      "Seeing moss data next to pollution patterns changed how we plan monitoring. It turned scattered observations into a clear field strategy.",
-    name: "Johan Mehra",
-    role: "Forest Health Officer",
+      "I used all three Local Garden products together for my terrace garden, and the results were honestly impressive. The Plant Growth Enhancer improved growth, the Flower Booster increased flowering, and the BIO-NPK Granules made the soil healthier. My entire garden looks greener and fuller now.",
+    name: "Rajeev Malhotra",
+    role: "Verified buyer",
   },
   {
     type: "quote",
-    image:
-      "https://images.unsplash.com/photo-1473091534298-04dcbce3278c?auto=format&fit=crop&w=1200&q=80",
-    avatar:
-      "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=240&q=80",
+    image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/simrankour.webp",
     quote:
-      "The reporting workflow is simple, the outputs are clear, and our team can move from sampling to action without extra back-and-forth.",
-    name: "Ava Fernandez",
-    role: "Field Ecology Lead",
+      "What I liked most about Local Garden products is that they are very simple to use and give visible results naturally. My flowering plants are blooming more beautifully now, and even my indoor plants look fresh and healthy every day.",
+    name: "Simran Kaur",
+    role: "Verified buyer",
   },
   {
     type: "quote",
-    image:
-      "https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?auto=format&fit=crop&w=1200&q=80",
-    avatar:
-      "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=240&q=80",
+    image: "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/poojaarora.webp",
     quote:
-      "We finally have a reliable way to compare sites across seasons, which makes long-term monitoring much more useful for the whole team.",
-    name: "Noah Bennett",
-    role: "Ecosystem Analyst",
+      "I added BIO-NPK Granules to my indoor plants because the soil had become hard and unhealthy. After regular use, the soil became softer, plants looked more active, and the yellow leaves problem was reduced a lot. It really helped improve the overall health of my plants.",
+    name: "Pooja Arora",
+    role: "Verified buyer",
+  },
+  {
+    type: "quote",
+    image: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/karanmehta.webp",
+    quote:
+      "I have many plants at home, and maintaining them is becoming difficult. After using the Plant Growth Enhancer, I noticed faster growth, healthier leaves, and stronger stems. The best part is that the product is easy to mix, and plants respond very quickly to it.",
+    name: "Karan Mehta",
+    role: "Verified buyer",
+  },
+  {
+    type: "quote",
+    image: "https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/mehakjain.webp",
+    quote:
+      "The Fruit & Flower Booster gave amazing results for my flowering plants. My hibiscus and jasmine plants now produce more buds and flowers regularly. The leaves also look greener and healthier after using it continuously.",
+    name: "Mehak Jain",
+    role: "Verified buyer",
+  },
+  {
+    type: "quote",
+    image: "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/arjunsingh.webp",
+    quote:
+      "I have tried many gardening products before, but Local Garden products actually gave visible and natural-looking results. My garden now looks healthier, greener, and more lively. Even visitors at my home ask me what I use for my plants.",
+    name: "Arjun Singh",
+    role: "Verified buyer",
+  },
+  {
+    type: "quote",
+    image: "https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?auto=format&fit=crop&w=1200&q=80",
+    avatar: "/testimonilas/profiles/sakshigupta.webp",
+    quote:
+      "All three products together provide complete care for plants. The growth is better, the soil looks healthier, flowering has increased, and even weak plants have started recovering. These products made gardening much easier and more enjoyable for me.",
+    name: "Sakshi Gupta",
+    role: "Verified buyer",
   },
 ];
 
