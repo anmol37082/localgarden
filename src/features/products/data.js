@@ -114,9 +114,9 @@ export const productPages = {
         ],
       },
     ],
-    bannerTitle: "Healthy Growth Essentials",
+    bannerTitle: "Care Your Plants Can Feel ",
     bannerText:
-      "A simple plant-care banner story focused on stronger roots, greener leaves, and steady everyday growth for home gardens and balconies.",
+      "Give your plants the nourishment they need for healthier and greener growth.Made to support everyday plant care for both indoor and outdoor plants.",
     bannerImage:
       "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80",
     relatedProducts: [
@@ -197,9 +197,9 @@ export const productPages = {
         alt: "Plant on a shelf with warm light",
       },
     ],
-    bannerTitle: "Bloom Room Comfort",
+    bannerTitle: "Trusted Care for Healthier Plants ",
     bannerText:
-      "Layered textures, soft natural tones, and a calm frame make this a stand-out choice for bright spaces and relaxed corners.",
+      "Trusted care that helps your plants grow stronger, greener, and healthier every day. A reliable formula designed to support complete plant health and natural growth.",
     bannerImage:
       "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f8?auto=format&fit=crop&w=1800&q=80",
     reviewItems: [
@@ -334,9 +334,9 @@ export const productPages = {
         alt: "Plant care product image",
       },
     ],
-    bannerTitle: "Grounded Garden Essentials",
+    bannerTitle: "Everything Your Plants Need to Grow Better ",
     bannerText:
-      "A compact, practical banner story for everyday plant care with a clean shelf-ready presentation and a soft earth-tone palette.",
+      "Complete care to support healthier growth, stronger roots, and greener plants.Made to give your plants the nourishment they need every day.",
     bannerImage:
       "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80",
     reviewItems: [
