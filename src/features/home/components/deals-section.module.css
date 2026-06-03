@@ -590,6 +590,7 @@
     overflow-y: hidden;
     padding-bottom: 0.45rem;
     scroll-snap-type: x proximity;
+    touch-action: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
   }

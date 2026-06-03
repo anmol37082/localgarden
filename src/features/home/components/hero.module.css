@@ -213,9 +213,14 @@
 }
 
 @media (max-width: 575.98px) {
+  .banner {
+    background: transparent;
+  }
+
   .heroIntro {
     max-width: calc(100% - 9.5rem);
     padding-right: 0;
+    margin-top: 0.15rem;
   }
 
   .headline {
@@ -256,6 +261,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: none;
   }
 
   .bannerContent {
@@ -288,5 +294,9 @@
 
   .statNote {
     font-size: var(--body-size);
+  }
+
+  .bannerMediaVideo {
+    background: transparent;
   }
 }
