@@ -7,7 +7,7 @@ export default function BannerSection() {
   return (
     <section className={styles.bannerSection}>
       <Image
-        src="/banner/banner.webp"
+        src="/banner/banner1.webp"
         alt="Banner"
         fill
         priority

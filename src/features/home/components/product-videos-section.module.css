@@ -47,6 +47,7 @@
 }
 
 .videoCard {
+  position: relative;
   flex: 0 0 auto;
   width: clamp(15.5rem, 24vw, 19rem);
   border-radius: 1.25rem;
@@ -69,6 +70,36 @@
   overflow: hidden;
 }
 
+.videoExpandButton {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(16, 16, 16, 0.78);
+  color: #ffffff;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.videoExpandButton:hover,
+.videoExpandButton:focus-visible {
+  background: rgba(16, 16, 16, 0.92);
+}
+
+.iconSvg {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+
 .videoHover {
   position: absolute;
   inset: 0;
@@ -76,6 +107,52 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.01);
+}
+
+.videoExpandedBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(8, 10, 8, 0.62);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.videoExpandedFrame {
+  position: relative;
+  width: min(92vw, 52rem);
+  aspect-ratio: 16 / 9;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: #0f0f0f;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.videoExpandedPlayer {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.videoExpandedClose {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(16, 16, 16, 0.8);
+  color: #ffffff;
+  cursor: pointer;
 }
 
 @media (max-width: 991.98px) {
@@ -103,5 +180,9 @@
 
   .videoCard {
     width: clamp(14rem, 78vw, 17rem);
+  }
+
+  .videoExpandedFrame {
+    width: min(94vw, 34rem);
   }
 }
