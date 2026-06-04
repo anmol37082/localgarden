@@ -9,17 +9,17 @@ const productVideos = [
   {
     title: "Plant Growth Enhancer",
     description: "Stronger roots and greener growth in one quick care routine.",
-    video: "/productvideo/productvideo1.mp4",
+    video: "/productvideo/productvideo01.mp4",
   },
   {
     title: "Flower & Fruit Booster",
     description: "Helps plants bloom better and support healthier fruiting.",
-    video: "/herovideo3.mp4",
+    video: "/productvideo/productvideo2.mp4",
   },
   {
     title: "Bio NPK Granules",
     description: "Dust-free granules for healthier soil and steady nourishment.",
-    video: "/herovideofinal.mp4",
+    video: "/productvideo/productvideo3.mp4",
   },
   {
     title: "Plant Growth Enhancer",
