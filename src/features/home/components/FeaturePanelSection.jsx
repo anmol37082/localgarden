@@ -7,27 +7,27 @@ import styles from "./feature-panel-section.module.css";
 const features = [
   {
     title: "Nature-Powered Nutrition",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+    image: "/benifites/point1.webp",
     description: "Organic nourishment that supports healthy plant growth naturally.",
   },
   {
     title: "Faster & Healthier Growth",
-    image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=80",
+    image: "/benifites/point2.webp",
     description: "Helps plants grow stronger, greener, and more active over time.",
   },
   {
     title: "More Flowers, More Fruits",
-    image: "https://images.unsplash.com/photo-1598758448707-20609c80cca9?auto=format&fit=crop&w=1200&q=80",
+    image: "/benifites/point3.webp",
     description: "Supports better blooming and fruiting for productive plants.",
   },
   {
     title: "Soil Care & Plant Protection",
-    image: "https://images.unsplash.com/photo-1592748886453-1d88d13198cc?auto=format&fit=crop&w=1200&q=80",
+    image: "/benifites/point4.webp",
     description: "Improves soil health while helping protect plant strength.",
   },
   {
     title: "Simple Gardening Made Easy",
-    image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
+    image: "/benifites/point5.webp",
     description: "Easy-to-use care for everyday gardening without hassle.",
   },
 ];
@@ -41,7 +41,7 @@ export default function FeaturePanelSection() {
       <div className="container">
         <div className={styles.featureGrid}>
           <div className={styles.featureCopy}>
-            <div className={styles.sectionKickerDark}>[FEATURES]</div>
+            <div className={styles.sectionKickerDark}>[BENIFITES]</div>
             <h2 className={styles.featureTitle}>
              Give Your Plants The
               <span> Love They Grow</span>

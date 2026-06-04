@@ -39,18 +39,23 @@ function parsePriceValue(priceText) {
 }
 
 export function createCartItem(product, { quantity = 1, color, image } = {}) {
+  const baseUnitPrice = parsePriceValue(product.price);
+
   return {
     id: `${product.slug ?? product.title}-${color?.name ?? "default"}`,
     slug: product.slug ?? "",
     title: product.title ?? "Product",
     priceLabel: product.price ?? "",
     compareAtLabel: product.compareAt ?? "",
-    unitPrice: parsePriceValue(product.price),
+    baseUnitPrice,
+    unitPrice: baseUnitPrice,
     quantity,
     colorName: color?.name ?? "Default",
     colorHex: color?.hex ?? "#d8d8d8",
     imageSrc: image?.src ?? product.images?.[0]?.src ?? "",
     imageAlt: image?.alt ?? product.images?.[0]?.alt ?? product.title ?? "Product image",
+    couponCode: "",
+    discountPercent: 0,
   };
 }
 
@@ -103,6 +108,40 @@ export function updateCartItemQuantity(itemId, quantity) {
   return nextItems;
 }
 
+export function applyCartItemCoupon(itemId, couponCode) {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
+  const normalizedCode = String(couponCode ?? "").trim().toLowerCase();
+  const nextItems = getCartItems().map((item) => {
+    if (item.id !== itemId) {
+      return item;
+    }
+
+    const baseUnitPrice = Number(item.baseUnitPrice ?? item.unitPrice) || 0;
+
+    if (normalizedCode !== "local10") {
+      return {
+        ...item,
+        couponCode: "",
+        discountPercent: 0,
+        unitPrice: baseUnitPrice,
+      };
+    }
+
+    return {
+      ...item,
+      couponCode: "LOCAL10",
+      discountPercent: 10,
+      unitPrice: Number((baseUnitPrice * 0.9).toFixed(2)),
+    };
+  });
+
+  saveCartItems(nextItems);
+  return nextItems;
+}
+
 export function clearCartItems() {
   if (typeof window === "undefined") {
     return [];
@@ -124,7 +163,7 @@ export function getCartTotals(items) {
   return items.reduce(
     (accumulator, item) => {
       const quantity = Number(item.quantity) || 0;
-      const unitPrice = Number(item.unitPrice) || 0;
+      const unitPrice = Number(item.unitPrice ?? item.baseUnitPrice) || 0;
       accumulator.count += quantity;
       accumulator.total += unitPrice * quantity;
       return accumulator;

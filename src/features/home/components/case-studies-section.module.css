@@ -1,5 +1,5 @@
 .caseSection {
-  padding: clamp(3rem, 6vw, 6rem) 0;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0 clamp(1.5rem, 3vw, 2.5rem);
   background: #ffffff;
 }
 
@@ -137,8 +137,8 @@
 
 @media (max-width: 575.98px) {
   .caseSection {
-    padding-top: 1.35rem;
-    padding-bottom: 1.35rem;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
   }
 
   .caseMeta {

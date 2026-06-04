@@ -31,11 +31,11 @@ export default function Hero() {
             preload="metadata"
           >
             <source
-              src="/herovideomobile.mp4"
+              src="/herovideomobile1.mp4"
               type="video/mp4"
               media="(max-width: 575.98px)"
             />
-            <source src="/herovideo3.mp4" type="video/mp4" />
+            <source src="/herovideofinal.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </motion.video>
 
@@ -83,7 +83,7 @@ export default function Hero() {
             >
               <span className={styles.statLabel}>Pure Organic Care</span>
               <span className={styles.statValue}>100%</span>
-              <span className={styles.statNote}>Natural & Plant-Friendly Formula </span>
+              <span className={styles.statNote}>Natural & Plant-Friendly Formula</span>
             </motion.div>
 
             <motion.div
@@ -94,9 +94,10 @@ export default function Hero() {
             >
               <span className={styles.statLabel}>Trusted By Plant Lovers</span>
               <span className={styles.statValue}>50K+</span>
-              <span className={styles.statNote}>Happy Gardening Customers </span>
+              <span className={styles.statNote}>Happy Gardening Customers</span>
             </motion.div>
           </div>
+
         </motion.div>
       </div>
     </section>

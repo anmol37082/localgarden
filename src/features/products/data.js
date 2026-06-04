@@ -1,4 +1,4 @@
-export const productPages = {
+﻿export const productPages = {
   "plant-growth-enhancer": {
     kicker: "Indoor Plant Care",
     title: "Plant Growth Enhancer",
@@ -6,9 +6,9 @@ export const productPages = {
     reviews: 67,
     summary:
       "A powerful liquid bio-fertiliser that replaces regular khad/manure and promotes up to 2X faster plant growth while improving soil health and disease resistance.",
-    price: "₹520",
-    compareAt: "₹1040",
-    discount: "50% off",
+    price: "₹416.00",
+    compareAt: "₹520.00",
+    discount: "20% off",
     images: [
       {
         src: "/growth%20enhancer/Artboard%201.png",
@@ -123,13 +123,13 @@ export const productPages = {
       {
         href: "/products/flower-fruit-booster",
         title: "Flower & Fruit Booster",
-        price: "$20.00",
+        price: "₹416.00",
         image: "/fruit%20and%20flower%20booster/Artboard%201.png",
       },
       {
         href: "/products/bio-npk-granules",
         title: "Bio NPK Granules",
-        price: "$12.00",
+        price: "₹360.00",
         image: "/BIo%20npk/Artboard%201.png",
       },
     ],
@@ -142,9 +142,9 @@ export const productPages = {
     reviews: 54,
     summary:
       "A specially formulated liquid solution that supports better flowering, healthier budding, and improved fruit development by helping plants absorb nutrients more effectively.",
-    price: "₹520",
-    compareAt: "₹1040",
-    discount: "50% off",
+    price: "₹416.00",
+    compareAt: "₹520.00",
+    discount: "20% off",
     images: [
       {
         src: "/fruit%20and%20flower%20booster/Artboard%201.png",
@@ -260,13 +260,13 @@ export const productPages = {
       {
         href: "/products/plant-growth-enhancer",
         title: "Plant Growth Enhancer",
-        price: "$12.50",
+        price: "₹416.00",
         image: "/growth%20enhancer/Artboard%201.png",
       },
       {
         href: "/products/bio-npk-granules",
         title: "Bio NPK Granules",
-        price: "$12.00",
+        price: "₹360.00",
         image: "/BIo%20npk/Artboard%201.png",
       },
     ],
@@ -279,9 +279,9 @@ export const productPages = {
     reviews: 81,
     summary:
       "Organic and dust-free granules made to support stronger plant growth, healthier soil, and improved plant immunity. Suitable for both indoor and outdoor plants for everyday plant care.",
-    price: "₹450",
-    compareAt: "₹900",
-    discount: "50% off",
+    price: "₹360.00",
+    compareAt: "₹450.00",
+    discount: "20% off",
     images: [
       {
         src: "/BIo%20npk/Artboard%201.png",
@@ -395,13 +395,13 @@ export const productPages = {
       {
         href: "/products/plant-growth-enhancer",
         title: "Plant Growth Enhancer",
-        price: "$12.50",
+        price: "₹416.00",
         image: "/growth%20enhancer/Artboard%201.png",
       },
       {
         href: "/products/flower-fruit-booster",
         title: "Flower & Fruit Booster",
-        price: "$20.00",
+        price: "₹416.00",
         image: "/fruit%20and%20flower%20booster/Artboard%201.png",
       },
     ],

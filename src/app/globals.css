@@ -4,8 +4,8 @@
   --surface: #ffffff;
   --accent: #1f7a5f;
   --accent-strong: #1f7a5f;
-  --title-font: var(--font-inter-title), Arial, Helvetica, sans-serif;
-  --body-font: var(--font-inter-body), Arial, Helvetica, sans-serif;
+  --title-font: var(--font-inter-title);
+  --body-font: var(--font-inter-body);
   --title-size: clamp(2.1rem, 4.2vw, 3.8rem);
   --title-weight: 600;
   --title-line: 0.96;

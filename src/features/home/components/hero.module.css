@@ -196,6 +196,17 @@
     padding: 2rem clamp(1.25rem, 4vw, 2.25rem) 1.5rem;
   }
 
+  .bannerStats {
+    width: min(100% - 2rem, 31rem);
+    bottom: 4.25rem;
+    padding: 0;
+  }
+
+  .statCard {
+    min-height: 10rem;
+    padding: 1.1rem 1rem 1rem;
+  }
+
   .sideNote {
     position: static;
     order: 1;
@@ -220,7 +231,7 @@
   .heroIntro {
     max-width: calc(100% - 9.5rem);
     padding-right: 0;
-    margin-top: 0.15rem;
+    margin-top: 1.35rem;
   }
 
   .headline {
@@ -238,16 +249,15 @@
     margin-top: 4.35rem;
   }
 
+  .bannerContent {
+    padding: 0.95rem clamp(0.95rem, 4vw, 1.25rem) 0.85rem;
+    gap: 0.25rem;
+  }
+
   .bannerStats {
-    position: absolute;
-    left: 50%;
     bottom: 0.85rem;
-    transform: translateX(-50%);
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     width: min(calc(100% - 1.25rem), 18.5rem);
     gap: 0.45rem;
-    margin: 0;
     padding: 0;
     z-index: 3;
   }
@@ -262,11 +272,6 @@
     flex-direction: column;
     justify-content: space-between;
     box-shadow: none;
-  }
-
-  .bannerContent {
-    padding: 0.95rem clamp(0.95rem, 4vw, 1.25rem) 0.85rem;
-    gap: 0.25rem;
   }
 
   .sideNote {

@@ -49,7 +49,7 @@
 
 .navLink {
   color: #38443f;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 400;
   letter-spacing: 0;
   font-family: var(--body-font);
@@ -142,7 +142,7 @@
   padding: 0.85rem 0.2rem;
   border-bottom: 1px solid rgba(56, 68, 63, 0.08);
   color: #38443f;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 400;
   font-family: var(--body-font);
 }

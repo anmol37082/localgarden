@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -13,9 +14,9 @@ const products = [
     title: "Plant Growth Enhancer",
     label: "Indoor Plant",
     rating: "4.9",
-    currentPrice: "$12.50",
-    originalPrice: "$25.00",
-    discountPercent: "50% off",
+    currentPrice: "₹416.00",
+    originalPrice: "₹520.00",
+    discountPercent: "20% off",
     image: "/growth%20enhancer/Artboard%201.png",
   },
   {
@@ -24,8 +25,8 @@ const products = [
     title: "Flower & Fruit Booster",
     label: "Indoor Plant",
     rating: "4.9",
-    currentPrice: "$20.00",
-    originalPrice: "$25.00",
+    currentPrice: "₹416.00",
+    originalPrice: "₹520.00",
     discountPercent: "20% off",
     image: "/fruit%20and%20flower%20booster/Artboard%201.png",
   },
@@ -35,14 +36,25 @@ const products = [
     title: "Bio NPK Granules",
     label: "Indoor Plant",
     rating: "4.9",
-    currentPrice: "$12.00",
-    originalPrice: "$15.00",
+    currentPrice: "₹360.00",
+    originalPrice: "₹450.00",
     discountPercent: "20% off",
     image: "/BIo%20npk/Artboard%201.png",
   },
 ];
 
+const initialCountdown = {
+  days: 4,
+  hours: 14,
+  minutes: 48,
+  seconds: 18,
+};
+
+const padCountdownValue = (value) => String(Math.max(0, value)).padStart(2, "0");
+
 export default function ProductSection() {
+  const [countdown, setCountdown] = useState(initialCountdown);
+
   const handleAddToCart = (item) => {
     addCartItem(
       {
@@ -59,6 +71,32 @@ export default function ProductSection() {
 
     dispatchCartUpdated({ openCart: true });
   };
+
+  useEffect(() => {
+    const totalSeconds =
+      initialCountdown.days * 24 * 60 * 60 +
+      initialCountdown.hours * 60 * 60 +
+      initialCountdown.minutes * 60 +
+      initialCountdown.seconds;
+
+    const endTime = Date.now() + totalSeconds * 1000;
+
+    const updateCountdown = () => {
+      const remainingSeconds = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+
+      const days = Math.floor(remainingSeconds / (24 * 60 * 60));
+      const hours = Math.floor((remainingSeconds % (24 * 60 * 60)) / (60 * 60));
+      const minutes = Math.floor((remainingSeconds % (60 * 60)) / 60);
+      const seconds = remainingSeconds % 60;
+
+      setCountdown({ days, hours, minutes, seconds });
+    };
+
+    updateCountdown();
+    const intervalId = window.setInterval(updateCountdown, 1000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   return (
     <section className={styles.productSection} id="products">
@@ -132,22 +170,22 @@ export default function ProductSection() {
               <span>Special</span>
               <span>Offer</span>
             </div>
-            <p className={styles.productOfferText}>Get 50% off - Limited Time Offer!</p>
+            <p className={styles.productOfferText}>Get 30% off - Limited Time Offer!</p>
             <div className={styles.productCountdown}>
               <div>
-                <strong>04</strong>
+                <strong>{padCountdownValue(countdown.days)}</strong>
                 <span>Days</span>
               </div>
               <div>
-                <strong>14</strong>
+                <strong>{padCountdownValue(countdown.hours)}</strong>
                 <span>Hours</span>
               </div>
               <div>
-                <strong>48</strong>
+                <strong>{padCountdownValue(countdown.minutes)}</strong>
                 <span>Minutes</span>
               </div>
               <div>
-                <strong>18</strong>
+                <strong>{padCountdownValue(countdown.seconds)}</strong>
                 <span>Seconds</span>
               </div>
             </div>

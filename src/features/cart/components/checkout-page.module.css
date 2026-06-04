@@ -144,6 +144,55 @@
   font-weight: 700;
 }
 
+.couponRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+
+.couponInput {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(56, 68, 63, 0.14);
+  border-radius: 0.85rem;
+  padding: 0.72rem 0.85rem;
+  background: #ffffff;
+  color: #1f2933;
+  font: inherit;
+  outline: none;
+}
+
+.couponInput:focus {
+  border-color: rgba(31, 122, 95, 0.5);
+  box-shadow: 0 0 0 3px rgba(31, 122, 95, 0.12);
+}
+
+.couponButton {
+  min-height: 2.6rem;
+  padding: 0 0.95rem;
+  border: 0;
+  border-radius: 0.85rem;
+  background: #1f7a5f;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.couponMessage {
+  margin-top: 0.45rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.couponMessageSuccess {
+  color: #1f7a5f;
+}
+
+.couponMessageError {
+  color: #a34b2f;
+}
+
 .summaryMeta {
   display: flex;
   gap: 0.45rem;
@@ -181,9 +230,19 @@
 }
 
 .summaryPrice {
+  display: grid;
+  justify-items: end;
+  gap: 0.2rem;
   color: #1f2933;
   font-weight: 700;
   white-space: nowrap;
+}
+
+.summaryOriginalPrice {
+  color: #87928d;
+  font-size: 0.83rem;
+  font-weight: 600;
+  text-decoration: line-through;
 }
 
 .emptyState {
@@ -315,6 +374,15 @@
     grid-column: 1 / -1;
     padding-left: 4.35rem;
     margin-top: -0.1rem;
+    justify-items: start;
+  }
+
+  .couponRow {
+    grid-template-columns: 1fr;
+  }
+
+  .couponButton {
+    width: 100%;
   }
 
   .quantityRow {

@@ -1,14 +1,14 @@
 'use client';
 
 import Image from "next/image";
-import styles from "./banner-section.module.css";
+import styles from "./banner-section-three.module.css";
 
-export default function BannerSection() {
+export default function BannerSectionThree() {
   return (
-    <section className={styles.bannerSection}>
+    <section className={styles.bannerSectionThree}>
       <Image
-        src="/banner/banner.webp"
-        alt="Banner"
+        src="/banner/banner3.webp"
+        alt="Local Garden banner"
         fill
         priority
         sizes="100vw"

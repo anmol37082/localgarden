@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   CART_STORAGE_KEY,
+  applyCartItemCoupon,
   clearCartItems,
   formatMoney,
   getCartItems,
@@ -16,6 +17,8 @@ import styles from "./checkout-page.module.css";
 
 export default function CheckoutPage() {
   const [cartItems, setCartItems] = useState(() => getCartItems());
+  const [couponInputs, setCouponInputs] = useState({});
+  const [couponMessages, setCouponMessages] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -44,6 +47,18 @@ export default function CheckoutPage() {
     };
   }, []);
 
+  useEffect(() => {
+    setCouponInputs((current) => {
+      const nextState = {};
+
+      cartItems.forEach((item) => {
+        nextState[item.id] = current[item.id] ?? item.couponCode ?? "";
+      });
+
+      return nextState;
+    });
+  }, [cartItems]);
+
   const { count: itemCount, total } = getCartTotals(cartItems);
   const shippingFee = itemCount > 0 ? 0 : 0;
   const grandTotal = total + shippingFee;
@@ -53,10 +68,17 @@ export default function CheckoutPage() {
     setFormData((current) => ({ ...current, [name]: value }));
   };
 
+  const notifyCartUpdated = () => {
+    window.dispatchEvent(new CustomEvent(CART_UPDATED_EVENT));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     clearCartItems();
     setCartItems([]);
+    setCouponInputs({});
+    setCouponMessages({});
+    notifyCartUpdated();
     setSubmitted(true);
   };
 
@@ -69,6 +91,33 @@ export default function CheckoutPage() {
     const nextQuantity = Math.max(1, (Number(currentItem.quantity) || 1) + delta);
     const nextItems = updateCartItemQuantity(itemId, nextQuantity);
     setCartItems(nextItems);
+    notifyCartUpdated();
+  };
+
+  const handleCouponChange = (itemId, value) => {
+    setCouponInputs((current) => ({ ...current, [itemId]: value }));
+    setCouponMessages((current) => ({ ...current, [itemId]: "" }));
+  };
+
+  const applyCoupon = (itemId) => {
+    const couponCode = couponInputs[itemId] ?? "";
+    const normalizedCode = String(couponCode).trim().toLowerCase();
+
+    if (normalizedCode !== "local10") {
+      setCouponMessages((current) => ({
+        ...current,
+        [itemId]: "Use LOCAL10 to get 10% off.",
+      }));
+      return;
+    }
+
+    const nextItems = applyCartItemCoupon(itemId, couponCode);
+    setCartItems(nextItems);
+    notifyCartUpdated();
+    setCouponMessages((current) => ({
+      ...current,
+      [itemId]: "10% discount applied.",
+    }));
   };
 
   return (
@@ -146,9 +195,6 @@ export default function CheckoutPage() {
 
                       <div className={styles.summaryBody}>
                         <div className={styles.summaryTitle}>{item.title}</div>
-                        <div className={styles.summaryMeta}>
-                          <span>{item.colorName}</span>
-                        </div>
                         <div className={styles.quantityRow}>
                           <button
                             type="button"
@@ -168,9 +214,46 @@ export default function CheckoutPage() {
                             +
                           </button>
                         </div>
+
+                        <div className={styles.couponRow}>
+                          <input
+                            type="text"
+                            className={styles.couponInput}
+                            placeholder="local10"
+                            value={couponInputs[item.id] ?? item.couponCode ?? ""}
+                            onChange={(event) => handleCouponChange(item.id, event.target.value)}
+                            aria-label={`Coupon code for ${item.title}`}
+                          />
+                          <button
+                            type="button"
+                            className={styles.couponButton}
+                            onClick={() => applyCoupon(item.id)}
+                          >
+                            {item.couponCode === "LOCAL10" ? "Applied" : "Apply"}
+                          </button>
+                        </div>
+
+                        {couponMessages[item.id] ? (
+                          <div
+                            className={`${styles.couponMessage} ${
+                              couponMessages[item.id].includes("applied")
+                                ? styles.couponMessageSuccess
+                                : styles.couponMessageError
+                            }`}
+                          >
+                            {couponMessages[item.id]}
+                          </div>
+                        ) : null}
                       </div>
 
-                      <div className={styles.summaryPrice}>{item.priceLabel}</div>
+                      <div className={styles.summaryPrice}>
+                        <strong>{formatMoney((Number(item.unitPrice) || 0) * (Number(item.quantity) || 1))}</strong>
+                        {Number(item.discountPercent) > 0 ? (
+                          <span className={styles.summaryOriginalPrice}>
+                            {formatMoney((Number(item.baseUnitPrice ?? item.unitPrice) || 0) * (Number(item.quantity) || 1))}
+                          </span>
+                        ) : null}
+                      </div>
                     </article>
                   ))}
                 </div>

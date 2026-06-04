@@ -6,70 +6,147 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import styles from "./deals-section.module.css";
 
-const deals = [
+const featureItems = [
   {
-    title: "Calathea Medallion",
-    label: "Indoor Plant",
-    currentPrice: "$20.00",
-    originalPrice: "$40.00",
-    discountPercent: "30% off",
-    rating: "5.0",
-    image:
-      "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=80",
+    title: "Free shipping",
+    text: "Free Shipping in the City",
+    icon: ShippingIcon,
   },
   {
-    title: "Birds Nest",
-    label: "Indoor Plant",
-    currentPrice: "$22.00",
-    originalPrice: "$44.00",
-    discountPercent: "50% off",
-    rating: "5.0",
-    image:
-      "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=1200&q=80",
+    title: "Price-match guarantee",
+    text: "Safe money when ordering with us",
+    icon: TagIcon,
   },
   {
-    title: "Spider Plant",
-    label: "Indoor Plant",
-    currentPrice: "$18.00",
-    originalPrice: "$36.00",
-    discountPercent: "50% off",
-    rating: "5.0",
-    image:
-      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
+    title: "Budget-friendly",
+    text: "Receive in lowest price guaranty",
+    icon: WalletIcon,
   },
   {
-    title: "Peace Lily",
-    label: "Indoor Plant",
-    currentPrice: "$24.00",
-    originalPrice: "$48.00",
-    discountPercent: "50% off",
-    rating: "5.0",
-    image:
-      "https://images.unsplash.com/photo-1773332611522-06b86b48cbf1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Customer satisfaction",
+    text: "Customer satisfaction our priority.",
+    icon: StarIcon,
   },
 ];
 
-const promos = [
-  {
-    title: "Freshly Green Plants",
-    label: "Indoor Plants",
-    currentPrice: "$19.00",
-    originalPrice: "$24.00",
-    discountPercent: "Flat 20% Discount",
-    rating: "4.9",
-    image:
-      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
+function ShippingIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M3.5 7.5h9v8h-9z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.5 10h3.8l2.7 2.7V15.5h-6.5V10z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <circle cx="7.3" cy="16.8" r="1.45" fill="none" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="17.3" cy="16.8" r="1.45" fill="none" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  );
+}
+
+function TagIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M4.5 12.3 12.2 4.6h6.7v6.7L11.2 19c-.7.7-1.8.7-2.5 0L4.5 14.8c-.7-.7-.7-1.8 0-2.5Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <circle cx="16.2" cy="7.9" r="1.2" fill="none" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  );
+}
+
+function WalletIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M4.5 8.5h13.8c.8 0 1.5.7 1.5 1.5v7.5c0 .8-.7 1.5-1.5 1.5H7c-1.4 0-2.5-1.1-2.5-2.5v-8z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.5 11.5H16"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <circle cx="15.8" cy="12.5" r="0.9" fill="none" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="m12 3.7 2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+const comboProducts = {
+  "Plant Growth Enhancer": { originalPrice: 520, image: "/growth%20enhancer/Artboard%201.png" },
+  "Flower & Fruit Booster": {
+    originalPrice: 520,
+    image: "/fruit%20and%20flower%20booster/Artboard%201.png",
   },
-  {
-    title: "Graceful Flower Plant",
-    label: "Flower Plants",
-    currentPrice: "$21.00",
-    originalPrice: "$28.00",
-    discountPercent: "Flat 25% Discount",
+  "Bio NPK Granules": { originalPrice: 450, image: "/BIo%20npk/Artboard%201.png" },
+};
+
+const formatPrice = (value) => `Rs. ${value.toFixed(2)}`;
+
+const buildComboDeal = (comboItems, image) => {
+  const originalTotal = comboItems.reduce((sum, item) => sum + comboProducts[item].originalPrice, 0);
+  const currentTotal = originalTotal * 0.8;
+
+  return {
+    title: comboItems.join(" + "),
+    label: `${comboItems.length} Product Combo`,
+    currentPrice: formatPrice(currentTotal),
+    originalPrice: formatPrice(originalTotal),
+    discountPercent: "20% off",
     rating: "5.0",
-    image:
-      "https://images.unsplash.com/photo-1773332611522-06b86b48cbf1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
+    comboItems,
+    image,
+  };
+};
+
+const comboDeals = [
+  buildComboDeal(
+    ["Plant Growth Enhancer", "Flower & Fruit Booster"],
+    "/combos/fruitflowerboostergrowthenhancer.webp",
+  ),
+  buildComboDeal(
+    ["Plant Growth Enhancer", "Bio NPK Granules"],
+    "/combos/bionpkgrowthenhancer.webp",
+  ),
+  buildComboDeal(
+    ["Flower & Fruit Booster", "Bio NPK Granules"],
+    "/combos/bionpkfruitflowerbooster.webp",
+  ),
+  buildComboDeal(
+    ["Plant Growth Enhancer", "Flower & Fruit Booster", "Bio NPK Granules"],
+    "/combos/bionpkplantboostergrowthenhancer.webp",
+  ),
 ];
 
 export default function DealsSection() {
@@ -103,13 +180,13 @@ export default function DealsSection() {
         <div className={styles.dealsHeader}>
           <div className={styles.dealsKicker}>Today Deals</div>
           <h2 className={styles.dealsTitle}>
-            <span>The Green</span>  Deal Corner
+            <span>Combos</span>
           </h2>
         </div>
 
         <div className={styles.dealsTrack}>
           <div className={styles.dealsGrid}>
-            {deals.map((item, index) => (
+            {comboDeals.map((item, index) => (
               <motion.article
                 key={item.title}
                 className={styles.dealCard}
@@ -122,7 +199,7 @@ export default function DealsSection() {
                 <div className={styles.dealImageWrap}>
                   <Image
                     src={item.image}
-                    alt=""
+                    alt={item.title}
                     fill
                     sizes="(max-width: 991px) 85vw, 30vw"
                     className={styles.dealImage}
@@ -133,18 +210,22 @@ export default function DealsSection() {
                   <div className={styles.dealMeta}>
                     <span>{item.label}</span>
                     <span className={styles.dealRating}>
-                      <span className={styles.dealStar}>★</span>
+                      <span className={styles.dealStar}>*</span>
                       {item.rating}
                     </span>
                   </div>
                   <h3 className={styles.dealName}>{item.title}</h3>
+                  <div className={styles.dealComboItems}>
+                    {item.comboItems.map((comboItem) => (
+                      <span key={comboItem} className={styles.dealComboItem}>
+                        {comboItem}
+                      </span>
+                    ))}
+                  </div>
                   <div className={styles.dealPriceRow}>
                     <div className={styles.dealCurrent}>{item.currentPrice}</div>
                     <div className={styles.dealOriginal}>{item.originalPrice}</div>
                   </div>
-                  <p className={styles.dealText}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                  </p>
                   <button
                     type="button"
                     className={styles.dealLink}
@@ -158,74 +239,29 @@ export default function DealsSection() {
           </div>
         </div>
 
-        <div className={styles.promoGrid}>
-          <motion.article
-            className={styles.promoCardLight}
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45 }}
-          >
-            <div className={styles.promoTag}>Flat 20% Discount</div>
-            <h3 className={styles.promoTitle}>
-              Freshly <span>Green Plants</span>
-            </h3>
-            <p className={styles.promoText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </p>
-            <div className={styles.promoCountdown}>
-              <div className={styles.promoCountdownItem}>
-                <strong className={styles.promoCountdownValue}>04</strong>
-                <span className={styles.promoCountdownLabel}>Days</span>
-              </div>
-              <div className={styles.promoCountdownItem}>
-                <strong className={styles.promoCountdownValue}>14</strong>
-                <span className={styles.promoCountdownLabel}>Hours</span>
-              </div>
-              <div className={styles.promoCountdownItem}>
-                <strong className={styles.promoCountdownValue}>48</strong>
-                <span className={styles.promoCountdownLabel}>Minutes</span>
-              </div>
-              <div className={styles.promoCountdownItem}>
-                <strong className={styles.promoCountdownValue}>18</strong>
-                <span className={styles.promoCountdownLabel}>Seconds</span>
-              </div>
-            </div>
-            <button
-              type="button"
-              className={styles.promoButton}
-              onClick={() => setSelectedDeal(promos[0])}
-            >
-              Shop Now
-            </button>
-            <div className={styles.promoLeafLeft} aria-hidden="true" />
-            <div className={styles.promoModelLeft} aria-hidden="true" />
-          </motion.article>
+        <div className={styles.comboFeatureStrip}>
+          {featureItems.map((feature, index) => {
+            const Icon = feature.icon;
 
-          <motion.article
-            className={styles.promoCardYellow}
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45, delay: 0.08 }}
-          >
-            <div className={styles.promoTagDark}>Flat 25% Discount</div>
-            <h3 className={styles.promoTitleDark}>
-              Graceful <span>Flower Plant</span>
-            </h3>
-            <p className={styles.promoTextDark}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </p>
-            <button
-              type="button"
-              className={styles.promoButtonDark}
-              onClick={() => setSelectedDeal(promos[1])}
-            >
-              Shop Now
-            </button>
-            <div className={styles.promoModelRight} aria-hidden="true" />
-          </motion.article>
+            return (
+              <motion.div
+                key={feature.title}
+                className={styles.comboFeatureCard}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.45, delay: index * 0.05 }}
+              >
+                <span className={styles.comboFeatureIcon}>
+                  <Icon />
+                </span>
+                <span className={styles.comboFeatureTitle}>{feature.title}</span>
+                <span className={styles.comboFeatureText}>{feature.text}</span>
+              </motion.div>
+            );
+          })}
         </div>
+
       </div>
 
       {selectedDeal ? (
@@ -234,7 +270,7 @@ export default function DealsSection() {
             className={styles.modal}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="deal-modal-title"
+            aria-label="Deal details"
             onClick={(event) => event.stopPropagation()}
           >
             <button
@@ -243,7 +279,7 @@ export default function DealsSection() {
               aria-label="Close deal popup"
               onClick={() => setSelectedDeal(null)}
             >
-              ×
+              x
             </button>
 
             <div className={styles.modalDetails}>
@@ -277,12 +313,9 @@ export default function DealsSection() {
                   <input type="email" placeholder="Enter email address" className={styles.modalInput} />
                 </div>
                 <div className={styles.modalInfoRow}>
-                  <span>Card details</span>
-                  <strong>
-                    {selectedDeal.label} · {selectedDeal.currentPrice} · {selectedDeal.discountPercent}
-                  </strong>
+                  <span>Combo includes</span>
+                  <strong>{selectedDeal.comboItems?.join(" + ") ?? `${selectedDeal.label} - ${selectedDeal.currentPrice}`}</strong>
                 </div>
-
               </div>
             </div>
           </div>
