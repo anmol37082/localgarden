@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -150,6 +150,7 @@ const comboDeals = [
 ];
 
 export default function DealsSection() {
+  const trackRef = useRef(null);
   const [selectedDeal, setSelectedDeal] = useState(null);
 
   useEffect(() => {
@@ -174,6 +175,16 @@ export default function DealsSection() {
     };
   }, [selectedDeal]);
 
+  const scrollDeals = (direction) => {
+    if (!trackRef.current) return;
+
+    const amount = Math.max(320, Math.floor(trackRef.current.clientWidth * 0.8));
+    trackRef.current.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className={styles.dealsSection}>
       <div className="container">
@@ -184,7 +195,26 @@ export default function DealsSection() {
           </h2>
         </div>
 
-        <div className={styles.dealsTrack}>
+        <div className={styles.dealsTrackWrap}>
+          <button
+            type="button"
+            className={`${styles.dealsSwipeButton} ${styles.dealsSwipeLeft}`}
+            onClick={() => scrollDeals("left")}
+            aria-label="Scroll deals left"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.dealsSwipeIcon}>
+              <path
+                d="M15 18 9 12l6-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+
+          <div className={styles.dealsTrack} ref={trackRef}>
           <div className={styles.dealsGrid}>
             {comboDeals.map((item, index) => (
               <motion.article
@@ -237,6 +267,25 @@ export default function DealsSection() {
               </motion.article>
             ))}
           </div>
+        </div>
+
+          <button
+            type="button"
+            className={`${styles.dealsSwipeButton} ${styles.dealsSwipeRight}`}
+            onClick={() => scrollDeals("right")}
+            aria-label="Scroll deals right"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.dealsSwipeIcon}>
+              <path
+                d="m9 6 6 6-6 6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         </div>
 
         <div className={styles.comboFeatureStrip}>

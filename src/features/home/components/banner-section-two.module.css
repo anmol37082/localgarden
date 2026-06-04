@@ -1,9 +1,9 @@
 .bannerSectionTwo {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 27;
   overflow: hidden;
-  background: #0d0f0d;
+  background: #ffffff;
 }
 
 .bannerImage {
@@ -18,12 +18,12 @@
 .bannerOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.24) 100%);
+  background: transparent;
 }
 
 @media (max-width: 575.98px) {
   .bannerSectionTwo {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 27;
   }
 }

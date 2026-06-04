@@ -7,7 +7,7 @@ export default function BannerSectionTwo() {
   return (
     <section className={styles.bannerSectionTwo}>
       <Image
-        src="/locaralgardentextimg.png"
+        src="/banner/banner2.webp"
         alt="Local Garden banner"
         fill
         priority
