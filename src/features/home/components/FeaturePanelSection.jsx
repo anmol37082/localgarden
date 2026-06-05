@@ -7,7 +7,7 @@ import styles from "./feature-panel-section.module.css";
 const features = [
   {
     title: "Nature-Powered Nutrition",
-    image: "/benifites/point1.webp",
+    image: "/benifites/point01.webp",
     description: "Organic nourishment that supports healthy plant growth naturally.",
   },
   {
@@ -43,8 +43,8 @@ export default function FeaturePanelSection() {
           <div className={styles.featureCopy}>
             <div className={styles.sectionKickerDark}>[BENIFITES]</div>
             <h2 className={styles.featureTitle}>
-             Give Your Plants The
-              <span> Love They Grow</span>
+            Give Your Plants the Love 
+              <span> They Grow With.</span>
             </h2>
 
             <div className={styles.featureList}>

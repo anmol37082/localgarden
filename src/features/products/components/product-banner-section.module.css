@@ -27,9 +27,9 @@
   top: clamp(1rem, 4vw, 3rem);
   max-width: min(36rem, 72vw);
   padding: clamp(1.2rem, 3vw, 2.2rem);
-  background: #ffffff;
+  background: transparent;
   box-shadow: none;
-  border: 1px solid rgba(31, 41, 51, 0.08);
+  border: 0;
 }
 
 .title {

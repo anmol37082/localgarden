@@ -42,8 +42,8 @@ export default function Hero() {
           <div className={styles.bannerContent}>
             <motion.div
               className={styles.heroIntro}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
               <h1 className={styles.headline}>
@@ -57,8 +57,8 @@ export default function Hero() {
 
             <motion.div
               className={styles.wordmark}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.08 }}
             >
               Local Garden
@@ -66,8 +66,8 @@ export default function Hero() {
 
             <motion.p
               className={styles.sideNote}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.05 }}
             >
              Advanced plant care formulas that nourish roots, improve soil, and support beautiful natural growth for every plant type. 

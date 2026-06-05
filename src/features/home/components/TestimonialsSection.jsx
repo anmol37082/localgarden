@@ -21,7 +21,7 @@ const testimonials = [
     name: "Aman Verma",
     role: "Verified buyer",
     quote:
-      "The Plant Growth Enhancer worked amazingly for my indoor plants. I use it every 10–12 days, and the growth difference is clearly visible. The leaves became greener, the roots looked stronger, and even my small plants started growing faster naturally.",
+      "The Plant Growth Enhancer worked amazingly for my indoor and outdoor plants. I use it every 10–12 days, and the growth difference is clearly visible. The leaves became greener, the roots looked stronger, and even my small plants started growing faster naturally.",
   },
   {
     type: "quote",
@@ -46,7 +46,7 @@ const testimonials = [
     image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
     avatar: "/testimonilas/profiles/simrankour.webp",
     quote:
-      "What I liked most about Local Garden products is that they are very simple to use and give visible results naturally. My flowering plants are blooming more beautifully now, and even my indoor plants look fresh and healthy every day.",
+      "What I liked most about Local Garden products is that they are very simple to use and give visible results naturally. My flowering plants are blooming more beautifully now, and even my indoor and outdoor plants look fresh and healthy every day.",
     name: "Simran Kaur",
     role: "Verified buyer",
   },
@@ -55,7 +55,7 @@ const testimonials = [
     image: "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1200&q=80",
     avatar: "/testimonilas/profiles/poojaarora.webp",
     quote:
-      "I added BIO-NPK Granules to my indoor plants because the soil had become hard and unhealthy. After regular use, the soil became softer, plants looked more active, and the yellow leaves problem was reduced a lot. It really helped improve the overall health of my plants.",
+      "I added BIO-NPK Granules to my indoor and outdoor plants because the soil had become hard and unhealthy. After regular use, the soil became softer, plants looked more active, and the yellow leaves problem was reduced a lot. It really helped improve the overall health of my plants.",
     name: "Pooja Arora",
     role: "Verified buyer",
   },

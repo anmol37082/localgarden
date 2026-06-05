@@ -1,5 +1,6 @@
 import Hero from "../features/home/components/hero";
 import AboutSection from "../features/home/components/AboutSection";
+import TrustyStrip from "../features/home/components/TrustyStrip";
 import BannerSectionThree from "../features/home/components/BannerSectionThree";
 import BannerSection from "../features/home/components/BannerSection";
 import CaseStudiesSection from "../features/home/components/CaseStudiesSection";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+     
       <AboutSection />
       <BannerSectionThree />
       <FeaturePanelSection />
@@ -22,6 +24,7 @@ export default function Home() {
       <DealsSection />
       <BannerSectionTwo />
       <CaseStudiesSection />
+       <TrustyStrip />
       <ProductVideosSection />
       <BannerSection />
       <FAQSection />

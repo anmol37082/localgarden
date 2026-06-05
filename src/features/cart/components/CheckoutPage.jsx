@@ -17,7 +17,18 @@ import styles from "./checkout-page.module.css";
 
 export default function CheckoutPage() {
   const [cartItems, setCartItems] = useState(() => getCartItems());
-  const [couponInputs, setCouponInputs] = useState({});
+  const [couponInputs, setCouponInputs] = useState(() => {
+    try {
+      const items = getCartItems();
+      const map = {};
+      items.forEach((item) => {
+        map[item.id] = item.couponCode ?? "";
+      });
+      return map;
+    } catch (e) {
+      return {};
+    }
+  });
   const [couponMessages, setCouponMessages] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -47,17 +58,9 @@ export default function CheckoutPage() {
     };
   }, []);
 
-  useEffect(() => {
-    setCouponInputs((current) => {
-      const nextState = {};
-
-      cartItems.forEach((item) => {
-        nextState[item.id] = current[item.id] ?? item.couponCode ?? "";
-      });
-
-      return nextState;
-    });
-  }, [cartItems]);
+  // Avoid calling setState synchronously inside effect to prevent cascading renders.
+  // Coupon inputs are initialized from storage. When cartItems change, ensure any new
+  // items have an entry by lazily filling missing keys on access (handled in JSX using ??).
 
   const { count: itemCount, total } = getCartTotals(cartItems);
   const shippingFee = itemCount > 0 ? 0 : 0;

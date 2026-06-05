@@ -12,7 +12,14 @@ export default function BannerSection() {
         fill
         priority
         sizes="100vw"
-        className={styles.bannerImage}
+        className={styles.bannerDesktopImage}
+      />
+      <Image
+        src="/banner/bannermob1.webp"
+        alt="Banner"
+        fill
+        sizes="100vw"
+        className={styles.bannerMobileImage}
       />
       <div className={styles.bannerOverlay} aria-hidden="true" />
     </section>

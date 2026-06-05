@@ -6,25 +6,25 @@ import styles from "./case-studies-section.module.css";
 
 const caseStudies = [
   {
-    year: "2025",
+    
     title: "For Stronger Roots",
     description: "Nutrition That Starts From The Soil",
     image: "/casestudies/Artboard%201.webp",
   },
   {
-    year: "2025",
+    
     title: "2X Plant Growth",
     description: "Fueling Faster, Healthier & Greener Growth",
     image: "/casestudies/Artboard%202.webp",
   },
   {
-    year: "2025",
+    
     title: "Disease Protection",
     description: "Healthy Plants Begin With Strong Immunity",
     image: "/casestudies/Artboard%203.webp",
   },
   {
-    year: "2025",
+  
     title: "Made For Every Plant",
     description: "From Indoor Pots To Rooftop Gardens",
     image: "/casestudies/Artboard%204.webp",
@@ -35,7 +35,7 @@ export default function CaseStudiesSection() {
   return (
     <section className={styles.caseSection}>
       <div className="container">
-        <div className={styles.sectionKicker}>[CASE STUDIES]</div>
+       
         <h2 className={styles.sectionTitle}>
           <span className={styles.sectionTitleLead}>
             <span className={styles.sectionTitleLeadWord}>Nature </span>

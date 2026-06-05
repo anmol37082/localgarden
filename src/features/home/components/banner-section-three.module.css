@@ -3,27 +3,44 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #0d0f0d;
+  background: #ffffff;
 }
 
-.bannerImage {
+.bannerDesktopImage,
+.bannerMobileImage {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
   display: block;
+}
+
+.bannerDesktopImage {
+  object-fit: contain;
+}
+
+.bannerMobileImage {
+  display: none;
+  object-fit: cover;
 }
 
 .bannerOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.28) 100%);
+  background: transparent;
 }
 
 @media (max-width: 575.98px) {
   .bannerSectionThree {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 5;
+  }
+
+  .bannerDesktopImage {
+    display: none;
+  }
+
+  .bannerMobileImage {
+    display: block;
   }
 }

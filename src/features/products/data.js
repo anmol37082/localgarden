@@ -1,6 +1,6 @@
 ﻿export const productPages = {
   "plant-growth-enhancer": {
-    kicker: "Indoor Plant Care",
+    kicker: "Indoor / Outdoor Plant Care",
     title: "Plant Growth Enhancer",
     rating: "4.9",
     reviews: 67,

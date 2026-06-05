@@ -7,44 +7,49 @@ import styles from "./product-videos-section.module.css";
 
 const productVideos = [
   {
-    title: "Plant Growth Enhancer",
-    description: "Stronger roots and greener growth in one quick care routine.",
-    video: "/productvideo/productvideo01.mp4",
+    title: "LG PV 19-5 2",
+    description: "Product video showcase.",
+    video: "https://res.cloudinary.com/dpfxbkaem/video/upload/v1780578255/LG_PV_19-5_2__1_ixwqnu.mp4",
   },
   {
-    title: "Flower & Fruit Booster",
-    description: "Helps plants bloom better and support healthier fruiting.",
-    video: "/productvideo/productvideo2.mp4",
+    title: "LG 21-05-26 03",
+    description: "Product video showcase.",
+    video: "https://res.cloudinary.com/dpfxbkaem/video/upload/v1780578262/LG_21-05-26_03__1_yb8jzn.mp4",
   },
   {
-    title: "Bio NPK Granules",
-    description: "Dust-free granules for healthier soil and steady nourishment.",
-    video: "https://res.cloudinary.com/dcgxoij6b/video/upload/q_auto,f_auto/productvideo1_qvtcng.mp4",
+    title: "LG PV 19-5 1",
+    description: "Product video showcase.",
+    video: "https://res.cloudinary.com/dpfxbkaem/video/upload/v1780578261/LG_PV_19-5_1_ieeiig.mp4",
   },
   {
-    title: "Plant Growth Enhancer",
-    description: "Useful for plants that need a boost in daily care.",
-    video: "/herovideo3.mp4",
+    title: "LG PV 18-5 2",
+    description: "Product video showcase.",
+    video: "https://res.cloudinary.com/dpfxbkaem/video/upload/v1780578271/LG_PV_18-5_2__1_ltxxnj.mp4",
   },
   {
-    title: "Flower & Fruit Booster",
-    description: "Balanced support for flowering plants and fruit plants.",
-    video: "/herovideofinal.mp4",
+    title: "LG PV 18-5 1",
+    description: "Product video showcase.",
+    video: "https://res.cloudinary.com/dpfxbkaem/video/upload/v1780578275/LG_PV_18-5_1_c2o5tf.mp4",
   },
   {
-    title: "Bio NPK Granules",
-    description: "Supports healthier roots and better soil condition.",
-    video: "/herovideo3.mp4",
+    title: "LG UGC 20-5 1",
+    description: "Product video showcase.",
+    video: "https://res.cloudinary.com/dpfxbkaem/video/upload/v1780578277/LG_UGC_20-5_1_twevbe.mp4",
   },
   {
-    title: "Plant Growth Enhancer",
-    description: "Everyday plant nutrition with an easy application flow.",
-    video: "/herovideofinal.mp4",
+    title: "LG 3-6 2",
+    description: "Product video showcase.",
+    video: "https://res.cloudinary.com/dpfxbkaem/video/upload/v1780578284/LG_3-6_2__1_vis3jt.mp4",
   },
   {
-    title: "Bio NPK Granules",
-    description: "A clean organic option for healthier plant support.",
-    video: "/herovideo3.mp4",
+    title: "LG 21-05-26 02",
+    description: "Product video showcase.",
+    video: "https://res.cloudinary.com/dpfxbkaem/video/upload/v1780578292/LG_21-05-26_02__1_vaq6lf.mp4",
+  },
+  {
+    title: "LG 3-6 1",
+    description: "Product video showcase.",
+    video: "https://res.cloudinary.com/dpfxbkaem/video/upload/v1780578292/LG_3-6_1_mz9616.mp4",
   },
 ];
 
@@ -109,8 +114,8 @@ export default function ProductVideosSection() {
     <section id="pricing" className={styles.videoSection}>
       <div className="container">
         <div className={styles.videoHeading}>
-          <div className={styles.videoKicker}>[PRODUCT VIDEOS]</div>
-          <h2 className={styles.videoTitle}>Plant Videos In Motion</h2>
+          <div className={styles.videoKicker}>[ARE VIDEOS]</div>
+          <h2 className={styles.videoTitle}>Press Play on Real Experiences</h2>
         </div>
 
         <div className={styles.videoRail} ref={scrollerRef}>

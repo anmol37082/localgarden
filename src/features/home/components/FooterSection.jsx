@@ -50,7 +50,7 @@ export default function FooterSection() {
         <Image
           fill
           className={styles.footerArtworkImage}
-          src="/footerreal.webp"
+          src="/footerreal1.webp"
           alt=""
           sizes="100vw"
         />

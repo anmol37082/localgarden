@@ -12,7 +12,14 @@ export default function BannerSectionThree() {
         fill
         priority
         sizes="100vw"
-        className={styles.bannerImage}
+        className={styles.bannerDesktopImage}
+      />
+      <Image
+        src="/banner/bannermob3.webp"
+        alt="Local Garden banner"
+        fill
+        sizes="100vw"
+        className={styles.bannerMobileImage}
       />
       <div className={styles.bannerOverlay} aria-hidden="true" />
     </section>

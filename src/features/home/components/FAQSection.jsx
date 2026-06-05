@@ -21,7 +21,7 @@ const faqs = [
       "Most plants begin showing visible improvement within 7–14 days of regular application. Results may vary depending on the plant type, soil condition, and growing environment.",
   },
   {
-    question: "Is it safe for indoor plants?",
+    question: "Is it safe for indoor and outdoor plants?",
     answer:
       "Yes, our fertilizer is safe for indoor and outdoor plants when used as directed. It provides essential nutrients without harming your plants.",
   },

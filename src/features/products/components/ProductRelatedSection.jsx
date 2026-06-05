@@ -33,7 +33,7 @@ export default function ProductRelatedSection({ product }) {
               </div>
 
               <div className={styles.body}>
-                <div className={styles.label}>Indoor Plant</div>
+                <div className={styles.label}>Indoor Plant / Outdoor Plant</div>
                 <div className={styles.metaRow}>
                   <h3 className={styles.cardTitle}>{item.title}</h3>
                 </div>
