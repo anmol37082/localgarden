@@ -6,6 +6,7 @@ import Image from "next/image";
 import {
   CART_STORAGE_KEY,
   CART_UPDATED_EVENT,
+  formatMoney,
   getCartItems,
   getCartTotals,
   removeCartItem,
@@ -304,7 +305,7 @@ export default function Header() {
 
               <div className={styles.cartSummary}>
                 <span>Total</span>
-                <strong>{cartCount > 0 ? `$${cartTotal.toFixed(2)}` : "$0.00"}</strong>
+                <strong>{cartCount > 0 ? formatMoney(cartTotal) : formatMoney(0)}</strong>
               </div>
 
               <div className={styles.cartActions}>
