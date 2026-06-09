@@ -82,7 +82,7 @@
         alt: "Healthy indoor plant in soft light",
       },
       {
-        src: "/growth%20enhancer/Artboard%203.png",
+        src: "/growth%20enhancer/lovesmall.png",
         alt: "Green plant leaves close up",
       },
     ],
@@ -246,7 +246,7 @@
         alt: "Flowering plant interior scene",
       },
       {
-        src: "/fruit%20and%20flower%20booster/Artboard%203.png",
+        src: "/fruit%20and%20flower%20booster/lovesmall.png",
         alt: "Plant on a shelf with warm light",
       },
     ],
@@ -408,7 +408,7 @@
         alt: "Granules product styled on surface",
       },
       {
-        src: "/BIo%20npk/Artboard%203.png",
+        src: "/BIo%20npk/lovesmall.png",
         alt: "Plant care product image",
       },
     ],
