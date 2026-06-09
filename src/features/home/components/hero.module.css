@@ -17,7 +17,11 @@
 
 @media (max-width: 575.98px) {
   .heroVideo {
-    height: min(72svh, 140vw);
-    min-height: 16rem;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    min-height: 0;
+    max-height: none;
+    object-fit: cover;
   }
 }
