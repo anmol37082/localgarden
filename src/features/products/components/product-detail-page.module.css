@@ -76,6 +76,24 @@
   object-fit: cover;
 }
 
+.videoBadge {
+  position: absolute;
+  left: 50%;
+  bottom: 0.45rem;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.52);
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .mainImageWrap {
   position: relative;
   width: 100%;
@@ -87,6 +105,14 @@
 
 .mainImage {
   object-fit: cover;
+}
+
+.mainVideo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000000;
 }
 
 .imageNav {
@@ -416,6 +442,12 @@
 
   .thumbnailButton {
     min-height: 4.75rem;
+  }
+
+  .videoBadge {
+    bottom: 0.3rem;
+    padding: 0.15rem 0.35rem;
+    font-size: 0.55rem;
   }
 
   .imageNav {

@@ -27,6 +27,34 @@
         alt: "Plant Growth Enhancer product styling image four",
       },
     ],
+    galleryMedia: [
+      {
+        type: "image",
+        src: "/growth%20enhancer/Artboard%201.png",
+        alt: "Plant Growth Enhancer product styling image one",
+      },
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dpfxbkaem/video/upload/q_auto/f_auto/v1781001782/LG_Growth_Enchancer_jad4hv.mp4",
+        poster: "/growth%20enhancer/growthenhancerfalbackvideo.png",
+        alt: "Plant Growth Enhancer product video",
+      },
+      {
+        type: "image",
+        src: "/growth%20enhancer/Artboard%202.png",
+        alt: "Plant Growth Enhancer product styling image two",
+      },
+      {
+        type: "image",
+        src: "/growth%20enhancer/Artboard%203.png",
+        alt: "Plant Growth Enhancer product styling image three",
+      },
+      {
+        type: "image",
+        src: "/growth%20enhancer/Artboard%204.png",
+        alt: "Plant Growth Enhancer product styling image four",
+      },
+    ],
     details:
       "This formula is made to support healthy plant growth with balanced nourishment for everyday plant care. It helps strengthen roots, improve leaf health, and maintain overall plant freshness, making it grow healthier. Suitable for both indoor and outdoor plants, it works well for home gardens, balconies, terraces, and decorative plants. It's an easy-to-use liquid formula that blends smoothly with water. Just add 5ml of Plant growth enhancer to 1 litre of water. It supports greener, healthier, and more active plant growth.",
     dimensions:
@@ -50,7 +78,7 @@
     ],
     loveImages: [
       {
-        src: "/growth%20enhancer/Artboard%202.png",
+        src: "/growth%20enhancer/lovelarge.png",
         alt: "Healthy indoor plant in soft light",
       },
       {
@@ -117,8 +145,7 @@
     bannerTitle: "Care Your Plants Can Feel ",
     bannerText:
       "Give your plants the nourishment they need for healthier and greener growth. Made to support everyday plant care for both indoor and outdoor plants.",
-    bannerImage:
-      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80",
+    bannerImage: "/growth%20enhancer/growthenhancermainbanner.png",
     relatedProducts: [
       {
         href: "/products/flower-fruit-booster",
@@ -163,6 +190,34 @@
         alt: "Flower and fruit booster product image four",
       },
     ],
+    galleryMedia: [
+      {
+        type: "image",
+        src: "/fruit%20and%20flower%20booster/Artboard%201.png",
+        alt: "Flower and fruit booster product image one",
+      },
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dpfxbkaem/video/upload/q_auto/f_auto/v1780997143/FF_Booster_for_web_ewxnaw.mp4",
+        poster: "/fruit%20and%20flower%20booster/flowerfruitfallbackvideo.png",
+        alt: "Flower and fruit booster product video",
+      },
+      {
+        type: "image",
+        src: "/fruit%20and%20flower%20booster/Artboard%202.png",
+        alt: "Flower and fruit booster product image two",
+      },
+      {
+        type: "image",
+        src: "/fruit%20and%20flower%20booster/Artboard%203.png",
+        alt: "Flower and fruit booster product image three",
+      },
+      {
+        type: "image",
+        src: "/fruit%20and%20flower%20booster/Artboard%204.png",
+        alt: "Flower and fruit booster product image four",
+      },
+    ],
     details:
       "Flower and Fruit Booster is specifically designed to support healthy flowering and improved fruit development in plants. Its liquid formula helps plants absorb nutrients more effectively for improved growth and active blooming. Suitable for vegetables, flowers, and fruit plants, it works well for both indoor and outdoor plants.",
     dimensions:
@@ -187,7 +242,7 @@
     ],
     loveImages: [
       {
-        src: "/fruit%20and%20flower%20booster/Artboard%202.png",
+        src: "/fruit%20and%20flower%20booster/lovelarge.png",
         alt: "Flowering plant interior scene",
       },
       {
@@ -198,8 +253,7 @@
     bannerTitle: "Trusted Care for Healthier Plants ",
     bannerText:
       "Trusted care that helps your plants grow stronger, greener, and healthier every day. A reliable formula designed to support complete plant health and natural growth.",
-    bannerImage:
-      "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f8?auto=format&fit=crop&w=1800&q=80",
+    bannerImage: "/fruit%20and%20flower%20booster/flowerboostermainbanner.png",
     reviewItems: [
       {
         name: "Anjali",
@@ -300,6 +354,34 @@
         alt: "Bio NPK granules product image four",
       },
     ],
+    galleryMedia: [
+      {
+        type: "image",
+        src: "/BIo%20npk/Artboard%201.png",
+        alt: "Bio NPK granules product image one",
+      },
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dpfxbkaem/video/upload/q_auto/f_auto/v1781000172/Bio_NPK_p5zl3a.mp4",
+        poster: "/BIo%20npk/bionpkvideofallback.png",
+        alt: "Bio NPK granules product video",
+      },
+      {
+        type: "image",
+        src: "/BIo%20npk/Artboard%202.png",
+        alt: "Bio NPK granules product image two",
+      },
+      {
+        type: "image",
+        src: "/BIo%20npk/Artboard%203.png",
+        alt: "Bio NPK granules product image three",
+      },
+      {
+        type: "image",
+        src: "/BIo%20npk/Artboard%204.png",
+        alt: "Bio NPK granules product image four",
+      },
+    ],
     details:
       "These organic and dust-free granules are specially designed to support healthy plant growth and improve overall soil condition. The slow-release formula helps provide steady nourishment to plants while supporting stronger roots and better plant immunity. Suitable for indoor and outdoor plants, it works well for home gardens, balconies, pots, and decorative plants. Regular use helps maintain healthier soil, greener leaves, and more active plant growth in a natural way.",
     dimensions:
@@ -322,7 +404,7 @@
     ],
     loveImages: [
       {
-        src: "/BIo%20npk/Artboard%202.png",
+        src: "/BIo%20npk/lovelarge.png",
         alt: "Granules product styled on surface",
       },
       {
@@ -333,8 +415,7 @@
     bannerTitle: "Everything Your Plants Need to Grow Better ",
     bannerText:
       "Complete care to support healthier growth, stronger roots, and greener plants. Made to give your plants the nourishment they need every day.",
-    bannerImage:
-      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80",
+    bannerImage: "/BIo%20npk/bionpkmainbanner.png",
     reviewItems: [
       {
         name: "Rashmi Sharma",

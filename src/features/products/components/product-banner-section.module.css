@@ -5,7 +5,8 @@
 
 .banner {
   position: relative;
-  min-height: clamp(24rem, 48vw, 44rem);
+  aspect-ratio: 16 / 8.6;
+  min-height: clamp(26rem, 50vw, 46rem);
   border-radius: 0;
   overflow: hidden;
   background: #ffffff;
@@ -19,6 +20,9 @@
 .bannerImage {
   object-fit: cover;
   object-position: center;
+  opacity: 1;
+  filter: none;
+  mix-blend-mode: normal;
 }
 
 .card {
@@ -34,20 +38,22 @@
 
 .title {
   margin: 0;
-  color: #20303d;
+  color: #ffffff;
   font-family: var(--title-font);
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 0.98;
   letter-spacing: -0.05em;
   font-weight: 700;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.18);
 }
 
 .text {
   margin: 1rem 0 0;
-  color: #47525d;
+  color: rgba(255, 255, 255, 0.92);
   font-size: 0.96rem;
   line-height: 1.6;
   max-width: 31rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
 }
 
 @media (max-width: 767.98px) {

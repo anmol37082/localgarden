@@ -17,11 +17,75 @@ const interBody = localFont({
 });
 
 export const metadata = {
-  title: "PlantBoost",
-  description: "Premium plant growth enhancer landing page built with Next.js and Bootstrap.",
+  title: {
+    default: "Best Organic Liquid Fertilizer for Plant",
+    template: "%s | Best Organic Liquid Fertilizer for Plant",
+  },
+  description:
+    "Boost growth naturally with the best organic liquid fertilizer for plants. Perfect for both indoor houseplants and outdoor gardens to deliver lush greens and vibrant blooms fast. Shop now for 100% natural plant care!",
+  keywords: [
+    "best organic liquid fertilizer for plant",
+    "organic liquid fertilizer",
+    "plant growth enhancer",
+    "indoor plant care",
+    "outdoor garden fertilizer",
+    "natural plant care",
+    "flower booster",
+    "bio npk granules",
+  ],
+  icons: {
+    icon: "/weblogo.png",
+    shortcut: "/weblogo.png",
+    apple: "/weblogo.png",
+  },
+  openGraph: {
+    title: "Best Organic Liquid Fertilizer for Plant",
+    description:
+      "Boost growth naturally with the best organic liquid fertilizer for plants. Perfect for both indoor houseplants and outdoor gardens to deliver lush greens and vibrant blooms fast. Shop now for 100% natural plant care!",
+    url: "/",
+    siteName: "Local Garden",
+    images: [
+      {
+        url: "/weblogo.png",
+        width: 512,
+        height: 512,
+        alt: "Local Garden",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Organic Liquid Fertilizer for Plant",
+    description:
+      "Boost growth naturally with the best organic liquid fertilizer for plants. Perfect for both indoor houseplants and outdoor gardens to deliver lush greens and vibrant blooms fast. Shop now for 100% natural plant care!",
+    images: ["/weblogo.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Local Garden",
+    url: "/",
+    logo: "/weblogo.png",
+    sameAs: [
+      "https://www.instagram.com/local_garden_in/",
+      "https://www.facebook.com/LocalGardenIn",
+    ],
+    description:
+      "Boost growth naturally with the best organic liquid fertilizer for plants. Perfect for both indoor houseplants and outdoor gardens to deliver lush greens and vibrant blooms fast.",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        availableLanguage: ["en"],
+      },
+    ],
+  };
+
   return (
     <html
       lang="en"
@@ -29,6 +93,14 @@ export default function RootLayout({ children }) {
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+      </head>
       <body suppressHydrationWarning>
         <Header />
         {children}

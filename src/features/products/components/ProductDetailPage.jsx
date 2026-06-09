@@ -15,7 +15,7 @@ function StarRating({ rating, reviews }) {
     <div className={styles.ratingRow} aria-label={`${rating} out of 5 stars from ${reviews} reviews`}>
       <div className={styles.stars} aria-hidden="true">
         {"★★★★★".split("").map((star, index) => (
-          <span key={`${star}-${index}`}>★</span>
+          <span key={`${star}-${index}`}>{star}</span>
         ))}
       </div>
       <span className={styles.ratingValue}>{rating}</span>
@@ -25,11 +25,15 @@ function StarRating({ rating, reviews }) {
 }
 
 export default function ProductDetailPage({ product, productSlug }) {
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const galleryItems = product.galleryMedia ?? product.images ?? [];
+  const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [openPanel, setOpenPanel] = useState("details");
 
-  const activeImage = product.images[activeImageIndex] ?? product.images[0];
+  const activeMedia = galleryItems[activeMediaIndex] ?? galleryItems[0];
+  const isActiveVideo = activeMedia?.type === "video";
+  const activeImage =
+    isActiveVideo ? product.images?.[0] ?? product.galleryMedia?.[0] : activeMedia;
 
   const confidenceTitle = product.confidenceTitle ?? "Buy with confidence";
   const confidenceItems = useMemo(
@@ -43,11 +47,11 @@ export default function ProductDetailPage({ product, productSlug }) {
     [product.confidenceItems],
   );
 
-  const moveImage = (direction) => {
-    setActiveImageIndex((current) => {
+  const moveMedia = (direction) => {
+    setActiveMediaIndex((current) => {
       const next = current + direction;
-      if (next < 0) return product.images.length - 1;
-      if (next >= product.images.length) return 0;
+      if (next < 0) return galleryItems.length - 1;
+      if (next >= galleryItems.length) return 0;
       return next;
     });
   };
@@ -105,52 +109,76 @@ export default function ProductDetailPage({ product, productSlug }) {
         <div className={styles.heroGrid}>
           <div className={styles.galleryPanel}>
             <div className={styles.thumbnailRail}>
-              {product.images.map((image, index) => (
-                <button
-                  key={image.src}
-                  type="button"
-                  className={`${styles.thumbnailButton} ${
-                    index === activeImageIndex ? styles.thumbnailButtonActive : ""
-                  }`}
-                  onClick={() => setActiveImageIndex(index)}
-                  aria-label={`View image ${index + 1} of ${product.title}`}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="96px"
-                    className={styles.thumbnailImage}
-                  />
-                </button>
-              ))}
+              {galleryItems.map((item, index) => {
+                const isVideo = item.type === "video";
+                const thumbnailSource = isVideo ? item.poster ?? product.images?.[0]?.src : item.src;
+
+                return (
+                  <button
+                    key={`${item.type ?? "image"}-${item.src}`}
+                    type="button"
+                    className={`${styles.thumbnailButton} ${
+                      index === activeMediaIndex ? styles.thumbnailButtonActive : ""
+                    }`}
+                    onClick={() => setActiveMediaIndex(index)}
+                    aria-label={`View ${isVideo ? "video" : "image"} ${index + 1} of ${product.title}`}
+                  >
+                    {thumbnailSource ? (
+                      <Image
+                        src={thumbnailSource}
+                        alt={item.alt}
+                        fill
+                        sizes="96px"
+                        className={styles.thumbnailImage}
+                      />
+                    ) : null}
+                    {isVideo ? <span className={styles.videoBadge} aria-hidden="true">Play</span> : null}
+                  </button>
+                );
+              })}
             </div>
 
             <div className={styles.mainImageWrap}>
-              <Image
-                src={activeImage.src}
-                alt={activeImage.alt}
-                fill
-                priority
-                sizes="(max-width: 991px) 100vw, 60vw"
-                className={styles.mainImage}
-              />
+              {isActiveVideo ? (
+                <video
+                  className={styles.mainVideo}
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster={activeMedia.poster}
+                  preload="metadata"
+                >
+                  <source src={activeMedia.src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <Image
+                  src={activeImage.src}
+                  alt={activeImage.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 991px) 100vw, 60vw"
+                  className={styles.mainImage}
+                />
+              )}
 
               <button
                 type="button"
                 className={`${styles.imageNav} ${styles.imageNavLeft}`}
-                onClick={() => moveImage(-1)}
-                aria-label="Previous image"
+                onClick={() => moveMedia(-1)}
+                aria-label="Previous media"
               >
-                ‹
+                &#8249;
               </button>
               <button
                 type="button"
                 className={`${styles.imageNav} ${styles.imageNavRight}`}
-                onClick={() => moveImage(1)}
-                aria-label="Next image"
+                onClick={() => moveMedia(1)}
+                aria-label="Next media"
               >
-                ›
+                &#8250;
               </button>
             </div>
           </div>
