@@ -61,7 +61,7 @@
 .dealsSwipeButton {
   display: inline-flex;
   position: absolute;
-  top: 50%;
+  top: 28%;
   z-index: 3;
   align-items: center;
   justify-content: center;
@@ -570,11 +570,11 @@
   }
 
   .dealsSwipeLeft {
-    left: 0.35rem;
+    left: 0.15rem;
   }
 
   .dealsSwipeRight {
-    right: 0.35rem;
+    right: 0.15rem;
   }
 
   .modalDetails {
@@ -657,6 +657,14 @@
 
   .dealComboItems {
     gap: 0.3rem;
+  }
+
+  .dealBody {
+    padding-bottom: 0.15rem;
+  }
+
+  .dealLink {
+    margin-top: 0.55rem;
   }
 
   .comboFeatureStrip {

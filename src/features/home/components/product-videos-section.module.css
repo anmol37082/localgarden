@@ -39,7 +39,7 @@
   scroll-snap-type: x proximity;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  touch-action: pan-x;
+  touch-action: auto;
 }
 
 .videoRail::-webkit-scrollbar {
