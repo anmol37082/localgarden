@@ -123,7 +123,6 @@ export default function ProductSection() {
               transition={{ duration: 0.45, delay: index * 0.08 }}
             >
               <Link href={item.href} className={styles.productImageLink} aria-label={`Open ${item.title}`}>
-                <div className={styles.productBadge}>{item.discountPercent}</div>
                 <div className={styles.productImageWrap}>
                   <Image
                     src={item.image}
@@ -145,8 +144,11 @@ export default function ProductSection() {
                   </div>
                 </div>
                 <div className={styles.productPriceRow}>
-                  <div className={styles.productCurrentPrice}>{item.currentPrice}</div>
-                  <div className={styles.productOriginalPrice}>{item.originalPrice}</div>
+                  <div className={styles.productPriceGroup}>
+                    <div className={styles.productCurrentPrice}>{item.currentPrice}</div>
+                    <div className={styles.productOriginalPrice}>{item.originalPrice}</div>
+                  </div>
+                  <div className={styles.productBadge}>{item.discountPercent}</div>
                 </div>
                 <button
                   type="button"
@@ -197,7 +199,7 @@ export default function ProductSection() {
           <div className={styles.productPromoStack}>
             <div className={styles.productPromoImageCard}>
               <Image
-                src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=1200&q=80"
+                src="https://images.unsplash.com/photo-1515150144380-bca9f1650ed9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
                 fill
                 sizes="(max-width: 991px) 100vw, 18vw"
@@ -206,7 +208,7 @@ export default function ProductSection() {
             </div>
             <div className={styles.productPromoImageCard}>
               <Image
-                src="https://images.unsplash.com/photo-1778767061107-9d2cff5a132b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1747339385292-d58fdff13938?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
                 fill
                 sizes="(max-width: 991px) 100vw, 18vw"

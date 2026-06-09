@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { submitRowsToGoogleSheet } from "../../../lib/google-sheets";
 import styles from "./deals-section.module.css";
 
 const comboProducts = {
@@ -63,6 +64,14 @@ export default function DealsSection() {
   const trackRef = useRef(null);
   const [selectedDeal, setSelectedDeal] = useState(null);
   const [isThanksVisible, setIsThanksVisible] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    mobile: "",
+    alternateMobile: "",
+    address: "",
+  });
 
   useEffect(() => {
     if (!selectedDeal) {
@@ -86,19 +95,61 @@ export default function DealsSection() {
     };
   }, [selectedDeal]);
 
-  useEffect(() => {
-    if (!selectedDeal) {
-      setIsThanksVisible(false);
-    }
-  }, [selectedDeal]);
-
   const closeModal = () => {
     setIsThanksVisible(false);
     setSelectedDeal(null);
+    setSubmitError("");
+    setFormData({
+      name: "",
+      mobile: "",
+      alternateMobile: "",
+      address: "",
+    });
   };
 
-  const handleBuyNow = () => {
-    setIsThanksVisible(true);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleBuyNow = async (event) => {
+    event.preventDefault();
+    setSubmitError("");
+    setIsSubmitting(true);
+
+    try {
+      if (!selectedDeal) {
+        throw new Error("No deal selected.");
+      }
+
+      const submission = await submitRowsToGoogleSheet({
+        sheetName: "ComboDeals",
+        rows: [
+          {
+            submittedAt: new Date().toISOString(),
+            dealName: selectedDeal.title,
+            comboItems: selectedDeal.comboItems.join(" | "),
+            currentPrice: selectedDeal.currentPrice,
+            originalPrice: selectedDeal.originalPrice,
+            discountPercent: selectedDeal.discountPercent,
+            name: formData.name,
+            mobile: formData.mobile,
+            alternateMobile: formData.alternateMobile,
+            address: formData.address,
+          },
+        ],
+      });
+
+      if (submission?.skipped) {
+        throw new Error("Set NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL first.");
+      }
+
+      setIsThanksVisible(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Failed to submit combo deal.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollDeals = (direction) => {
@@ -151,7 +202,6 @@ export default function DealsSection() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.45, delay: index * 0.08 }}
                 >
-                  <div className={styles.dealBadge}>{item.discountPercent}</div>
                   <div className={styles.dealImageWrap}>
                     <Image
                       src={item.image}
@@ -179,8 +229,11 @@ export default function DealsSection() {
                       ))}
                     </div>
                     <div className={styles.dealPriceRow}>
-                      <div className={styles.dealCurrent}>{item.currentPrice}</div>
-                      <div className={styles.dealOriginal}>{item.originalPrice}</div>
+                      <div className={styles.dealPriceGroup}>
+                        <div className={styles.dealCurrent}>{item.currentPrice}</div>
+                        <div className={styles.dealOriginal}>{item.originalPrice}</div>
+                      </div>
+                      <div className={styles.dealBadge}>{item.discountPercent}</div>
                     </div>
                     <button
                       type="button"
@@ -219,7 +272,7 @@ export default function DealsSection() {
       {selectedDeal ? (
         <div className={styles.modalBackdrop} role="presentation" onClick={closeModal}>
           <div
-            className={styles.modal}
+            className={`${styles.modal} ${isThanksVisible ? styles.modalThanks : ""}`}
             role="dialog"
             aria-modal="true"
             aria-label="Deal details"
@@ -236,7 +289,18 @@ export default function DealsSection() {
 
             {isThanksVisible ? (
               <div className={styles.thanksPopup}>
-                <div className={styles.thanksBadge}>Thanks</div>
+                <div className={styles.thanksBadge} aria-label="Success" role="img">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.thanksIcon}>
+                    <path
+                      d="M20 6 9 17l-5-5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
                 <h3 className={styles.thanksTitle}>Thanks for your order.</h3>
                 <p className={styles.thanksText}>
                   Your combo request has been received. We will contact you shortly on the details you entered.
@@ -248,7 +312,7 @@ export default function DealsSection() {
                 </div>
               </div>
             ) : (
-              <div className={styles.modalDetails}>
+              <form className={styles.modalDetails} onSubmit={handleBuyNow}>
                 <div className={styles.modalVisual}>
                   <div className={styles.modalImageWrap}>
                     <Image
@@ -260,30 +324,63 @@ export default function DealsSection() {
                     />
                   </div>
 
-                  <button type="button" className={styles.buyNowButton} onClick={handleBuyNow}>
-                    Buy Now
+                  <button type="submit" className={styles.buyNowButton} disabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : "Buy Now"}
                   </button>
                 </div>
 
                 <div className={styles.modalInfo}>
                   <div className={styles.modalInfoRow}>
                     <span>Name</span>
-                    <input type="text" placeholder="Enter name" className={styles.modalInput} />
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Enter name"
+                      className={styles.modalInput}
+                      required
+                    />
                   </div>
                   <div className={styles.modalInfoRow}>
                     <span>Mob</span>
-                    <input type="tel" placeholder="Enter mobile number" className={styles.modalInput} />
+                    <input
+                      type="tel"
+                      name="mobile"
+                      value={formData.mobile}
+                      onChange={handleInputChange}
+                      placeholder="Enter mobile number"
+                      className={styles.modalInput}
+                      required
+                    />
                   </div>
                   <div className={styles.modalInfoRow}>
                     <span>Mobile Alternative</span>
-                    <input type="tel" placeholder="Enter alternative mobile number" className={styles.modalInput} />
+                    <input
+                      type="tel"
+                      name="alternateMobile"
+                      value={formData.alternateMobile}
+                      onChange={handleInputChange}
+                      placeholder="Enter alternative mobile number"
+                      className={styles.modalInput}
+                      required
+                    />
                   </div>
                   <div className={styles.modalInfoRow}>
                     <span>Shipping Address</span>
-                    <input type="text" placeholder="Enter shipping address" className={styles.modalInput} />
+                    <input
+                      type="text"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleInputChange}
+                      placeholder="Enter shipping address"
+                      className={styles.modalInput}
+                      required
+                    />
                   </div>
+                  {submitError ? <div className={styles.thanksText}>{submitError}</div> : null}
                 </div>
-              </div>
+              </form>
             )}
           </div>
         </div>

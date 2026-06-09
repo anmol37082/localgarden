@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { submitRowsToGoogleSheet } from "../../../lib/google-sheets";
 import styles from "./product-reviews-section.module.css";
 
 const ratingRows = [
@@ -33,6 +34,8 @@ function Stars({ rating, className }) {
 export default function ProductReviewsSection({ product }) {
   const [reviewOpen, setReviewOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -104,11 +107,13 @@ export default function ProductReviewsSection({ product }) {
       review: "",
     });
     setSubmitted(false);
+    setSubmitError("");
     setReviewOpen(true);
   };
 
   const closeReviewForm = () => {
     setReviewOpen(false);
+    setSubmitError("");
   };
 
   const handleInputChange = (event) => {
@@ -116,9 +121,36 @@ export default function ProductReviewsSection({ product }) {
     setFormData((current) => ({ ...current, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitError("");
+    setIsSubmitting(true);
+
+    try {
+      const submission = await submitRowsToGoogleSheet({
+        sheetName: "Reviews",
+        rows: [
+          {
+            submittedAt: new Date().toISOString(),
+            productName: product.title,
+            name: formData.name,
+            email: formData.email,
+            rating: Number(formData.rating),
+            review: formData.review,
+          },
+        ],
+      });
+
+      if (submission?.skipped) {
+        throw new Error("Set NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL first.");
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Failed to submit review.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -300,8 +332,10 @@ export default function ProductReviewsSection({ product }) {
                   />
                 </label>
 
+                {submitError ? <div className={styles.modalText}>{submitError}</div> : null}
+
                 <button type="submit" className={styles.submitButton}>
-                  Submit review
+                  {isSubmitting ? "Sending..." : "Submit review"}
                 </button>
               </form>
             ) : (

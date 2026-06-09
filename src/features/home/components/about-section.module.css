@@ -1,6 +1,14 @@
 .aboutSection {
   padding: clamp(2.25rem, 5vw, 5rem) 0;
   background: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 576px) {
+  .aboutSection {
+    margin-top: -1px;
+  }
 }
 
 .sectionKicker {

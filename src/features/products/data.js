@@ -43,9 +43,9 @@
     ],
     lovePoints: [
       "Made to support healthy plant growth naturally.",
-      "Suitable for both indoor and outdoor plants",
+      "Suitable for both indoor and outdoor plants.",
       "Easy-to-use liquid formula.",
-      "Helps promote greener leaves and stronger roots",
+      "Helps promote greener leaves and stronger roots.",
       "Works well for all kinds of plants.",
     ],
     loveImages: [
@@ -116,7 +116,7 @@
     ],
     bannerTitle: "Care Your Plants Can Feel ",
     bannerText:
-      "Give your plants the nourishment they need for healthier and greener growth.Made to support everyday plant care for both indoor and outdoor plants.",
+      "Give your plants the nourishment they need for healthier and greener growth. Made to support everyday plant care for both indoor and outdoor plants.",
     bannerImage:
       "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80",
     relatedProducts: [
@@ -332,7 +332,7 @@
     ],
     bannerTitle: "Everything Your Plants Need to Grow Better ",
     bannerText:
-      "Complete care to support healthier growth, stronger roots, and greener plants.Made to give your plants the nourishment they need every day.",
+      "Complete care to support healthier growth, stronger roots, and greener plants. Made to give your plants the nourishment they need every day.",
     bannerImage:
       "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80",
     reviewItems: [

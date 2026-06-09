@@ -13,6 +13,7 @@ import {
   CART_UPDATED_EVENT,
   updateCartItemQuantity,
 } from "../cart-storage";
+import { submitRowsToGoogleSheet } from "../../../lib/google-sheets";
 import styles from "./checkout-page.module.css";
 
 export default function CheckoutPage() {
@@ -25,12 +26,14 @@ export default function CheckoutPage() {
         map[item.id] = item.couponCode ?? "";
       });
       return map;
-    } catch (e) {
+    } catch {
       return {};
     }
   });
   const [couponMessages, setCouponMessages] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -63,6 +66,7 @@ export default function CheckoutPage() {
   // items have an entry by lazily filling missing keys on access (handled in JSX using ??).
 
   const { count: itemCount, total } = getCartTotals(cartItems);
+  const canPlaceOrder = cartItems.length > 0;
   const shippingFee = itemCount > 0 ? 0 : 0;
   const grandTotal = total + shippingFee;
 
@@ -75,14 +79,69 @@ export default function CheckoutPage() {
     window.dispatchEvent(new CustomEvent(CART_UPDATED_EVENT));
   };
 
-  const handleSubmit = (event) => {
+  const buildCheckoutRows = (items, customer) => {
+    const submittedAt = new Date().toISOString();
+    const orderId = `CHK-${Date.now()}`;
+
+    return items.map((item) => {
+      const quantity = Number(item.quantity) || 1;
+      const baseUnitPrice = Number(item.baseUnitPrice ?? item.unitPrice) || 0;
+      const finalUnitPrice = Number(item.unitPrice ?? item.baseUnitPrice) || 0;
+      const basePrice = Number((baseUnitPrice * quantity).toFixed(2));
+      const finalPrice = Number((finalUnitPrice * quantity).toFixed(2));
+
+      return {
+        orderId,
+        submittedAt,
+        customerName: customer.name,
+        email: customer.email,
+        phone: customer.phone,
+        address: customer.address,
+        productName: item.title ?? "",
+        quantity,
+        basePrice,
+        discountAmount: Number((basePrice - finalPrice).toFixed(2)),
+        couponApplied: item.couponCode ? "YES" : "NO",
+        couponCode: item.couponCode || "",
+        finalPrice,
+        image: item.imageSrc ?? "",
+      };
+    });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    clearCartItems();
-    setCartItems([]);
-    setCouponInputs({});
-    setCouponMessages({});
-    notifyCartUpdated();
-    setSubmitted(true);
+    setSubmitError("");
+
+    if (!canPlaceOrder) {
+      setSubmitError("Your cart is empty. Add a product before placing the order.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const rows = buildCheckoutRows(cartItems, formData);
+      const submission = await submitRowsToGoogleSheet({
+        sheetName: "Checkout",
+        rows,
+      });
+
+      if (submission?.skipped) {
+        throw new Error("Set NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL first.");
+      }
+
+      clearCartItems();
+      setCartItems([]);
+      setCouponInputs({});
+      setCouponMessages({});
+      notifyCartUpdated();
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Failed to submit checkout data.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const adjustQuantity = (itemId, delta) => {
@@ -128,20 +187,21 @@ export default function CheckoutPage() {
       <div className="container">
         <div className={styles.headerRow}>
           <div>
-            <div className={styles.kicker}>Checkout</div>
-            <h1 className={styles.title}>Review your order and finish in one step</h1>
+            <div className={styles.kicker}>Final checkout</div>
+            <h1 className={styles.title}>Double-check everything, then place your order in one clean step</h1>
             <p className={styles.subtitle}>
-              No backend is needed here. Your cart is stored locally and this page gives you a clean final review.
+              Take a final look at your products, quantities, and discounts before confirming your order.
+              Everything is kept simple and easy to review.
             </p>
           </div>
         </div>
 
         {submitted ? (
-          <section className={styles.successCard}>
+            <section className={styles.successCard}>
             <div className={styles.successBadge}>Order placed</div>
-            <h2 className={styles.successTitle}>Your order has been captured locally.</h2>
+            <h2 className={styles.successTitle}>Your order has been captured successfully.</h2>
             <p className={styles.successText}>
-              This demo keeps everything on the client side, so you can test the checkout flow without a server.
+              Thanks for placing your order. You can return to the home page and continue shopping anytime.
             </p>
             <Link href="/" className={styles.successButton}>
               Back to home
@@ -173,8 +233,10 @@ export default function CheckoutPage() {
                   <textarea name="address" value={formData.address} onChange={handleInputChange} rows={4} required />
                 </label>
 
-                <button type="submit" className={styles.placeOrderButton}>
-                  Place order
+                {submitError ? <div className={styles.couponMessageError}>{submitError}</div> : null}
+
+                <button type="submit" className={styles.placeOrderButton} disabled={!canPlaceOrder || isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Place order"}
                 </button>
               </form>
             </section>

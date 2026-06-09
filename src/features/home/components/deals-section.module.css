@@ -111,19 +111,18 @@
 }
 
 .dealBadge {
-  position: absolute;
-  left: 0.9rem;
-  top: 0.9rem;
-  z-index: 2;
   display: inline-flex;
   align-items: center;
-  padding: 0.38rem 0.75rem;
-  border-radius: 999px;
-  background: #6ea566;
-  color: #ffffff;
-  font-size: 0.72rem;
-  font-weight: 400;
+  justify-content: center;
+  min-height: 1.65rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #4f7f46;
+  font-size: 0.82rem;
+  font-weight: 600;
   text-transform: lowercase;
+  white-space: nowrap;
 }
 
 .dealImageWrap {
@@ -208,9 +207,17 @@
 
 .dealPriceRow {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  margin-top: 0.35rem;
+}
+
+.dealPriceGroup {
+  display: inline-flex;
   align-items: baseline;
   gap: 0.45rem;
-  margin-top: 0.35rem;
+  min-width: 0;
 }
 
 .dealCurrent {
@@ -352,6 +359,12 @@
   scrollbar-width: none;
 }
 
+.modalThanks {
+  width: min(100%, 34rem);
+  max-height: none;
+  padding: 1.15rem;
+}
+
 .modal::-webkit-scrollbar {
   display: none;
 }
@@ -457,8 +470,8 @@
 .thanksPopup {
   display: grid;
   justify-items: center;
-  gap: 0.85rem;
-  padding: 1.4rem 0.5rem 0.5rem;
+  gap: 0.8rem;
+  padding: 2.2rem 0.9rem 1.1rem;
   text-align: center;
 }
 
@@ -466,29 +479,35 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2rem;
-  padding: 0 0.8rem;
+  width: 3.6rem;
+  height: 3.6rem;
   border-radius: 999px;
   background: rgba(31, 122, 95, 0.1);
   color: #1f7a5f;
-  font-size: 0.8rem;
-  font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(31, 122, 95, 0.08);
+}
+
+.thanksIcon {
+  width: 2.05rem;
+  height: 2.05rem;
+  display: block;
 }
 
 .thanksTitle {
   margin: 0;
   color: #242424;
   font-family: var(--title-font);
-  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  line-height: 1.06;
+  letter-spacing: -0.04em;
 }
 
 .thanksText {
   margin: 0;
-  max-width: 31rem;
-  color: #5f6764;
-  line-height: 1.6;
+  max-width: 27rem;
+  color: #66706c;
+  line-height: 1.65;
+  font-size: 0.98rem;
 }
 
 .thanksActions {
@@ -496,18 +515,19 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem;
-  margin-top: 0.35rem;
+  margin-top: 0.6rem;
 }
 
 .thanksSecondaryButton {
-  min-height: 2.9rem;
-  padding: 0 1.15rem;
-  border: 1px solid rgba(56, 68, 63, 0.14);
+  min-height: 2.8rem;
+  padding: 0 1.3rem;
+  border: 1px solid rgba(31, 122, 95, 0.16);
   border-radius: 999px;
-  background: #ffffff;
-  color: #1f2933;
+  background: #f7faf8;
+  color: #1f5e3b;
   font-weight: 700;
   font: inherit;
+  box-shadow: 0 8px 20px rgba(20, 28, 21, 0.05);
 }
 
 .modalInput {
@@ -671,6 +691,11 @@
     padding: 1rem;
   }
 
+  .modalThanks {
+    width: min(100%, 22rem);
+    padding: 0.9rem;
+  }
+
   .modalHeader {
     padding-right: 2.2rem;
   }
@@ -682,5 +707,23 @@
   .modalImageWrap {
     min-height: 14rem;
     max-height: 14rem;
+  }
+
+  .thanksPopup {
+    padding: 1.8rem 0.5rem 0.9rem;
+  }
+
+  .thanksBadge {
+    width: 3.1rem;
+    height: 3.1rem;
+  }
+
+  .thanksIcon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .thanksText {
+    font-size: 0.93rem;
   }
 }

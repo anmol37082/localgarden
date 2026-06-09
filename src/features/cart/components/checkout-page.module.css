@@ -106,6 +106,13 @@
   font-weight: 700;
 }
 
+.placeOrderButton:disabled {
+  cursor: not-allowed;
+  background: #9fb6ae;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0.9;
+}
+
 .summaryList {
   display: grid;
   gap: 0.75rem;

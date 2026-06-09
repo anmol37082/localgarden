@@ -131,6 +131,9 @@
   z-index: 0;
   background: #ffffff;
   object-fit: cover;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
 }
 
 .bannerStats {
