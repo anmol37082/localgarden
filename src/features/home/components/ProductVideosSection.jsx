@@ -114,7 +114,7 @@ export default function ProductVideosSection() {
     <section id="pricing" className={styles.videoSection}>
       <div className="container">
         <div className={styles.videoHeading}>
-          <div className={styles.videoKicker}>[ARE VIDEOS]</div>
+          <div className={styles.videoKicker}>[OUR VIDEOS]</div>
           <h2 className={styles.videoTitle}>Press Play on Real Experiences</h2>
         </div>
 
