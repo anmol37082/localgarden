@@ -598,35 +598,27 @@
   }
 
   .dealsTrack {
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 0.45rem;
-    scroll-snap-type: x proximity;
+    overflow: visible;
+    padding-bottom: 0;
+    scroll-snap-type: none;
     touch-action: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
   }
 
   .dealsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1rem;
+    width: 100%;
+    min-width: 0;
   }
 
   .dealsSwipeButton {
-    width: 2.3rem;
-    height: 2.3rem;
-  }
-
-  .dealsSwipeLeft {
-    left: 0.15rem;
-  }
-
-  .dealsSwipeRight {
-    right: 0.15rem;
+    display: none;
   }
 
   .dealCard {
-    width: clamp(16rem, 82vw, 20rem);
-    min-height: 28rem;
+    width: 100%;
+    min-height: 0;
   }
 
   .dealImageWrap {

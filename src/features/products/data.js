@@ -129,7 +129,7 @@
         date: "Verified buyer",
         rating: 5,
         text: "Mere ghare ek nimbu da butta si, jo panj saal da ho geya si par fer vi ode te faal ni aaye jis karke mai onu patan di salah banayi oss to pahla mai Reel scroll kar reya si te mere samne local garden Plant growth enhancer di Ad aayi jo m naal de naal order kar dita oss to baad aha product bohot jaldi mainu mil gaya isnu istmal karan to baad mainu bohiot vadiya result mile",
-        avatar: "/testimonilas/profiles/sakshigupta.webp",
+        avatar: "/testimonilas/profiles/neeraj.webp",
         images: [
           {
             src: "/growth%20enhancer/Artboard%201.png",
@@ -261,7 +261,7 @@
         date: "Verified buyer",
         rating: 5,
         text: "I am a very busy person, to make homemade natural khad or uski smell mujhe aur meri family dono ko hi bardasht nhi hogi. Par plants ko khad to jaruri hai na mujhe ek aisa product chahiye tha jo naturally khad ka kaam bhi kare or jisme se baki fertiliser jaisi gandi smell bhi na aaye. Or kahte hai na jab ham kuch dhundhte hai to mil hi jata hai. I found this local garden flower and fruit booster",
-        avatar: "/testimonilas/profiles/poojaarora.webp",
+        avatar: "/testimonilas/profiles/anjlisharmaaa.webp",
         images: [
           {
             src: "/fruit%20and%20flower%20booster/Artboard%201.png",
@@ -297,7 +297,7 @@
         date: "Verified buyer",
         rating: 5,
         text: "Hamare ghr me ek amrud ka pead tha, uspe pahli bar kafi jyada fool aaye or fer vo dheere dheere girne lage, or unme se bohot kaam aise the jo fruit bane baki sab kharab ho gaye, M bohot jyada pareshan tha tabhi mujhe mila Local garden ka flower and fruit booster. I really love this product.",
-        avatar: "/testimonilas/profiles/simrankour.webp",
+        avatar: "/testimonilas/profiles/karanmehta.webp",
         images: [
           {
             src: "/fruit%20and%20flower%20booster/Artboard%201.png",

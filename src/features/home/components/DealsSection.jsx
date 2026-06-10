@@ -166,7 +166,7 @@ export default function DealsSection() {
     <section className={styles.dealsSection}>
       <div className="container">
         <div className={styles.dealsHeader}>
-          <div className={styles.dealsKicker}>Today Deals</div>
+          <div className={styles.dealsKicker}>Today&apos;s Deals</div>
           <h2 className={styles.dealsTitle}>
             <span>Combos</span>
           </h2>

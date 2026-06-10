@@ -401,31 +401,17 @@
   }
 
   .productGrid {
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1rem;
     width: 100%;
-    min-width: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 0.45rem;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .productGrid::-webkit-scrollbar {
-    display: none;
+    max-width: 100%;
   }
 
   .productCard {
-    flex: 0 0 auto;
-    width: clamp(16rem, 82vw, 20rem);
+    width: 100%;
     margin: 0;
     border-radius: 1rem;
-    scroll-snap-align: start;
   }
 
   .productBadge {
