@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactCompiler: true,
+
+  output: "export",
+
   images: {
     remotePatterns: [
       {
@@ -8,6 +11,9 @@ const nextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+
+    // Static export ke liye
+    unoptimized: true,
   },
 };
 

@@ -13,10 +13,10 @@ export default function Hero() {
         playsInline
         preload="metadata"
       >
-        <source src="/herovidbanmob.webm" type="video/webm" media="(max-width: 575.98px)" />
-        <source src="/herovidbanmob.mp4" type="video/mp4" media="(max-width: 575.98px)" />
-        <source src="/herobannervid.webm" type="video/webm" />
-        <source src="/herobannervid.mp4" type="video/mp4" />
+        <source src="/herovidbanmob1.webm" type="video/webm" media="(max-width: 575.98px)" />
+        <source src="/herovidbanmob1.mp4" type="video/mp4" media="(max-width: 575.98px)" />
+        <source src="/herobannervid1.webm" type="video/webm" />
+        <source src="/herobannervid1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </section>

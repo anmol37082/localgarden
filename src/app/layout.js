@@ -4,6 +4,8 @@ import Header from "../features/home/components/header";
 import FooterSection from "../features/home/components/FooterSection";
 import "./globals.css";
 
+const SITE_URL = "https://localgarden.co.in";
+
 const interTitle = localFont({
   src: "../fonts/static/Inter_18pt-SemiBold.ttf",
   display: "swap",
@@ -17,6 +19,7 @@ const interBody = localFont({
 });
 
 export const metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Best Organic Liquid Fertilizer for Plant",
     template: "%s | Best Organic Liquid Fertilizer for Plant",
@@ -42,7 +45,7 @@ export const metadata = {
     title: "Best Organic Liquid Fertilizer for Plant",
     description:
       "Boost growth naturally with the best organic liquid fertilizer for plants. Perfect for both indoor houseplants and outdoor gardens to deliver lush greens and vibrant blooms fast. Shop now for 100% natural plant care!",
-    url: "/",
+    url: SITE_URL,
     siteName: "Local Garden",
     images: [
       {
@@ -69,7 +72,7 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Local Garden",
-    url: "/",
+    url: SITE_URL,
     logo: "/weblogo.png",
     sameAs: [
       "https://www.instagram.com/local_garden_in/",
