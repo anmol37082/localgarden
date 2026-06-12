@@ -13,8 +13,48 @@ import {
   CART_UPDATED_EVENT,
   updateCartItemQuantity,
 } from "../cart-storage";
-import { submitRowsToGoogleSheet } from "../../../lib/google-sheets";
+import { createRazorpayOrder, submitRowsToGoogleSheet } from "../../../lib/google-sheets";
 import styles from "./checkout-page.module.css";
+
+const RAZORPAY_KEY_ID = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ?? "rzp_test_T0JAeAYR2bWq0a";
+const RAZORPAY_SCRIPT_SRC = "https://checkout.razorpay.com/v1/checkout.js";
+
+let razorpayScriptPromise = null;
+
+function loadRazorpayScript() {
+  if (typeof window === "undefined") {
+    return Promise.reject(new Error("Razorpay can only load in the browser."));
+  }
+
+  if (window.Razorpay) {
+    return Promise.resolve(true);
+  }
+
+  if (razorpayScriptPromise) {
+    return razorpayScriptPromise;
+  }
+
+  razorpayScriptPromise = new Promise((resolve, reject) => {
+    const existingScript = document.querySelector(`script[src="${RAZORPAY_SCRIPT_SRC}"]`);
+
+    if (existingScript) {
+      existingScript.addEventListener("load", () => resolve(true), { once: true });
+      existingScript.addEventListener("error", () => reject(new Error("Unable to load Razorpay checkout.")), {
+        once: true,
+      });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = RAZORPAY_SCRIPT_SRC;
+    script.async = true;
+    script.onload = () => resolve(true);
+    script.onerror = () => reject(new Error("Unable to load Razorpay checkout."));
+    document.body.appendChild(script);
+  });
+
+  return razorpayScriptPromise;
+}
 
 export default function CheckoutPage() {
   const [cartItems, setCartItems] = useState(() => getCartItems());
@@ -38,7 +78,12 @@ export default function CheckoutPage() {
     name: "",
     email: "",
     phone: "",
-    address: "",
+    pincode: "",
+    houseFlatBuildingNumber: "",
+    areaStreetLocality: "",
+    cityDistrict: "",
+    state: "",
+    landmark: "",
   });
 
   useEffect(() => {
@@ -79,9 +124,24 @@ export default function CheckoutPage() {
     window.dispatchEvent(new CustomEvent(CART_UPDATED_EVENT));
   };
 
+  const buildCombinedAddress = (customer) => {
+    return [
+      customer.houseFlatBuildingNumber,
+      customer.areaStreetLocality,
+      customer.cityDistrict,
+      customer.state,
+      customer.pincode,
+      customer.landmark,
+    ]
+      .map((value) => String(value ?? "").trim())
+      .filter(Boolean)
+      .join(", ");
+  };
+
   const buildCheckoutRows = (items, customer) => {
     const submittedAt = new Date().toISOString();
     const orderId = `CHK-${Date.now()}`;
+    const combinedAddress = buildCombinedAddress(customer);
 
     return items.map((item) => {
       const quantity = Number(item.quantity) || 1;
@@ -96,7 +156,13 @@ export default function CheckoutPage() {
         customerName: customer.name,
         email: customer.email,
         phone: customer.phone,
-        address: customer.address,
+        address: combinedAddress,
+        pincode: customer.pincode,
+        houseFlatBuildingNumber: customer.houseFlatBuildingNumber,
+        areaStreetLocality: customer.areaStreetLocality,
+        cityDistrict: customer.cityDistrict,
+        state: customer.state,
+        landmark: customer.landmark,
         productName: item.title ?? "",
         quantity,
         basePrice,
@@ -105,6 +171,10 @@ export default function CheckoutPage() {
         couponCode: item.couponCode || "",
         finalPrice,
         image: item.imageSrc ?? "",
+        paymentStatus: "PAID",
+        paymentId: "",
+        paymentOrderId: "",
+        paymentSignature: "",
       };
     });
   };
@@ -121,26 +191,89 @@ export default function CheckoutPage() {
     setIsSubmitting(true);
 
     try {
-      const rows = buildCheckoutRows(cartItems, formData);
-      const submission = await submitRowsToGoogleSheet({
-        sheetName: "Checkout",
-        rows,
+      const amountInPaise = Math.round(grandTotal * 100);
+      const receiptId = `CHK-${Date.now()}`;
+      const orderResponse = await createRazorpayOrder({
+        amount: amountInPaise,
+        currency: "INR",
+        receiptId,
       });
+      const razorpayOrderId = orderResponse.orderId ?? orderResponse.id;
 
-      if (submission?.skipped) {
-        throw new Error("Set NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL first.");
+      if (!razorpayOrderId) {
+        throw new Error("Unable to create Razorpay order.");
       }
 
-      clearCartItems();
-      setCartItems([]);
-      setCouponInputs({});
-      setCouponMessages({});
-      notifyCartUpdated();
-      setSubmitted(true);
+      await loadRazorpayScript();
+
+      const options = {
+        key: RAZORPAY_KEY_ID,
+        amount: amountInPaise,
+        currency: "INR",
+        name: "Local Garden",
+        description: "Checkout payment",
+        image: "/weblogo.png",
+        order_id: razorpayOrderId,
+        prefill: {
+          name: formData.name,
+          email: formData.email,
+          contact: formData.phone,
+        },
+        notes: {
+          receiptId,
+          customerName: formData.name,
+          customerEmail: formData.email,
+          customerPhone: formData.phone,
+          customerAddress: buildCombinedAddress(formData),
+        },
+        theme: {
+          color: "#1f7a5f",
+        },
+        modal: {
+          ondismiss: () => {
+            setIsSubmitting(false);
+          },
+        },
+        handler: async (response) => {
+          try {
+            const rows = buildCheckoutRows(cartItems, formData).map((row) => ({
+              ...row,
+              paymentStatus: "PAID",
+              paymentId: response?.razorpay_payment_id ?? "",
+              paymentOrderId: response?.razorpay_order_id ?? razorpayOrderId,
+              paymentSignature: response?.razorpay_signature ?? "",
+            }));
+
+            const submission = await submitRowsToGoogleSheet({
+              sheetName: "Checkout",
+              rows,
+            });
+
+            if (submission?.skipped) {
+              throw new Error("Set NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL first.");
+            }
+
+            clearCartItems();
+            setCartItems([]);
+            setCouponInputs({});
+            setCouponMessages({});
+            notifyCartUpdated();
+            setSubmitted(true);
+          } catch (error) {
+            setSubmitError(error instanceof Error ? error.message : "Failed to submit checkout data.");
+          } finally {
+            setIsSubmitting(false);
+          }
+        },
+      };
+
+      const checkout = new window.Razorpay(options);
+      checkout.open();
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : "Failed to submit checkout data.");
-    } finally {
       setIsSubmitting(false);
+    } finally {
+      // Razorpay modal controls the final completion path.
     }
   };
 
@@ -213,24 +346,78 @@ export default function CheckoutPage() {
               <h2 className={styles.cardTitle}>Shipping details</h2>
 
               <form className={styles.form} onSubmit={handleSubmit}>
-                <label className={styles.field}>
-                  <span>Full name</span>
-                  <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
-                </label>
+                <div className={styles.formRow}>
+                  <label className={styles.field}>
+                    <span><span className={styles.requiredMark}>*</span> Full name</span>
+                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+                  </label>
+
+                  <label className={styles.field}>
+                    <span><span className={styles.requiredMark}>*</span> Email</span>
+                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
+                  </label>
+                </div>
+
+                <div className={styles.formRow}>
+                  <label className={styles.field}>
+                    <span><span className={styles.requiredMark}>*</span> Phone</span>
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required />
+                  </label>
+
+                  <label className={styles.field}>
+                    <span><span className={styles.requiredMark}>*</span> Pincode</span>
+                    <input type="text" name="pincode" value={formData.pincode} onChange={handleInputChange} required />
+                  </label>
+                </div>
+
+                <div className={styles.formRow}>
+                  <label className={styles.field}>
+                    <span><span className={styles.requiredMark}>*</span> House/Flat/Building Number</span>
+                    <input
+                      type="text"
+                      name="houseFlatBuildingNumber"
+                      value={formData.houseFlatBuildingNumber}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+
+                  <label className={styles.field}>
+                    <span><span className={styles.requiredMark}>*</span> Area/Street/Locality</span>
+                    <input
+                      type="text"
+                      name="areaStreetLocality"
+                      value={formData.areaStreetLocality}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className={styles.formRow}>
+                  <label className={styles.field}>
+                    <span><span className={styles.requiredMark}>*</span> City/District</span>
+                    <input
+                      type="text"
+                      name="cityDistrict"
+                      value={formData.cityDistrict}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+
+                  <label className={styles.field}>
+                    <span><span className={styles.requiredMark}>*</span> State</span>
+                    <input type="text" name="state" value={formData.state} onChange={handleInputChange} required />
+                  </label>
+                </div>
 
                 <label className={styles.field}>
-                  <span>Email</span>
-                  <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
-                </label>
-
-                <label className={styles.field}>
-                  <span>Phone</span>
-                  <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required />
-                </label>
-
-                <label className={styles.field}>
-                  <span>Address</span>
-                  <textarea name="address" value={formData.address} onChange={handleInputChange} rows={4} required />
+                  <span className={styles.labelLine}>
+                    <span>Landmark</span>
+                    <span className={styles.optionalText}>(optional)</span>
+                  </span>
+                  <input type="text" name="landmark" value={formData.landmark} onChange={handleInputChange} />
                 </label>
 
                 {submitError ? <div className={styles.couponMessageError}>{submitError}</div> : null}

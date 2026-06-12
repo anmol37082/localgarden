@@ -71,20 +71,45 @@
   gap: 0.95rem;
 }
 
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
 .field {
   display: grid;
   gap: 0.45rem;
-  color: #1f2933;
-  font-size: 0.93rem;
+  color: #5b6770;
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+
+.labelLine {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.requiredMark {
+  color: #c63b2e;
+  font-weight: 700;
+  margin-right: 0.2rem;
+}
+
+.optionalText {
+  color: #8f9a97;
+  font-size: 0.62rem;
   font-weight: 600;
+  line-height: 1;
 }
 
 .field input,
 .field textarea {
   width: 100%;
   border: 1px solid rgba(56, 68, 63, 0.14);
-  border-radius: 0.95rem;
-  padding: 0.85rem 0.95rem;
+  border-radius: 0.82rem;
+  padding: 0.56rem 0.75rem;
   background: #ffffff;
   color: #1f2933;
   font: inherit;
@@ -367,6 +392,12 @@
     padding-top: 1.5rem;
   }
 
+  .checkoutGrid {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1.25rem;
+  }
+
   .formCard,
   .summaryCard,
   .successCard {
@@ -390,6 +421,11 @@
 
   .couponButton {
     width: 100%;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 0.95rem;
   }
 
   .quantityRow {
