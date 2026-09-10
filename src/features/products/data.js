@@ -9,6 +9,7 @@
     price: "₹416.00",
     compareAt: "₹520.00",
     discount: "20% off",
+    freeTesterText: "Free tester included: Flower & Fruit Booster.",
     images: [
       {
         src: "/growth%20enhancer/Artboard%201.png",
@@ -172,6 +173,7 @@
     price: "₹416.00",
     compareAt: "₹520.00",
     discount: "20% off",
+    freeTesterText: "Free tester included: Plant Growth Enhancer.",
     images: [
       {
         src: "/fruit%20and%20flower%20booster/Artboard%201.png",
@@ -336,6 +338,7 @@
     price: "₹360.00",
     compareAt: "₹450.00",
     discount: "20% off",
+    freeTesterText: "Free tester included: Plant Growth Enhancer.",
     images: [
       {
         src: "/BIo%20npk/Artboard%201.png",

@@ -2,7 +2,7 @@
 
 export const GOOGLE_SHEETS_WEB_APP_URL =
   process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL ??
-  "https://script.google.com/macros/s/AKfycbxyISwgv8MJAfs4bc1BIWt__CgT8sS7Z1CnkMYvC5nWeEyDwaf70UA_2mupSZ3fF0GZVA/exec";
+  "https://script.google.com/macros/s/AKfycbyoWYRGNMGdFqDndWyZSsWkdeFQ_URqSrgGOA31K_FU4pdrjMO7lkPgFNAoaS_2h4CdQg/exec";
 
 function createCallbackName() {
   return `__lg_apps_script_${Date.now()}_${Math.random().toString(36).slice(2)}`;

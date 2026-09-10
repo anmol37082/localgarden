@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { addCartItem, dispatchCartUpdated } from "../../cart/cart-storage";
 import ProductBannerSection from "./ProductBannerSection";
+import ProductComparisonSection from "./ProductComparisonSection";
 import ProductLoveSection from "./ProductLoveSection";
 import ProductRelatedSection from "./ProductRelatedSection";
 import ProductReviewsSection from "./ProductReviewsSection";
@@ -195,6 +196,13 @@ export default function ProductDetailPage({ product, productSlug }) {
               <div className={styles.discount}>{product.discount}</div>
             </div>
 
+            {product.freeTesterText ? (
+              <div className={styles.testerCard}>
+                <div className={styles.testerTitle}>Free Tester</div>
+                <p className={styles.testerText}>{product.freeTesterText}</p>
+              </div>
+            ) : null}
+
             <div className={styles.purchaseRow}>
               <div className={styles.quantityControl} aria-label="Quantity selector">
                 <button type="button" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>
@@ -246,6 +254,7 @@ export default function ProductDetailPage({ product, productSlug }) {
         </div>
 
         <ProductLoveSection product={product} />
+        <ProductComparisonSection product={product} />
       </div>
 
       <ProductBannerSection product={product} />

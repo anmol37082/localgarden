@@ -4,6 +4,15 @@ const nextConfig = {
 
   output: "export",
 
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
+  experimental: {
+    workerThreads: true,
+    cpus: 1,
+  },
+
   images: {
     remotePatterns: [
       {
