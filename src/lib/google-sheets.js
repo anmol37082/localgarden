@@ -28,9 +28,18 @@ export async function submitRowsToGoogleSheet({ sheetName, rows }) {
   return { ok: true, response };
 }
 
-export function createRazorpayOrder({ amount, currency = "INR", receiptId }) {
+export function createPayUCheckout({
+  amount,
+  txnid,
+  productinfo,
+  firstname,
+  email,
+  phone,
+  udf1 = "",
+  udf2 = "",
+}) {
   if (typeof window === "undefined") {
-    return Promise.reject(new Error("Razorpay order creation can only run in the browser."));
+    return Promise.reject(new Error("PayU checkout can only run in the browser."));
   }
 
   if (!GOOGLE_SHEETS_WEB_APP_URL) {
@@ -41,13 +50,16 @@ export function createRazorpayOrder({ amount, currency = "INR", receiptId }) {
     const callbackName = createCallbackName();
     const url = new URL(GOOGLE_SHEETS_WEB_APP_URL);
 
-    url.searchParams.set("action", "createOrder");
+    url.searchParams.set("action", "createPayUCheckout");
     url.searchParams.set("callback", callbackName);
     url.searchParams.set("amount", String(amount));
-    url.searchParams.set("currency", currency);
-    if (receiptId) {
-      url.searchParams.set("receiptId", receiptId);
-    }
+    url.searchParams.set("txnid", txnid);
+    url.searchParams.set("productinfo", productinfo);
+    url.searchParams.set("firstname", firstname);
+    url.searchParams.set("email", email);
+    url.searchParams.set("phone", phone);
+    url.searchParams.set("udf1", udf1);
+    url.searchParams.set("udf2", udf2);
 
     const cleanup = () => {
       if (window[callbackName]) {
@@ -64,7 +76,7 @@ export function createRazorpayOrder({ amount, currency = "INR", receiptId }) {
       cleanup();
 
       if (!payload || payload.ok === false) {
-        reject(new Error(payload?.message || "Failed to create Razorpay order."));
+        reject(new Error(payload?.message || "Failed to prepare PayU checkout."));
         return;
       }
 
@@ -77,9 +89,31 @@ export function createRazorpayOrder({ amount, currency = "INR", receiptId }) {
     script.async = true;
     script.onerror = () => {
       cleanup();
-      reject(new Error("Failed to load Razorpay order response."));
+      reject(new Error("Failed to load PayU checkout response."));
     };
 
     document.body.appendChild(script);
   });
+}
+
+export function redirectToPayUCheckout({ actionUrl, formData }) {
+  if (!actionUrl || !formData) {
+    throw new Error("Invalid PayU checkout response.");
+  }
+
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = actionUrl;
+  form.style.display = "none";
+
+  Object.entries(formData).forEach(([name, value]) => {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = String(value ?? "");
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
 }

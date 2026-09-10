@@ -13,48 +13,12 @@ import {
   CART_UPDATED_EVENT,
   updateCartItemQuantity,
 } from "../cart-storage";
-import { createRazorpayOrder, submitRowsToGoogleSheet } from "../../../lib/google-sheets";
+import {
+  createPayUCheckout,
+  redirectToPayUCheckout,
+  submitRowsToGoogleSheet,
+} from "../../../lib/google-sheets";
 import styles from "./checkout-page.module.css";
-
-const RAZORPAY_KEY_ID = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ?? "rzp_test_T0JAeAYR2bWq0a";
-const RAZORPAY_SCRIPT_SRC = "https://checkout.razorpay.com/v1/checkout.js";
-
-let razorpayScriptPromise = null;
-
-function loadRazorpayScript() {
-  if (typeof window === "undefined") {
-    return Promise.reject(new Error("Razorpay can only load in the browser."));
-  }
-
-  if (window.Razorpay) {
-    return Promise.resolve(true);
-  }
-
-  if (razorpayScriptPromise) {
-    return razorpayScriptPromise;
-  }
-
-  razorpayScriptPromise = new Promise((resolve, reject) => {
-    const existingScript = document.querySelector(`script[src="${RAZORPAY_SCRIPT_SRC}"]`);
-
-    if (existingScript) {
-      existingScript.addEventListener("load", () => resolve(true), { once: true });
-      existingScript.addEventListener("error", () => reject(new Error("Unable to load Razorpay checkout.")), {
-        once: true,
-      });
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = RAZORPAY_SCRIPT_SRC;
-    script.async = true;
-    script.onload = () => resolve(true);
-    script.onerror = () => reject(new Error("Unable to load Razorpay checkout."));
-    document.body.appendChild(script);
-  });
-
-  return razorpayScriptPromise;
-}
 
 export default function CheckoutPage() {
   const [cartItems, setCartItems] = useState(() => getCartItems());
@@ -71,7 +35,7 @@ export default function CheckoutPage() {
     }
   });
   const [couponMessages, setCouponMessages] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
@@ -171,7 +135,7 @@ export default function CheckoutPage() {
         couponCode: item.couponCode || "",
         finalPrice,
         image: item.imageSrc ?? "",
-        paymentStatus: "PAID",
+        paymentStatus: "PENDING",
         paymentId: "",
         paymentOrderId: "",
         paymentSignature: "",
@@ -191,89 +155,43 @@ export default function CheckoutPage() {
     setIsSubmitting(true);
 
     try {
-      const amountInPaise = Math.round(grandTotal * 100);
-      const receiptId = `CHK-${Date.now()}`;
-      const orderResponse = await createRazorpayOrder({
-        amount: amountInPaise,
-        currency: "INR",
-        receiptId,
-      });
-      const razorpayOrderId = orderResponse.orderId ?? orderResponse.id;
+      const transactionId = `CHK-${Date.now()}`;
+      const rows = buildCheckoutRows(cartItems, formData).map((row) => ({
+        ...row,
+        orderId: transactionId,
+        paymentStatus: "PENDING",
+        paymentOrderId: transactionId,
+      }));
 
-      if (!razorpayOrderId) {
-        throw new Error("Unable to create Razorpay order.");
+      const submission = await submitRowsToGoogleSheet({
+        sheetName: "Checkout",
+        rows,
+      });
+
+      if (submission?.skipped) {
+        throw new Error("Set NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL first.");
       }
 
-      await loadRazorpayScript();
+      const checkout = await createPayUCheckout({
+        amount: grandTotal,
+        txnid: transactionId,
+        productinfo: `Local Garden order (${itemCount} item${itemCount === 1 ? "" : "s"})`,
+        firstname: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        udf1: "Checkout",
+        udf2: transactionId,
+      });
 
-      const options = {
-        key: RAZORPAY_KEY_ID,
-        amount: amountInPaise,
-        currency: "INR",
-        name: "Local Garden",
-        description: "Checkout payment",
-        image: "/weblogo.png",
-        order_id: razorpayOrderId,
-        prefill: {
-          name: formData.name,
-          email: formData.email,
-          contact: formData.phone,
-        },
-        notes: {
-          receiptId,
-          customerName: formData.name,
-          customerEmail: formData.email,
-          customerPhone: formData.phone,
-          customerAddress: buildCombinedAddress(formData),
-        },
-        theme: {
-          color: "#1f7a5f",
-        },
-        modal: {
-          ondismiss: () => {
-            setIsSubmitting(false);
-          },
-        },
-        handler: async (response) => {
-          try {
-            const rows = buildCheckoutRows(cartItems, formData).map((row) => ({
-              ...row,
-              paymentStatus: "PAID",
-              paymentId: response?.razorpay_payment_id ?? "",
-              paymentOrderId: response?.razorpay_order_id ?? razorpayOrderId,
-              paymentSignature: response?.razorpay_signature ?? "",
-            }));
-
-            const submission = await submitRowsToGoogleSheet({
-              sheetName: "Checkout",
-              rows,
-            });
-
-            if (submission?.skipped) {
-              throw new Error("Set NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL first.");
-            }
-
-            clearCartItems();
-            setCartItems([]);
-            setCouponInputs({});
-            setCouponMessages({});
-            notifyCartUpdated();
-            setSubmitted(true);
-          } catch (error) {
-            setSubmitError(error instanceof Error ? error.message : "Failed to submit checkout data.");
-          } finally {
-            setIsSubmitting(false);
-          }
-        },
-      };
-
-      const checkout = new window.Razorpay(options);
-      checkout.open();
+      clearCartItems();
+      setCartItems([]);
+      setCouponInputs({});
+      setCouponMessages({});
+      notifyCartUpdated();
+      redirectToPayUCheckout(checkout);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : "Failed to submit checkout data.");
       setIsSubmitting(false);
-    } finally {
-      // Razorpay modal controls the final completion path.
     }
   };
 

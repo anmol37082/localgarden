@@ -3,13 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { createRazorpayOrder, submitRowsToGoogleSheet } from "../../../lib/google-sheets";
+import {
+  createPayUCheckout,
+  redirectToPayUCheckout,
+  submitRowsToGoogleSheet,
+} from "../../../lib/google-sheets";
 import styles from "./deals-section.module.css";
-
-const RAZORPAY_KEY_ID = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ?? "rzp_test_T0JAeAYR2bWq0a";
-const RAZORPAY_SCRIPT_SRC = "https://checkout.razorpay.com/v1/checkout.js";
-
-let razorpayScriptPromise = null;
 
 const comboProducts = {
   "Plant Growth Enhancer": { originalPrice: 520, image: "/growth%20enhancer/Artboard%201.png" },
@@ -27,41 +26,6 @@ const parseMoneyValue = (value) => {
   const parsed = Number.parseFloat(normalized);
   return Number.isFinite(parsed) ? parsed : 0;
 };
-
-function loadRazorpayScript() {
-  if (typeof window === "undefined") {
-    return Promise.reject(new Error("Razorpay can only load in the browser."));
-  }
-
-  if (window.Razorpay) {
-    return Promise.resolve(true);
-  }
-
-  if (razorpayScriptPromise) {
-    return razorpayScriptPromise;
-  }
-
-  razorpayScriptPromise = new Promise((resolve, reject) => {
-    const existingScript = document.querySelector(`script[src="${RAZORPAY_SCRIPT_SRC}"]`);
-
-    if (existingScript) {
-      existingScript.addEventListener("load", () => resolve(true), { once: true });
-      existingScript.addEventListener("error", () => reject(new Error("Unable to load Razorpay checkout.")), {
-        once: true,
-      });
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = RAZORPAY_SCRIPT_SRC;
-    script.async = true;
-    script.onload = () => resolve(true);
-    script.onerror = () => reject(new Error("Unable to load Razorpay checkout."));
-    document.body.appendChild(script);
-  });
-
-  return razorpayScriptPromise;
-}
 
 const buildComboDeal = (comboItems, image) => {
   const originalTotal = comboItems.reduce((sum, item) => sum + comboProducts[item].originalPrice, 0);
@@ -116,6 +80,7 @@ export default function DealsSection() {
   const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     mobile: "",
     alternateMobile: "",
     pincode: "",
@@ -154,6 +119,7 @@ export default function DealsSection() {
     setSubmitError("");
     setFormData({
       name: "",
+      email: "",
       mobile: "",
       alternateMobile: "",
       pincode: "",
@@ -194,98 +160,54 @@ export default function DealsSection() {
         throw new Error("No deal selected.");
       }
 
-      const amountInPaise = Math.round(
-        Number(selectedDeal.currentPriceValue ?? parseMoneyValue(selectedDeal.currentPrice)) * 100,
+      const amount = Number(
+        selectedDeal.currentPriceValue ?? parseMoneyValue(selectedDeal.currentPrice),
       );
-      const receiptId = `COMBO-${Date.now()}`;
-      const orderResponse = await createRazorpayOrder({
-        amount: amountInPaise,
-        currency: "INR",
-        receiptId,
+      const transactionId = `COMBO-${Date.now()}`;
+      const submission = await submitRowsToGoogleSheet({
+        sheetName: "ComboDeals",
+        rows: [
+          {
+            submittedAt: new Date().toISOString(),
+            orderId: transactionId,
+            paymentStatus: "PENDING",
+            paymentId: "",
+            paymentOrderId: transactionId,
+            paymentSignature: "",
+            dealName: selectedDeal.title,
+            comboItems: selectedDeal.comboItems.join(" | "),
+            currentPrice: selectedDeal.currentPrice,
+            originalPrice: selectedDeal.originalPrice,
+            discountPercent: selectedDeal.discountPercent,
+            name: formData.name,
+            mobile: formData.mobile,
+            alternateMobile: formData.alternateMobile,
+            pincode: formData.pincode,
+            houseFlatBuildingNumber: formData.houseFlatBuildingNumber,
+            areaStreetLocality: formData.areaStreetLocality,
+            cityDistrict: formData.cityDistrict,
+            state: formData.state,
+            landmark: formData.landmark,
+          },
+        ],
       });
-      const razorpayOrderId = orderResponse.orderId ?? orderResponse.id;
 
-      if (!razorpayOrderId) {
-        throw new Error("Unable to create Razorpay order.");
+      if (submission?.skipped) {
+        throw new Error("Set NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL first.");
       }
 
-      await loadRazorpayScript();
+      const checkout = await createPayUCheckout({
+        amount,
+        txnid: transactionId,
+        productinfo: selectedDeal.title,
+        firstname: formData.name,
+        email: formData.email,
+        phone: formData.mobile,
+        udf1: "ComboDeals",
+        udf2: transactionId,
+      });
 
-      const checkoutOptions = {
-        key: RAZORPAY_KEY_ID,
-        amount: amountInPaise,
-        currency: "INR",
-        name: "Local Garden",
-        description: "Combo deal payment",
-        image: "/weblogo.png",
-        order_id: razorpayOrderId,
-        prefill: {
-          name: formData.name,
-          contact: formData.mobile,
-        },
-        notes: {
-          receiptId,
-          dealName: selectedDeal.title,
-          comboItems: selectedDeal.comboItems.join(" | "),
-          customerName: formData.name,
-          customerMobile: formData.mobile,
-          alternateMobile: formData.alternateMobile,
-          address: buildCombinedAddress(formData),
-        },
-        theme: {
-          color: "#1f7a5f",
-        },
-        modal: {
-          ondismiss: () => {
-            setIsSubmitting(false);
-          },
-        },
-        handler: async (response) => {
-          try {
-            const submission = await submitRowsToGoogleSheet({
-              sheetName: "ComboDeals",
-              rows: [
-                {
-                  submittedAt: new Date().toISOString(),
-                  orderId: receiptId,
-                  paymentStatus: "PAID",
-                  paymentId: response?.razorpay_payment_id ?? "",
-                  paymentOrderId: response?.razorpay_order_id ?? razorpayOrderId,
-                  paymentSignature: response?.razorpay_signature ?? "",
-                  dealName: selectedDeal.title,
-                  comboItems: selectedDeal.comboItems.join(" | "),
-                  currentPrice: selectedDeal.currentPrice,
-                  originalPrice: selectedDeal.originalPrice,
-                  discountPercent: selectedDeal.discountPercent,
-                  name: formData.name,
-                  mobile: formData.mobile,
-                  alternateMobile: formData.alternateMobile,
-                  address: buildCombinedAddress(formData),
-                  pincode: formData.pincode,
-                  houseFlatBuildingNumber: formData.houseFlatBuildingNumber,
-                  areaStreetLocality: formData.areaStreetLocality,
-                  cityDistrict: formData.cityDistrict,
-                  state: formData.state,
-                  landmark: formData.landmark,
-                },
-              ],
-            });
-
-            if (submission?.skipped) {
-              throw new Error("Set NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL first.");
-            }
-
-            setIsThanksVisible(true);
-          } catch (error) {
-            setSubmitError(error instanceof Error ? error.message : "Failed to submit combo deal.");
-          } finally {
-            setIsSubmitting(false);
-          }
-        },
-      };
-
-      const checkout = new window.Razorpay(checkoutOptions);
-      checkout.open();
+      redirectToPayUCheckout(checkout);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : "Failed to submit combo deal.");
     }
@@ -485,6 +407,18 @@ export default function DealsSection() {
                       value={formData.mobile}
                       onChange={handleInputChange}
                       placeholder="Enter mobile number"
+                      className={styles.modalInput}
+                      required
+                    />
+                  </div>
+                  <div className={styles.modalInfoRow}>
+                    <span><span className={styles.requiredMark}>*</span> Email</span>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Enter email address"
                       className={styles.modalInput}
                       required
                     />
