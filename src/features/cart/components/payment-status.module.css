@@ -1,0 +1,7 @@
+.page { max-width: 720px; padding: 72px 16px; text-align: center; }
+.card, .track { margin: 0 auto 24px; padding: 28px; border: 1px solid #dce7e1; border-radius: 16px; background: #fff; }
+.card { position: relative; overflow: hidden; }.successMark svg { width: 70px; height: 70px; stroke: #198754; fill: none; stroke-width: 4; stroke-linecap: round; }.confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }.confetti i { position: absolute; top: -12px; width: 8px; height: 8px; background: #ffc107; animation: fall 2.7s ease-in forwards; }.confetti i:nth-child(3n) { background: #0dcaf0; }.confetti i:nth-child(4n) { background: #dc3545; }.confetti i:nth-child(2n) { border-radius: 50%; } @keyframes fall { to { transform: translateY(260px) rotate(420deg); opacity: 0; } }
+.orderId { display: flex; justify-content: center; gap: 8px; margin: 18px 0; font: 700 1rem ui-monospace, monospace; }
+.orderId button, .track button { border: 0; border-radius: 8px; padding: 9px 14px; background: #1f7a5f; color: #fff; cursor: pointer; font-weight: 700; }
+.warning { color: #895c00; background: #fff8dd; padding: 12px; border-radius: 8px; font-size: .9rem; }
+.track { text-align: left; }.track h2 { margin-top: 0; }.trackForm { display: grid; gap: 10px; }.trackForm input { padding: 12px; border: 1px solid #c9d5cf; border-radius: 8px; }.error { color: #b42318; }.result { margin-top: 14px; display: grid; gap: 6px; padding: 14px; border-radius: 8px; background: #edf8f2; }

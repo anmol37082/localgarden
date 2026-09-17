@@ -2,6 +2,7 @@
 
 export const CART_STORAGE_KEY = "localgarden_cart_v1";
 export const CART_UPDATED_EVENT = "localgarden:cart-updated";
+export const PENDING_PAYMENT_ORDER_KEY = "localgarden_pending_payment_order_v1";
 
 function safeParseCart(rawValue) {
   if (!rawValue) {
@@ -174,4 +175,13 @@ export function getCartTotals(items) {
 
 export function formatMoney(amount) {
   return `₹${Number(amount || 0).toFixed(2)}`;
+}
+
+export function savePendingPaymentOrder(order) {
+  if (typeof window !== "undefined") window.localStorage.setItem(PENDING_PAYMENT_ORDER_KEY, JSON.stringify(order));
+}
+
+export function getPendingPaymentOrder() {
+  if (typeof window === "undefined") return null;
+  try { return JSON.parse(window.localStorage.getItem(PENDING_PAYMENT_ORDER_KEY) || "null"); } catch { return null; }
 }

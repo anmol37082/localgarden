@@ -8,6 +8,27 @@ function createCallbackName() {
   return `__lg_apps_script_${Date.now()}_${Math.random().toString(36).slice(2)}`;
 }
 
+function requestJsonp(url) {
+  return new Promise((resolve, reject) => {
+    const callbackName = createCallbackName();
+    url.searchParams.set("callback", callbackName);
+    const cleanup = () => { delete window[callbackName]; document.getElementById(callbackName)?.remove(); };
+    window[callbackName] = (payload) => { cleanup(); payload?.ok === false ? reject(new Error(payload.message || "Request failed.")) : resolve(payload); };
+    const script = document.createElement("script");
+    script.id = callbackName; script.src = url.toString(); script.async = true;
+    script.onerror = () => { cleanup(); reject(new Error("Unable to reach order tracking service.")); };
+    document.body.appendChild(script);
+  });
+}
+
+export function trackOrder({ orderId, phone }) {
+  const url = new URL(GOOGLE_SHEETS_WEB_APP_URL);
+  url.searchParams.set("action", "trackOrder");
+  url.searchParams.set("orderId", orderId);
+  url.searchParams.set("phone", phone);
+  return requestJsonp(url);
+}
+
 export async function submitRowsToGoogleSheet({ sheetName, rows }) {
   if (!GOOGLE_SHEETS_WEB_APP_URL) {
     return { ok: false, skipped: true, reason: 'Missing NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL' };

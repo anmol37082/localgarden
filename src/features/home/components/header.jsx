@@ -173,6 +173,7 @@ export default function Header() {
           </nav>
 
           <div className={styles.actions}>
+            <Link href="/track-order" className={styles.trackOrderLink}>Track order</Link>
             <button
               type="button"
               className={styles.cartButton}

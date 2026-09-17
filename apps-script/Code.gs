@@ -14,6 +14,7 @@ function initializeSheets() {
 
 function doGet(e) {
   if ((e.parameter || {}).action === "createPayUCheckout") return handleCreatePayUCheckout(e);
+  if ((e.parameter || {}).action === "trackOrder") return handleTrackOrder(e);
   return jsonResponse({ ok: true, message: "Local Garden Apps Script is running" });
 }
 
@@ -130,9 +131,32 @@ function handlePayUCallback(e) {
       appendVerifiedOrder(stagedOrder, response);
     }
     PropertiesService.getScriptProperties().deleteProperty(STAGED_ORDER_PREFIX + txnid);
-    return redirectToWebsite(isSuccess, isSuccess ? "Payment completed successfully." : "Payment was unsuccessful or cancelled.");
+    return redirectToWebsite(isSuccess, isSuccess ? "Payment completed successfully." : "Payment was unsuccessful or cancelled.", txnid, isSuccess ? { name: stagedOrder.payment.firstname, phone: stagedOrder.payment.phone } : null);
   } catch (error) {
     return redirectToWebsite(false, "Unable to verify payment: " + error.message);
+  }
+}
+
+function handleTrackOrder(e) {
+  const callback = String((e.parameter || {}).callback || "callback");
+  try {
+    if (!/^[a-zA-Z0-9_.$]+$/.test(callback)) throw new Error("Invalid callback name.");
+    const orderId = String(e.parameter.orderId || "").trim();
+    const phone = normalizePhone(e.parameter.phone);
+    if (!orderId || !phone) throw new Error("Enter your order ID and mobile number.");
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    for (const sheetName of ["Checkout", "ComboDeals"]) {
+      const sheet = ss.getSheetByName(sheetName);
+      if (!sheet || sheet.getLastRow() < 2) continue;
+      const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+      const rows = sheet.getRange(2, 1, sheet.getLastRow() - 1, sheet.getLastColumn()).getValues();
+      const records = rows.map((row) => headers.reduce((record, key, index) => ({ ...record, [key]: row[index] }), {}));
+      const matches = records.filter((record) => String(record.paymentOrderId) === orderId && normalizePhone(record.phone || record.mobile) === phone);
+      if (matches.length) return jsonpResponse(callback, { ok: true, order: { orderId, type: sheetName, status: matches[0].paymentStatus, name: matches[0].customerName || matches[0].name, phone: matches[0].phone || matches[0].mobile, placedAt: matches[0].submittedAt, items: matches.map((record) => record.productName || record.dealName).filter(Boolean) } });
+    }
+    throw new Error("No paid order found with these details.");
+  } catch (error) {
+    return jsonpResponse(callback, { ok: false, message: error.message });
   }
 }
 
@@ -225,8 +249,9 @@ function buildRow(sheetName, row) {
   return fields.map((field) => row[field] || "");
 }
 
-function redirectToWebsite(isSuccess, message) {
-  const url = getScriptProperty(isSuccess ? "PAYU_SUCCESS_URL" : "PAYU_FAILURE_URL");
+function redirectToWebsite(isSuccess, message, orderId, orderDetails) {
+  let url = getScriptProperty(isSuccess ? "PAYU_SUCCESS_URL" : "PAYU_FAILURE_URL");
+  if (isSuccess && orderId) url += (url.includes("?") ? "&" : "?") + "orderId=" + encodeURIComponent(orderId);
   if (!url) return HtmlService.createHtmlOutput(`<h2>${escapeHtml(message)}</h2>`);
   const safeUrl = escapeHtml(url);
   const statusColor = isSuccess ? "#198754" : "#dc3545";
@@ -238,6 +263,9 @@ function redirectToWebsite(isSuccess, message) {
   const confettiScript = isSuccess
     ? `<script>(function(){var colors=['#198754','#ffc107','#0dcaf0','#dc3545','#6610f2'];for(var i=0;i<60;i++){var el=document.createElement('div');el.className='confetti';el.style.left=Math.random()*100+'vw';el.style.background=colors[Math.floor(Math.random()*colors.length)];el.style.animationDuration=(2+Math.random()*2)+'s';el.style.animationDelay=(Math.random()*.5)+'s';document.body.appendChild(el);setTimeout((function(node){return function(){node.remove();};})(el),4500);}})();</script>`
     : "";
+  const detailsBlock = isSuccess && orderId
+    ? `<div class="order-details"><div class="order-label">Your order ID</div><div class="order-id"><code id="order-id">${escapeHtml(orderId)}</code><button type="button" onclick="copyOrderId()">Copy</button></div><div class="customer-details">Name: ${escapeHtml(orderDetails?.name || "—")}<br>Mobile: ${escapeHtml(orderDetails?.phone || "—")}</div><p class="warning">Order ID sirf ek baar show hogi. Isse copy karke safe jagah par rakh lijiye.</p></div><script>function copyOrderId(){var text=document.getElementById('order-id').textContent;if(navigator.clipboard){navigator.clipboard.writeText(text);}else{var input=document.createElement('textarea');input.value=text;document.body.appendChild(input);input.select();document.execCommand('copy');input.remove();}}</script>`
+    : "";
 
   return HtmlService.createHtmlOutput(`
     <!doctype html><html><head><base target="_top"><meta charset="utf-8"><style>
@@ -245,10 +273,16 @@ function redirectToWebsite(isSuccess, message) {
       .status-icon{width:70px;height:70px;display:block;margin:0 auto 16px}
       .status-circle{fill:none;stroke:${statusColor};stroke-width:4}
       .status-mark{stroke-linecap:round}
+      .order-details{max-width:420px;margin:24px auto 0;padding:18px;border:1px solid #dce7e1;border-radius:12px;background:#f9fdfb}
+      .order-label{font-size:13px;color:#66706c;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+      .order-id{display:flex;align-items:center;justify-content:center;gap:10px;margin:9px 0 14px}
+      code{font-size:15px;font-weight:700;color:#145a45}.order-id button{border:0;border-radius:6px;padding:7px 11px;background:#1f7a5f;color:#fff;font-weight:700;cursor:pointer}
+      .customer-details{line-height:1.6;color:#38443f}.warning{margin:15px 0 0;padding:10px;border-radius:7px;background:#fff4d6;color:#765100;font-size:13px;line-height:1.45}
       .confetti{position:fixed;top:-10px;width:8px;height:8px;border-radius:2px;opacity:.9;animation:fall linear forwards}
       @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
     </style></head><body>
       ${statusIcon}<h2>${escapeHtml(message)}</h2><p>${orderText}</p>
+      ${detailsBlock}
       <a href="${safeUrl}" target="_top" style="display:inline-block;padding:12px 20px;background:${statusColor};color:#fff;text-decoration:none;border-radius:6px;font-weight:600">${buttonText}</a>
       ${confettiScript}
     </body></html>`);
@@ -259,3 +293,4 @@ function sha512Hex(value) { return Utilities.computeDigest(Utilities.DigestAlgor
 function jsonpResponse(callback, data) { return ContentService.createTextOutput(`${callback}(${JSON.stringify(data)});`).setMimeType(ContentService.MimeType.JAVASCRIPT); }
 function jsonResponse(data) { return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON); }
 function escapeHtml(value) { return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); }
+function normalizePhone(value) { return String(value || "").replace(/\D/g, "").slice(-10); }

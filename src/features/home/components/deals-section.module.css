@@ -594,6 +594,7 @@
   min-height: 2.9rem;
   width: 100%;
   margin-top: 1.15rem;
+  margin-bottom: 0.9rem;
   padding: 0 1.15rem;
   border-radius: 0.85rem;
   background: #1f7a5f;
@@ -789,7 +790,7 @@
   .buyNowButton {
     width: 100%;
     margin-top: 0.45rem;
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.9rem;
   }
 
   .thanksPopup {

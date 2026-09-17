@@ -8,6 +8,7 @@ import {
   redirectToPayUCheckout,
   stagePayUOrder,
 } from "../../../lib/google-sheets";
+import { savePendingPaymentOrder } from "../../cart/cart-storage";
 import styles from "./deals-section.module.css";
 
 const comboProducts = {
@@ -113,6 +114,15 @@ export default function DealsSection() {
     };
   }, [selectedDeal]);
 
+  // When a customer returns from PayU with the browser Back button, the page
+  // may be restored from the browser cache with the old "Sending..." state.
+  useEffect(() => {
+    const resetSubmittingState = () => setIsSubmitting(false);
+    window.addEventListener("pageshow", resetSubmittingState);
+
+    return () => window.removeEventListener("pageshow", resetSubmittingState);
+  }, []);
+
   const closeModal = () => {
     setIsThanksVisible(false);
     setSelectedDeal(null);
@@ -216,6 +226,8 @@ export default function DealsSection() {
         udf1: "ComboDeals",
         udf2: transactionId,
       });
+
+      savePendingPaymentOrder({ orderId: transactionId, name: formData.name, phone: formData.mobile });
 
       redirectToPayUCheckout(checkout);
     } catch (error) {

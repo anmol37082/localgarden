@@ -9,6 +9,7 @@ import {
   formatMoney,
   getCartItems,
   getCartTotals,
+  savePendingPaymentOrder,
   CART_UPDATED_EVENT,
   updateCartItemQuantity,
 } from "../cart-storage";
@@ -67,6 +68,15 @@ export default function CheckoutPage() {
       window.removeEventListener(CART_UPDATED_EVENT, handleCartUpdated);
       window.removeEventListener("storage", handleStorageChange);
     };
+  }, []);
+
+  // Reset the pending UI if this page is restored after the customer leaves
+  // the hosted PayU page using the browser Back button.
+  useEffect(() => {
+    const resetSubmittingState = () => setIsSubmitting(false);
+    window.addEventListener("pageshow", resetSubmittingState);
+
+    return () => window.removeEventListener("pageshow", resetSubmittingState);
   }, []);
 
   const { count: itemCount, total } = getCartTotals(cartItems);
@@ -187,6 +197,8 @@ export default function CheckoutPage() {
         udf1: "Checkout",
         udf2: transactionId,
       });
+
+      savePendingPaymentOrder({ orderId: transactionId, name: formData.name, phone: formData.phone });
 
       redirectToPayUCheckout(checkout);
     } catch (error) {
