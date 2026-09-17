@@ -111,7 +111,7 @@
   margin-left: auto;
   margin-right: 0.25rem;
 }
-.trackOrderLink { color: #1f7a5f; font-size: .84rem; font-weight: 700; white-space: nowrap; }
+.trackOrderLink { color: #1f7a5f; font-size: .84rem; font-weight: 700; white-space: nowrap; margin-right: 0.45rem; }
 
 .mobileActions {
   display: none;

@@ -264,26 +264,30 @@ function redirectToWebsite(isSuccess, message, orderId, orderDetails) {
     ? `<script>(function(){var colors=['#198754','#ffc107','#0dcaf0','#dc3545','#6610f2'];for(var i=0;i<60;i++){var el=document.createElement('div');el.className='confetti';el.style.left=Math.random()*100+'vw';el.style.background=colors[Math.floor(Math.random()*colors.length)];el.style.animationDuration=(2+Math.random()*2)+'s';el.style.animationDelay=(Math.random()*.5)+'s';document.body.appendChild(el);setTimeout((function(node){return function(){node.remove();};})(el),4500);}})();</script>`
     : "";
   const detailsBlock = isSuccess && orderId
-    ? `<div class="order-details"><div class="order-label">Your order ID</div><div class="order-id"><code id="order-id">${escapeHtml(orderId)}</code><button type="button" onclick="copyOrderId()">Copy</button></div><div class="customer-details">Name: ${escapeHtml(orderDetails?.name || "—")}<br>Mobile: ${escapeHtml(orderDetails?.phone || "—")}</div><p class="warning">Order ID sirf ek baar show hogi. Isse copy karke safe jagah par rakh lijiye.</p></div><script>function copyOrderId(){var text=document.getElementById('order-id').textContent;if(navigator.clipboard){navigator.clipboard.writeText(text);}else{var input=document.createElement('textarea');input.value=text;document.body.appendChild(input);input.select();document.execCommand('copy');input.remove();}}</script>`
+    ? `<section class="order-details"><div class="details-top"><span class="paid-badge">PAYMENT VERIFIED</span><span class="details-note">Order confirmed</span></div><div class="order-label">Your order ID</div><div class="order-id"><code id="order-id">${escapeHtml(orderId)}</code><button type="button" onclick="copyOrderId()">Copy ID</button></div><div class="customer-details"><div><span>Customer name</span><strong>${escapeHtml(orderDetails?.name || "—")}</strong></div><div><span>Mobile number</span><strong>${escapeHtml(orderDetails?.phone || "—")}</strong></div></div><p class="warning"><b>Important:</b> Order ID sirf ek baar show hogi. Isse copy karke safe jagah par rakh lijiye.</p></section><script>function copyOrderId(){var text=document.getElementById('order-id').textContent;var button=document.querySelector('.order-id button');function done(){button.textContent='Copied';setTimeout(function(){button.textContent='Copy ID';},1800);}if(navigator.clipboard){navigator.clipboard.writeText(text).then(done);}else{var input=document.createElement('textarea');input.value=text;document.body.appendChild(input);input.select();document.execCommand('copy');input.remove();done();}}</script>`
     : "";
 
   return HtmlService.createHtmlOutput(`
     <!doctype html><html><head><base target="_top"><meta charset="utf-8"><style>
-      body{font-family:Arial,sans-serif;text-align:center;padding:48px;overflow:hidden}
-      .status-icon{width:70px;height:70px;display:block;margin:0 auto 16px}
+      *{box-sizing:border-box}body{font-family:Arial,sans-serif;text-align:center;padding:48px 20px;overflow-x:hidden;color:#183d31;background:linear-gradient(145deg,#f5fcf7,#fff)}
+      h2{margin:0;font-size:28px;letter-spacing:-.03em}body>p{margin:10px 0 0;color:#66756d}
+      .status-icon{width:74px;height:74px;display:block;margin:0 auto 17px}
       .status-circle{fill:none;stroke:${statusColor};stroke-width:4}
       .status-mark{stroke-linecap:round}
-      .order-details{max-width:420px;margin:24px auto 0;padding:18px;border:1px solid #dce7e1;border-radius:12px;background:#f9fdfb}
-      .order-label{font-size:13px;color:#66706c;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
-      .order-id{display:flex;align-items:center;justify-content:center;gap:10px;margin:9px 0 14px}
-      code{font-size:15px;font-weight:700;color:#145a45}.order-id button{border:0;border-radius:6px;padding:7px 11px;background:#1f7a5f;color:#fff;font-weight:700;cursor:pointer}
-      .customer-details{line-height:1.6;color:#38443f}.warning{margin:15px 0 0;padding:10px;border-radius:7px;background:#fff4d6;color:#765100;font-size:13px;line-height:1.45}
+      .order-details{max-width:470px;margin:28px auto 0;padding:22px;border:1px solid #d7e8dd;border-radius:18px;background:rgba(255,255,255,.94);box-shadow:0 14px 34px rgba(20,90,69,.1);text-align:left}
+      .details-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:21px}.paid-badge{padding:6px 9px;border-radius:99px;background:#e5f6ea;color:#187044;font-size:10px;font-weight:800;letter-spacing:.08em}.details-note{color:#76857c;font-size:12px;font-weight:600}
+      .order-label{font-size:11px;color:#748279;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+      .order-id{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 21px;padding:12px 13px;border:1px solid #dbe9df;border-radius:10px;background:#f6fbf7}
+      code{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px;font-weight:800;color:#145a45}.order-id button{flex:0 0 auto;border:0;border-radius:7px;padding:8px 11px;background:#1f7a5f;color:#fff;font-size:12px;font-weight:800;cursor:pointer}
+      .customer-details{display:grid;grid-template-columns:1fr 1fr;gap:12px}.customer-details div{display:grid;gap:5px;padding:12px;border-radius:10px;background:#f8faf8}.customer-details span{color:#7a8880;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.customer-details strong{color:#28483a;font-size:14px;word-break:break-word}
+      .warning{margin:16px 0 0;padding:12px;border-left:3px solid #e6ae28;border-radius:7px;background:#fff8e4;color:#765100;font-size:12px;line-height:1.55}.continue-button{display:inline-block;margin-top:25px;box-shadow:0 8px 18px rgba(31,122,95,.2)}
       .confetti{position:fixed;top:-10px;width:8px;height:8px;border-radius:2px;opacity:.9;animation:fall linear forwards}
       @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+      @media(max-width:480px){body{padding:34px 14px}.order-details{padding:17px}.customer-details{grid-template-columns:1fr}.order-id{align-items:stretch;flex-direction:column}.order-id button{width:100%}}
     </style></head><body>
       ${statusIcon}<h2>${escapeHtml(message)}</h2><p>${orderText}</p>
       ${detailsBlock}
-      <a href="${safeUrl}" target="_top" style="display:inline-block;padding:12px 20px;background:${statusColor};color:#fff;text-decoration:none;border-radius:6px;font-weight:600">${buttonText}</a>
+      <a href="${safeUrl}" target="_top" class="continue-button" style="padding:12px 20px;background:${statusColor};color:#fff;text-decoration:none;border-radius:6px;font-weight:600">${buttonText}</a>
       ${confettiScript}
     </body></html>`);
 }
