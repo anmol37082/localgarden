@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { addCartItem, dispatchCartUpdated } from "../../cart/cart-storage";
+import { useRouter } from "next/navigation";
+import { addCartItem, createCartItem, dispatchCartUpdated, saveCartItems } from "../../cart/cart-storage";
 import ProductBannerSection from "./ProductBannerSection";
 import ProductComparisonSection from "./ProductComparisonSection";
 import ProductLoveSection from "./ProductLoveSection";
@@ -26,6 +27,7 @@ function StarRating({ rating, reviews }) {
 }
 
 export default function ProductDetailPage({ product, productSlug }) {
+  const router = useRouter();
   const galleryItems = product.galleryMedia ?? product.images ?? [];
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -71,6 +73,17 @@ export default function ProductDetailPage({ product, productSlug }) {
     );
 
     dispatchCartUpdated({ openCart: true });
+  };
+
+  const handleBuyNow = () => {
+    const checkoutItem = createCartItem(
+      { ...product, slug: productSlug },
+      { quantity, color: product.colors?.[0], image: activeImage },
+    );
+
+    saveCartItems([checkoutItem]);
+    dispatchCartUpdated();
+    router.push("/checkout");
   };
 
   const panels = [
@@ -218,6 +231,10 @@ export default function ProductDetailPage({ product, productSlug }) {
                 Add to cart
               </button>
             </div>
+
+            <button type="button" className={styles.buyNowButton} onClick={handleBuyNow}>
+              Buy now
+            </button>
 
             <div className={styles.confidenceCard}>
               <div className={styles.confidenceTitle}>{confidenceTitle}</div>

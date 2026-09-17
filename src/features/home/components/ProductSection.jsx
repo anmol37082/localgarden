@@ -150,14 +150,19 @@ export default function ProductSection() {
                   </div>
                   <div className={styles.productBadge}>{item.discountPercent}</div>
                 </div>
-                <button
-                  type="button"
-                  className={styles.productCartButton}
-                  onClick={() => handleAddToCart(item)}
-                  aria-label={`Add ${item.title} to cart`}
-                >
-                  Add to Cart
-                </button>
+                <div className={styles.productActions}>
+                  <button
+                    type="button"
+                    className={styles.productCartButton}
+                    onClick={() => handleAddToCart(item)}
+                    aria-label={`Add ${item.title} to cart`}
+                  >
+                    Add to Cart
+                  </button>
+                  <Link href={item.href} className={styles.productExploreButton}>
+                    Explore More
+                  </Link>
+                </div>
               </div>
             </motion.article>
           ))}

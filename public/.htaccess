@@ -1,0 +1,16 @@
+Options -MultiViews
+RewriteEngine On
+
+# Let Apache serve existing files and directories directly (images, favicon,
+# JavaScript, CSS, and other static assets).
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Next.js static export creates routes as .html files. This works for every
+# exported route, including /payment/success, /payment/failure, /checkout,
+# and all product pages—with or without a trailing slash.
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# Serve the exported homepage.
+RewriteRule ^$ index.html [L]

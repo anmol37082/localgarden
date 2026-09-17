@@ -338,6 +338,26 @@
   box-shadow: none;
 }
 
+.buyNowButton {
+  width: 100%;
+  min-height: 3rem;
+  margin-top: 0.75rem;
+  border: 1px solid #243646;
+  border-radius: 0.95rem;
+  background: #ffffff;
+  color: #243646;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.buyNowButton:hover,
+.buyNowButton:focus-visible {
+  background: #243646;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
 .interestText {
   margin-top: 0.7rem;
   color: #6e685f;

@@ -9,6 +9,54 @@
   overflow: visible;
 }
 
+.offerBar {
+  display: flex;
+  align-items: center;
+  height: 2.15rem;
+  overflow: hidden;
+  background: #1f7a5f;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.offerTrack {
+  display: flex;
+  width: max-content;
+  animation: offer-marquee 20s linear infinite;
+  will-change: transform;
+}
+
+.offerMessage {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  flex: 0 0 100vw;
+  width: 100vw;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+.offerMessage strong {
+  font-weight: 800;
+}
+
+.offerDivider {
+  margin-left: 0.45rem;
+  font-size: 1rem;
+}
+
+@keyframes offer-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .mobileTopBar {
   display: none;
 }
@@ -445,7 +493,7 @@
 @media (max-width: 767.98px) {
   .mobileTopBar {
     position: fixed;
-    top: 0;
+    top: 2.15rem;
     left: 0;
     right: 0;
     z-index: 23;
@@ -516,7 +564,7 @@
   }
 
   .drawer {
-    top: 3.8rem;
+    top: 5.95rem;
     padding: 0.9rem 0.9rem 1rem;
   }
 
@@ -544,5 +592,11 @@
 
   .cartModalBody {
     padding-bottom: 2.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offerTrack {
+    animation: none;
   }
 }

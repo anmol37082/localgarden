@@ -122,6 +122,22 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FMD5RMJ9RX"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-FMD5RMJ9RX');
+            `,
+          }}
+        />
       </head>
       <body suppressHydrationWarning>
         <noscript>
