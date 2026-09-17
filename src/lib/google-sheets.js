@@ -28,6 +28,30 @@ export async function submitRowsToGoogleSheet({ sheetName, rows }) {
   return { ok: true, response };
 }
 
+// Order rows are held by the Apps Script only until PayU returns a verified
+// result. They must not be written to the spreadsheet at this stage.
+export async function stagePayUOrder({ sheetName, rows, payment }) {
+  if (!GOOGLE_SHEETS_WEB_APP_URL) {
+    return { ok: false, skipped: true, reason: "Missing NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL" };
+  }
+
+  const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
+    body: JSON.stringify({
+      action: "stagePayUOrder",
+      sheetName,
+      rows,
+      payment,
+    }),
+  });
+
+  return { ok: true, response };
+}
+
 export function createPayUCheckout({
   amount,
   txnid,

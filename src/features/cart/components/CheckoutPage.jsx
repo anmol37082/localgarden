@@ -6,7 +6,6 @@ import Image from "next/image";
 import {
   CART_STORAGE_KEY,
   applyCartItemCoupon,
-  clearCartItems,
   formatMoney,
   getCartItems,
   getCartTotals,
@@ -16,7 +15,7 @@ import {
 import {
   createPayUCheckout,
   redirectToPayUCheckout,
-  submitRowsToGoogleSheet,
+  stagePayUOrder,
 } from "../../../lib/google-sheets";
 import styles from "./checkout-page.module.css";
 
@@ -159,9 +158,19 @@ export default function CheckoutPage() {
         paymentOrderId: transactionId,
       }));
 
-      const submission = await submitRowsToGoogleSheet({
+      const submission = await stagePayUOrder({
         sheetName: "Checkout",
         rows,
+        payment: {
+          txnid: transactionId,
+          amount: grandTotal,
+          productinfo: `Local Garden order (${itemCount} item${itemCount === 1 ? "" : "s"})`,
+          firstname: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          udf1: "Checkout",
+          udf2: transactionId,
+        },
       });
 
       if (submission?.skipped) {
@@ -179,11 +188,6 @@ export default function CheckoutPage() {
         udf2: transactionId,
       });
 
-      clearCartItems();
-      setCartItems([]);
-      setCouponInputs({});
-      setCouponMessages({});
-      notifyCartUpdated();
       redirectToPayUCheckout(checkout);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : "Failed to submit checkout data.");

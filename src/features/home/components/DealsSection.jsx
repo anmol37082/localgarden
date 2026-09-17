@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import {
   createPayUCheckout,
   redirectToPayUCheckout,
-  submitRowsToGoogleSheet,
+  stagePayUOrder,
 } from "../../../lib/google-sheets";
 import styles from "./deals-section.module.css";
 
@@ -164,7 +164,7 @@ export default function DealsSection() {
         selectedDeal.currentPriceValue ?? parseMoneyValue(selectedDeal.currentPrice),
       );
       const transactionId = `COMBO-${Date.now()}`;
-      const submission = await submitRowsToGoogleSheet({
+      const submission = await stagePayUOrder({
         sheetName: "ComboDeals",
         rows: [
           {
@@ -190,6 +190,16 @@ export default function DealsSection() {
             landmark: formData.landmark,
           },
         ],
+        payment: {
+          txnid: transactionId,
+          amount,
+          productinfo: selectedDeal.title,
+          firstname: formData.name,
+          email: formData.email,
+          phone: formData.mobile,
+          udf1: "ComboDeals",
+          udf2: transactionId,
+        },
       });
 
       if (submission?.skipped) {
