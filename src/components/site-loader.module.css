@@ -30,7 +30,7 @@
 
 .bar {
   position: relative;
-  width: 9rem;
+  width: 15rem;   /* logoWrap jitni hi width — pehle 9rem thi */
   height: .28rem;
   border-radius: 999px;
   background: rgba(120, 209, 11, .15);
