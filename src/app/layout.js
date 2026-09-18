@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import Header from "../features/home/components/header";
 import FooterSection from "../features/home/components/FooterSection";
+import SiteLoader from "../components/SiteLoader";
 import "./globals.css";
 
 const SITE_URL = "https://localgarden.co.in";
@@ -140,6 +141,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning>
+        <SiteLoader />
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

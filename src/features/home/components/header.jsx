@@ -111,6 +111,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.offerBar} role="status" aria-label="Current offers">
+        <span className={styles.mobileOfferMessage}>Use <strong>LOCAL10</strong> for <strong>10% OFF</strong> · Free tester on combos</span>
         <div className={styles.offerTrack}>
           <span className={styles.offerMessage}>
             Apply coupon code <strong>LOCAL10</strong> and get <strong>10% OFF</strong>
@@ -230,6 +231,9 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <Link href="/track-order" className={styles.drawerLink} onClick={closeDrawer}>
+            Track your order
+          </Link>
         </nav>
 
         <div className={styles.drawerActions}>
