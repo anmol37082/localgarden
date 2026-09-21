@@ -110,22 +110,6 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.offerBar} role="status" aria-label="Current offers">
-        <span className={styles.mobileOfferMessage}>Use <strong>LOCAL10</strong> for <strong>10% OFF</strong> · Free tester on combos</span>
-        <div className={styles.offerTrack}>
-          <span className={styles.offerMessage}>
-            Apply coupon code <strong>LOCAL10</strong> and get <strong>10% OFF</strong>
-            <span className={styles.offerDivider} aria-hidden="true">•</span>
-            Get a <strong>free tester</strong> with every combo
-          </span>
-          <span className={styles.offerMessage} aria-hidden="true">
-            Apply coupon code <strong>LOCAL10</strong> and get <strong>10% OFF</strong>
-            <span className={styles.offerDivider}>•</span>
-            Get a <strong>free tester</strong> with every combo
-          </span>
-        </div>
-      </div>
-
       {drawerOpen ? (
         <div className={styles.mobileTopBar}>
           <Link href="/" className={styles.mobileBrand} aria-label="PlantBoost home" onClick={closeDrawer}>
